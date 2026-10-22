@@ -59,19 +59,26 @@ test('roomful: favourites become Qloo taste, the brief cites it, and an LLM alon
 });
 
 test('roomful: a painting becomes a 3D room through MoGe-2, streamed back through the server, key never exposed', async t => {
-  const FKEY = 'fal-secret-key', calls = [];
+  const FKEY = 'fal-secret-key', calls = [], polls = {};
   const fetcher = async (url, options = {}) => {
     url = new URL(url); calls.push({ host: url.host, auth: options.headers?.authorization });
-    if (url.host === 'fal.run' && url.pathname === '/fal-ai/luma-photon/flash/reframe') {
+    // fal's queue: submit, then the status says IN_PROGRESS once and COMPLETED after, then the result.
+    const job = id => ({ status_url: `https://queue.fal.run/jobs/${id}/status`, response_url: `https://queue.fal.run/jobs/${id}`, cancel_url: `https://queue.fal.run/jobs/${id}/cancel` });
+    if (url.host === 'queue.fal.run' && url.pathname === '/fal-ai/luma-photon/flash/reframe') {
       const body = JSON.parse(options.body);
       assert.equal(body.aspect_ratio, '21:9'); assert.match(body.image_url, /^data:image\/jpeg;base64,/);
-      return Response.json({ images: [{ url: 'https://v3b.fal.media/files/wide.jpg' }] });
+      return Response.json(job('wide'));
     }
-    if (url.host === 'fal.run') {
-      assert.equal(url.pathname, '/fal-ai/moge-2');
+    if (url.host === 'queue.fal.run' && url.pathname === '/fal-ai/moge-2') {
       assert.match(JSON.parse(options.body).image_url, /^data:image\/jpeg;base64,/);
-      return Response.json({ model_mesh: { url: 'https://v3b.fal.media/files/room.glb' }, fov_x: 49 });
+      return Response.json(job('room'));
     }
+    if (url.host === 'queue.fal.run' && url.pathname.endsWith('/status')) {
+      polls[url.pathname] = (polls[url.pathname] || 0) + 1;
+      return Response.json({ status: polls[url.pathname] > 1 ? 'COMPLETED' : 'IN_PROGRESS' });
+    }
+    if (url.host === 'queue.fal.run' && url.pathname === '/jobs/wide') return Response.json({ images: [{ url: 'https://v3b.fal.media/files/wide.jpg' }] });
+    if (url.host === 'queue.fal.run' && url.pathname === '/jobs/room') return Response.json({ model_mesh: { url: 'https://v3b.fal.media/files/room.glb' }, fov_x: 49 });
     if (url.host === 'v3b.fal.media') return new Response(new Uint8Array([103, 108, 84, 70]));
     throw new Error(`unexpected ${url}`);
   };
@@ -93,5 +100,6 @@ test('roomful: a painting becomes a 3D room through MoGe-2, streamed back throug
   const glb = await fetch(base + data.glb);
   assert.equal(glb.headers.get('content-type'), 'model/gltf-binary');
   assert.equal(Buffer.from(await glb.arrayBuffer()).toString(), 'glTF');
-  assert.equal(calls.find(c => c.host === 'fal.run').auth, `Key ${FKEY}`);
+  assert.ok(calls.filter(c => c.host === 'queue.fal.run').every(c => c.auth === `Key ${FKEY}`));
+  assert.ok(calls.filter(c => c.host !== 'queue.fal.run').every(c => !c.auth), 'the key only goes to the fal queue');
 });
