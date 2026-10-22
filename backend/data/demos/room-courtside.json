@@ -1,0 +1,1307 @@
+{
+ "site": "room",
+ "slug": "courtside",
+ "title": "Court Side Lounge",
+ "request": {
+  "text": "Kendrick Lamar, Nike, Jordan Peele films, Issa Rae, Lakers"
+ },
+ "events": [
+  {
+   "type": "step",
+   "id": "resolve",
+   "label": "Finding your favourites in Qloo"
+  },
+  {
+   "type": "step_done",
+   "id": "resolve",
+   "summary": "Kendrick Lamar, Nike, Jordan Peele, Issa Rae, Los Angeles Lakers"
+  },
+  {
+   "type": "step",
+   "id": "taste",
+   "label": "Asking Qloo what rooms people with your taste love"
+  },
+  {
+   "type": "step_done",
+   "id": "taste",
+   "summary": "decor: Festive, Hip, Cozy, Posh · mood: Authentic Italian, Vintage, Chic"
+  },
+  {
+   "type": "step",
+   "id": "culture",
+   "label": "Building the playlist, the shelf and the screen"
+  },
+  {
+   "type": "step_done",
+   "id": "culture",
+   "summary": "playlist: J. Cole, Young Thug, Future · brands: National Basketball Association, Air Jordan Product Line"
+  },
+  {
+   "type": "step",
+   "id": "who",
+   "label": "Reading who shares this taste"
+  },
+  {
+   "type": "step_done",
+   "id": "who",
+   "summary": "strongest age band: 24 and younger"
+  },
+  {
+   "type": "step",
+   "id": "brief",
+   "label": "Writing the room"
+  },
+  {
+   "type": "step_done",
+   "id": "brief",
+   "summary": "Art Deco Court"
+  },
+  {
+   "type": "step",
+   "id": "baseline",
+   "label": "Asking the same question without Qloo"
+  },
+  {
+   "type": "step",
+   "id": "paint",
+   "label": "Painting the room"
+  },
+  {
+   "type": "step_done",
+   "id": "baseline",
+   "summary": "2 of 8 picks hold up for this taste"
+  },
+  {
+   "type": "step_done",
+   "id": "paint",
+   "summary": "gpt-image-2.5/flare"
+  },
+  {
+   "type": "final",
+   "concept": {
+    "name": "Art Deco Court",
+    "tagline": "Court-side calm with the bass turned low.",
+    "brief": "This is a room for unwinding after a game or a long week, with warm light and a deep, plush sofa. You sink into the sectional, pick a record, and talk through the film you just watched.",
+    "image_prompt": "Photoreal interior photograph at eye level of a private lounge with Art Deco influence. Walls in deep espresso lacquer with brushed brass reveal lines and a fluted walnut panel. A low charcoal velvet sectional sits on a cream wool rug, with a tall brass floor lamp casting warm amber light and recessed warm-white spotlights overhead. On a low walnut sideboard stands a vintage turntable beside a neat stack of record sleeves, a framed film poster in a matte black frame, and a pair of white and red basketball sneakers displayed under a glass dome. A small paper lantern hangs in the corner beside a ceramic vase. Soft evening light, clean lines, polished oak floorboards.",
+    "design_choices": [
+     {
+      "element": "Lighting",
+      "choice": "Brushed brass sconces and a tall amber floor lamp keep the room at a low, late-night glow.",
+      "signals": [
+       {
+        "name": "Art Deco",
+        "grounded": true
+       },
+       {
+        "name": "Chill",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Seating",
+      "choice": "A low charcoal velvet sectional with rounded arms gives a plush, relaxed place to sit.",
+      "signals": [
+       {
+        "name": "Posh",
+        "grounded": true
+       },
+       {
+        "name": "Cozy",
+        "grounded": true
+       },
+       {
+        "name": "Inviting",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Objects",
+      "choice": "A vintage turntable and a glass-domed display of sneakers sit side by side as the room's centrepiece.",
+      "signals": [
+       {
+        "name": "Air Jordan Product Line",
+        "grounded": true
+       },
+       {
+        "name": "Vintage",
+        "grounded": true
+       },
+       {
+        "name": "Hip",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Shelf",
+      "choice": "A walnut shelf holds LeBron, Inc. and The Sixth Man beside a paper lantern and a ceramic vase.",
+      "signals": [
+       {
+        "name": "LeBron, Inc.: The Making of a Billion-Dollar Athlete",
+        "grounded": true
+       },
+       {
+        "name": "The Sixth Man",
+        "grounded": true
+       },
+       {
+        "name": "Traditional Japanese",
+        "grounded": true
+       },
+       {
+        "name": "Eclectic",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Soundtrack",
+      "choice": "Speakers tuned for low bass keep the playlist at a conversational volume, with the mix moving from Mac Miller to Vince Staples.",
+      "signals": [
+       {
+        "name": "Beats Electronics",
+        "grounded": true
+       },
+       {
+        "name": "Mac Miller",
+        "grounded": true
+       },
+       {
+        "name": "Vince Staples",
+        "grounded": true
+       },
+       {
+        "name": "Lively",
+        "grounded": true
+       }
+      ]
+     }
+    ],
+    "first_track": "Mac Miller"
+   },
+   "render": {
+    "id": "9f618f46-6568-457a-a991-a1e6e48cc375",
+    "url": "/img/demo-room-courtside-1.jpg",
+    "model": "gpt-image-2.5/flare",
+    "prompt": "Photoreal interior photograph at eye level of a private lounge with Art Deco influence. Walls in deep espresso lacquer with brushed brass reveal lines and a fluted walnut panel. A low charcoal velvet sectional sits on a cream wool rug, with a tall brass floor lamp casting warm amber light and recessed warm-white spotlights overhead. On a low walnut sideboard stands a vintage turntable beside a neat stack of record sleeves, a framed film poster in a matte black frame, and a pair of white and red basketball sneakers displayed under a glass dome. A small paper lantern hangs in the corner beside a ceramic vase. Soft evening light, clean lines, polished oak floorboards.",
+    "aspect": "3:2",
+    "signals": [
+     "Art Deco",
+     "Chill",
+     "Posh",
+     "Cozy",
+     "Inviting",
+     "Air Jordan Product Line",
+     "Vintage",
+     "Hip",
+     "LeBron, Inc.: The Making of a Billion-Dollar Athlete",
+     "The Sixth Man",
+     "Traditional Japanese",
+     "Eclectic",
+     "Beats Electronics",
+     "Mac Miller",
+     "Vince Staples",
+     "Lively"
+    ]
+   },
+   "taste": {
+    "decor": [
+     {
+      "id": "urn:tag:decor:qloo:festive",
+      "name": "Festive",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.8944011339475549,
+      "popularity": 0.9989327616261672
+     },
+     {
+      "id": "urn:tag:decor:qloo:hip",
+      "name": "Hip",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.8637777539418642,
+      "popularity": 0.9976166213972655
+     },
+     {
+      "id": "urn:tag:decor:qloo:cozy",
+      "name": "Cozy",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.7930993104110334,
+      "popularity": 0.9999677974879841
+     },
+     {
+      "id": "urn:tag:decor:qloo:posh",
+      "name": "Posh",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.7893491124260354,
+      "popularity": 0.9922139823935514
+     },
+     {
+      "id": "urn:tag:decor:qloo:casual",
+      "name": "Casual",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.7892029807225012,
+      "popularity": 0.9999894752765607
+     },
+     {
+      "id": "urn:tag:decor:qloo:traditional_japanese",
+      "name": "Traditional Japanese",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.7740403640680649,
+      "popularity": 0.9970738912557299
+     },
+     {
+      "id": "urn:tag:decor:qloo:eclectic",
+      "name": "Eclectic",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.7326121862587679,
+      "popularity": 0.9998698547258286
+     },
+     {
+      "id": "urn:tag:decor:qloo:art_deco",
+      "name": "Art Deco",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.7307660409697841,
+      "popularity": 0.9990932243872608
+     },
+     {
+      "id": "urn:tag:decor:qloo:parisian_bistro",
+      "name": "Parisian Bistro",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.715622076707203,
+      "popularity": 0.996469897798652
+     },
+     {
+      "id": "urn:tag:decor:qloo:romantic",
+      "name": "Romantic",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.6932097597881597,
+      "popularity": 0.9991858262449844
+     }
+    ],
+    "ambience": [
+     {
+      "id": "urn:tag:ambience:qloo:authentic_italian",
+      "name": "Authentic Italian",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.9151406878070567,
+      "popularity": 0.9979813737528792
+     },
+     {
+      "id": "urn:tag:ambience:qloo:vintage",
+      "name": "Vintage",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.8292166549047283,
+      "popularity": 0.9995252878472589
+     },
+     {
+      "id": "urn:tag:ambience:qloo:chic",
+      "name": "Chic",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.8065783866538297,
+      "popularity": 0.9995714709620525
+     },
+     {
+      "id": "urn:tag:ambience:qloo:inviting",
+      "name": "Inviting",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.7480630577172165,
+      "popularity": 0.9997808658328677
+     },
+     {
+      "id": "urn:tag:ambience:qloo:casual",
+      "name": "Casual",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.728629762289643,
+      "popularity": 0.9999932453267479
+     },
+     {
+      "id": "urn:tag:ambience:qloo:chill",
+      "name": "Chill",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.7267703059259788,
+      "popularity": 0.999740651964204
+     },
+     {
+      "id": "urn:tag:ambience:qloo:lively",
+      "name": "Lively",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.7218137284991437,
+      "popularity": 0.9999859408545102
+     },
+     {
+      "id": "urn:tag:ambience:qloo:hip",
+      "name": "Hip",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.7074474333372489,
+      "popularity": 0.9993725222719642
+     },
+     {
+      "id": "urn:tag:ambience:qloo:cozy",
+      "name": "Cozy",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.6929119842409428,
+      "popularity": 0.9999597075886241
+     },
+     {
+      "id": "urn:tag:ambience:qloo:whimsical",
+      "name": "Whimsical",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.6906630274081655,
+      "popularity": 0.9993073318208101
+     }
+    ],
+    "interests": [],
+    "artist": [
+     {
+      "name": "J. Cole",
+      "id": "75422648-F55C-4620-91C8-C9CF153E28C0",
+      "type": "artist",
+      "popularity": 0.998,
+      "affinity": 0.979,
+      "tags": [
+       "Energetic",
+       "Storytelling Lyricism",
+       "Hip Hop",
+       "Soulful",
+       "Introspective Rap",
+       "Underground Hip Hop"
+      ],
+      "image": "https://images.qloo.com/i/75422648-F55C-4620-91C8-C9CF153E28C0-420x-auto.jpg",
+      "detail": "J. Cole"
+     },
+     {
+      "name": "Young Thug",
+      "id": "1BB0B537-8A33-4D8F-BDEA-213341BC0AB3",
+      "type": "artist",
+      "popularity": 0.994,
+      "affinity": 0.978,
+      "tags": [
+       "Cloud Rap",
+       "Eccentric",
+       "Street Life",
+       "Lil Wayne",
+       "Atlanta",
+       "Innovative"
+      ],
+      "image": "https://images.qloo.com/i/1BB0B537-8A33-4D8F-BDEA-213341BC0AB3-420x-auto.jpg",
+      "detail": "Young Thug"
+     },
+     {
+      "name": "Future",
+      "id": "4233865C-095A-47B8-8499-8D20A9C25367",
+      "type": "artist",
+      "popularity": 0.997,
+      "affinity": 0.975,
+      "tags": [
+       "Lil Wayne",
+       "Melodic Rap",
+       "Trap",
+       "Trap",
+       "Wealth",
+       "2"
+      ],
+      "image": "https://images.qloo.com/i/4233865C-095A-47B8-8499-8D20A9C25367-420x-auto.jpg",
+      "detail": "Future"
+     },
+     {
+      "name": "ScHoolboy Q",
+      "id": "870C2FE9-88A2-49D7-B263-F8F99D364CD6",
+      "type": "artist",
+      "popularity": 0.997,
+      "affinity": 0.974,
+      "tags": [
+       "Gangsta Rap",
+       "Energetic",
+       "Gangsta Rap",
+       "Engaging",
+       "Lyrical Storytelling",
+       "Gritty Street Rap"
+      ],
+      "image": "https://images.qloo.com/i/870C2FE9-88A2-49D7-B263-F8F99D364CD6-420x-auto.jpg",
+      "detail": "ScHoolboy Q"
+     },
+     {
+      "name": "Pusha T",
+      "id": "359CBD8C-FF15-4CDF-B3BA-B6BDC6EF1009",
+      "type": "artist",
+      "popularity": 0.995,
+      "affinity": 0.973,
+      "tags": [
+       "Rhythmic",
+       "The Notorious B.I.G",
+       "Hip Hop",
+       "Kanye West",
+       "Nas",
+       "East Coast Hip Hop"
+      ],
+      "image": "https://images.qloo.com/i/359CBD8C-FF15-4CDF-B3BA-B6BDC6EF1009-420x-auto.jpg",
+      "detail": "Pusha T"
+     },
+     {
+      "name": "Mac Miller",
+      "id": "13C6A087-4614-473E-846A-FF156A41D028",
+      "type": "artist",
+      "popularity": 0.998,
+      "affinity": 0.972,
+      "tags": [
+       "Reflective",
+       "Substance Use",
+       "Loyal",
+       "Personal Growth",
+       "Jazz Rap",
+       "Hip Hop"
+      ],
+      "image": "https://images.qloo.com/i/13C6A087-4614-473E-846A-FF156A41D028-420x-auto.jpg",
+      "detail": "Mac Miller"
+     },
+     {
+      "name": "A$AP Rocky",
+      "id": "E39030CC-3348-409F-B89F-66B4EA92BFD8",
+      "type": "artist",
+      "popularity": 0.999,
+      "affinity": 0.971,
+      "tags": [
+       "Vocals",
+       "Lil Wayne",
+       "Fashion Rap",
+       "Charismatic",
+       "Fashion",
+       "Loyal"
+      ],
+      "image": "https://images.qloo.com/i/E39030CC-3348-409F-B89F-66B4EA92BFD8-420x-auto.jpg",
+      "detail": "A$AP Rocky"
+     },
+     {
+      "name": "Vince Staples",
+      "id": "0112A4D2-65D7-4602-85D7-6FDB1E857658",
+      "type": "artist",
+      "popularity": 0.994,
+      "affinity": 0.971,
+      "tags": [
+       "Underground Hip Hop",
+       "Energetic",
+       "West Coast Hip Hop",
+       "Lyrical",
+       "Raw",
+       "Rap"
+      ],
+      "image": "https://images.qloo.com/i/0112A4D2-65D7-4602-85D7-6FDB1E857658-420x-auto.jpg",
+      "detail": "Vince Staples"
+     }
+    ],
+    "brand": [
+     {
+      "name": "National Basketball Association",
+      "id": "9EF3B4AA-C638-4930-B673-0A930A4063AD",
+      "type": "brand",
+      "popularity": 1,
+      "affinity": 0.952,
+      "tags": [
+       "Sports App",
+       "Mobile App",
+       "Basketball",
+       "Sports Organization",
+       "Advertising Enabled",
+       "Leagues & Tournaments"
+      ],
+      "image": "https://images.qloo.com/i/9EF3B4AA-C638-4930-B673-0A930A4063AD-420x-auto.jpg",
+      "detail": "The National Basketball Association (NBA) is a professional basketball league featuring top teams and players, known for its global influence and popular events like the NBA playoffs."
+     },
+     {
+      "name": "Air Jordan Product Line",
+      "id": "E26BC58D-18D2-405B-BC7B-7C556ADE3829",
+      "type": "brand",
+      "popularity": 0.999,
+      "affinity": 0.951,
+      "tags": [
+       "Basketball",
+       "Sneakers",
+       "Fashion",
+       "Footwear",
+       "Bold Branding",
+       "Dynamic Silhouettes"
+      ],
+      "image": "https://images.qloo.com/i/E26BC58D-18D2-405B-BC7B-7C556ADE3829-420x-auto.jpg",
+      "detail": "Air Jordan is a Nike brand product line featuring basketball shoes and athletic apparel inspired by Michael Jordan."
+     },
+     {
+      "name": "Beats Electronics",
+      "id": "B038AF1A-FFE7-4214-ADA0-89289BF30D7C",
+      "type": "brand",
+      "popularity": 0.996,
+      "affinity": 0.944,
+      "tags": [
+       "Headphones",
+       "Electronics",
+       "Minimalist Design",
+       "Bold Branding",
+       "Matte Finishes",
+       "Monochromatic Palettes"
+      ],
+      "image": "https://images.qloo.com/i/B038AF1A-FFE7-4214-ADA0-89289BF30D7C-420x-auto.jpg",
+      "detail": "Beats Electronics is a leading audio brand known for premium wireless headphones, earbuds, speakers, and accessories designed for high-performance and lifestyle use."
+     },
+     {
+      "name": "Foot Locker",
+      "id": "4C160FEA-FDB6-4DEC-99FC-13899680A0F4",
+      "type": "brand",
+      "popularity": 0.999,
+      "affinity": 0.942,
+      "tags": [
+       "Retail",
+       "Sporty",
+       "Dynamic",
+       "Visual-Heavy",
+       "Minimalist Branding",
+       "Graphic Prints"
+      ],
+      "image": "https://images.qloo.com/i/4C160FEA-FDB6-4DEC-99FC-13899680A0F4-420x-auto.jpg",
+      "detail": "Foot Locker is a global retailer specializing in athletic footwear, apparel, and accessories, known for its wide selection of sneakers from top brands like Nike and adidas."
+     },
+     {
+      "name": "Golden State Warriors",
+      "id": "F8B5FC50-B377-41F9-9A5F-A422F391EDA3",
+      "type": "brand",
+      "popularity": 0.999,
+      "affinity": 0.938,
+      "tags": [
+       "NBA",
+       "Basketball",
+       "Sports Organization",
+       "Blue And Yellow Color Palette",
+       "Bridge-Inspired Branding",
+       "High-Energy Visuals"
+      ],
+      "image": "https://images.qloo.com/i/F8B5FC50-B377-41F9-9A5F-A422F391EDA3-420x-auto.jpg",
+      "detail": "The Golden State Warriors are a professional NBA basketball team based in San Francisco, known for their competitive play and community engagement."
+     },
+     {
+      "name": "Adidas",
+      "id": "FCEA7CA1-1D40-4680-B337-E74594D9BCF1",
+      "type": "brand",
+      "popularity": 1,
+      "affinity": 0.938,
+      "tags": [
+       "Sneakers",
+       "Sandals",
+       "Footwear",
+       "Fashion",
+       "Basketball",
+       "Athletic"
+      ],
+      "image": "https://images.qloo.com/i/FCEA7CA1-1D40-4680-B337-E74594D9BCF1-420x-auto.jpg",
+      "detail": "Adidas is a global sportswear brand known for athletic footwear, apparel, and accessories, inspiring athletes worldwide through innovative performance products."
+     }
+    ],
+    "movie": [
+     {
+      "name": "BlacKkKlansman",
+      "id": "375E97BE-B457-443C-960E-DFEE01DF8BD1",
+      "type": "movie",
+      "popularity": 0.995,
+      "affinity": 0.918,
+      "tags": [
+       "Poster",
+       "Bomber jacket",
+       "Charismatic",
+       "White supremacy",
+       "Agitprop",
+       "Afro"
+      ],
+      "image": "https://images.qloo.com/i/375E97BE-B457-443C-960E-DFEE01DF8BD1-420x-auto.jpg",
+      "detail": "2018, Spike Lee"
+     },
+     {
+      "name": "Blindspotting",
+      "id": "19ECFF12-037A-40F5-ABF5-412FD6C96668",
+      "type": "movie",
+      "popularity": 0.954,
+      "affinity": 0.91,
+      "tags": [
+       "Community minded",
+       "Oakland",
+       "Fast food restaurant",
+       "Guilt",
+       "Psychological drama",
+       "Sailboat"
+      ],
+      "image": "https://images.qloo.com/i/19ECFF12-037A-40F5-ABF5-412FD6C96668-420x-auto.jpg",
+      "detail": "2018, Carlos López Estrada"
+     },
+     {
+      "name": "Creed II",
+      "id": "D5D711E5-14A8-4FC1-BA77-63B74B12557D",
+      "type": "movie",
+      "popularity": 0.981,
+      "affinity": 0.906,
+      "tags": [
+       "Knocked unconscious",
+       "Visiting fathers grave",
+       "Mother son relationship",
+       "Ex boxer",
+       "Haunted",
+       "Apartment"
+      ],
+      "image": "https://images.qloo.com/i/D5D711E5-14A8-4FC1-BA77-63B74B12557D-420x-auto.jpg",
+      "detail": "2018, Steven Caple Jr."
+     },
+     {
+      "name": "The Disaster Artist",
+      "id": "0A1C0539-692C-4CB3-BB16-785A5FED0B08",
+      "type": "movie",
+      "popularity": 0.986,
+      "affinity": 0.903,
+      "tags": [
+       "Reflective",
+       "Eccentric",
+       "Behind the scenes",
+       "35mm",
+       "Biography",
+       "Perseverance"
+      ],
+      "image": "https://images.qloo.com/i/0A1C0539-692C-4CB3-BB16-785A5FED0B08-420x-auto.jpg",
+      "detail": "2017, James Franco"
+     }
+    ],
+    "book": [
+     {
+      "name": "LeBron, Inc.: The Making of a Billion-Dollar Athlete",
+      "id": "F9EA7C2A-A4C9-4EB0-826C-4C537327E2B8",
+      "type": "book",
+      "popularity": 0.922,
+      "affinity": 0.902,
+      "tags": [
+       "Nonfiction",
+       "History",
+       "Business",
+       "Basketball",
+       "Sports",
+       "Biography"
+      ],
+      "image": "https://images.qloo.com/i/F9EA7C2A-A4C9-4EB0-826C-4C537327E2B8-420x-auto.jpg",
+      "detail": "2019, Brian Windhorst"
+     },
+     {
+      "name": "The Sixth Man",
+      "id": "63720DD5-5CC1-4C44-87B0-A69543D3C126",
+      "type": "book",
+      "popularity": 0.878,
+      "affinity": 0.899,
+      "tags": [
+       "Nonfiction",
+       "Sports",
+       "Basketball",
+       "Biography",
+       "Leadership",
+       "Autobiography"
+      ],
+      "image": "https://images.qloo.com/i/63720DD5-5CC1-4C44-87B0-A69543D3C126-420x-auto.jpg",
+      "detail": "2019, Andre Iguodala"
+     },
+     {
+      "name": "The Velvet Rope Economy: How Inequality Became Big Business",
+      "id": "B16C7649-9C67-49C7-BA98-A5D6FBC3277E",
+      "type": "book",
+      "popularity": 0.734,
+      "affinity": 0.895,
+      "tags": [
+       "Economics",
+       "Business",
+       "Nonfiction",
+       "Finance",
+       "Audiobook",
+       "Sociology"
+      ],
+      "image": "https://images.qloo.com/i/B16C7649-9C67-49C7-BA98-A5D6FBC3277E-420x-auto.jpg",
+      "detail": "2020, Nelson D. Schwartz"
+     },
+     {
+      "name": "Halfway Home: Race, Punishment, and the Afterlife of Mass Incarceration",
+      "id": "0DAE0006-2618-4ACB-8463-1B5B5FBABBE5",
+      "type": "book",
+      "popularity": 0.752,
+      "affinity": 0.893,
+      "tags": [
+       "Crime",
+       "Audiobook",
+       "Memoir",
+       "Sociology",
+       "Social Justice",
+       "Social Issues"
+      ],
+      "image": "https://images.qloo.com/i/0DAE0006-2618-4ACB-8463-1B5B5FBABBE5-420x-auto.jpg",
+      "detail": "2021, Reuben Jonathan Miller"
+     }
+    ],
+    "demographics": {
+     "age": {
+      "24_and_younger": 0.16,
+      "25_to_29": 0.11,
+      "30_to_34": -0.23,
+      "35_to_44": -0.02,
+      "45_to_54": -0.38,
+      "55_and_older": -0.48
+     }
+    },
+    "seeds": [
+     {
+      "phrase": "Kendrick Lamar",
+      "name": "Kendrick Lamar",
+      "id": "C915A918-39C5-47A3-A101-D9FA1DECBD9C",
+      "type": "artist",
+      "popularity": 1,
+      "tags": [
+       "West Coast",
+       "Hip - Hop",
+       "Rap",
+       "Loyal",
+       "Passionate",
+       "Thoughtful"
+      ],
+      "image": "https://images.qloo.com/i/C915A918-39C5-47A3-A101-D9FA1DECBD9C-420x-auto.jpg",
+      "detail": "Kendrick Lamar",
+      "types": [
+       "urn:entity:artist"
+      ]
+     },
+     {
+      "phrase": "Nike",
+      "name": "Nike",
+      "id": "C70CE2B8-0AD1-4150-BF18-5A6347F2E860",
+      "type": "brand",
+      "popularity": 1,
+      "tags": [
+       "Nike",
+       "Fashion",
+       "1970s fashion",
+       "Watch manufacturing companies of the United States",
+       "Clothing companies established in 1964",
+       "Sportswear brands"
+      ],
+      "image": "https://images.qloo.com/i/C70CE2B8-0AD1-4150-BF18-5A6347F2E860-420x-auto.jpg",
+      "detail": "Nike is a global brand specializing in athletic footwear, apparel, equipment, and accessories for men, women, and kids.",
+      "types": [
+       "urn:entity:brand"
+      ]
+     },
+     {
+      "phrase": "Jordan Peele films",
+      "name": "Jordan Peele",
+      "id": "5A9C8BCE-EAB2-46E1-B41A-8FF4042EE95F",
+      "type": "person",
+      "popularity": 0.953,
+      "tags": [
+       "Actor",
+       "Film Producers From New York (state)",
+       "Best Original Screenplay Academy Award Winners",
+       "Film Screenwriter",
+       "American Male Television Actors",
+       "Film Actor"
+      ],
+      "image": "https://images.qloo.com/i/5A9C8BCE-EAB2-46E1-B41A-8FF4042EE95F-420x-auto.jpg",
+      "detail": "1979-02-21",
+      "types": [
+       "urn:entity:person"
+      ]
+     },
+     {
+      "phrase": "Issa Rae",
+      "name": "Issa Rae",
+      "id": "6156038F-ADDE-4496-9BD1-7251B999A876",
+      "type": "person",
+      "popularity": 0.973,
+      "tags": [
+       "American Women Screenwriters",
+       "Comedy",
+       "Animation",
+       "Author",
+       "Web Series Producers",
+       "Essays"
+      ],
+      "image": "https://images.qloo.com/i/6156038F-ADDE-4496-9BD1-7251B999A876-420x-auto.jpg",
+      "detail": "1985-01-12",
+      "types": [
+       "urn:entity:person"
+      ]
+     },
+     {
+      "phrase": "Lakers",
+      "name": "Los Angeles Lakers",
+      "id": "9EA0A171-B6E8-49BE-A216-739460F6FC91",
+      "type": "brand",
+      "popularity": 0.998,
+      "tags": [
+       "NBA",
+       "Sports Organization",
+       "Basketball",
+       "Purple And Gold Branding",
+       "Classic Team Imagery",
+       "High-Energy Visuals"
+      ],
+      "image": "https://images.qloo.com/i/9EA0A171-B6E8-49BE-A216-739460F6FC91-420x-auto.jpg",
+      "detail": "The Los Angeles Lakers are a professional NBA basketball team known for winning 17 championships, making them one of the most successful teams in league history.",
+      "types": [
+       "urn:entity:brand"
+      ]
+     }
+    ]
+   },
+   "signals": [
+    {
+     "name": "Kendrick Lamar",
+     "kind": "artist",
+     "id": "C915A918-39C5-47A3-A101-D9FA1DECBD9C",
+     "seed": true
+    },
+    {
+     "name": "Nike",
+     "kind": "brand",
+     "id": "C70CE2B8-0AD1-4150-BF18-5A6347F2E860",
+     "seed": true
+    },
+    {
+     "name": "Jordan Peele",
+     "kind": "person",
+     "id": "5A9C8BCE-EAB2-46E1-B41A-8FF4042EE95F",
+     "seed": true
+    },
+    {
+     "name": "Issa Rae",
+     "kind": "person",
+     "id": "6156038F-ADDE-4496-9BD1-7251B999A876",
+     "seed": true
+    },
+    {
+     "name": "Los Angeles Lakers",
+     "kind": "brand",
+     "id": "9EA0A171-B6E8-49BE-A216-739460F6FC91",
+     "seed": true
+    },
+    {
+     "name": "Festive",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:festive",
+     "affinity": 0.8944011339475549
+    },
+    {
+     "name": "Hip",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:hip",
+     "affinity": 0.8637777539418642
+    },
+    {
+     "name": "Cozy",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:cozy",
+     "affinity": 0.7930993104110334
+    },
+    {
+     "name": "Posh",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:posh",
+     "affinity": 0.7893491124260354
+    },
+    {
+     "name": "Casual",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:casual",
+     "affinity": 0.7892029807225012
+    },
+    {
+     "name": "Traditional Japanese",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:traditional_japanese",
+     "affinity": 0.7740403640680649
+    },
+    {
+     "name": "Eclectic",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:eclectic",
+     "affinity": 0.7326121862587679
+    },
+    {
+     "name": "Art Deco",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:art_deco",
+     "affinity": 0.7307660409697841
+    },
+    {
+     "name": "Parisian Bistro",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:parisian_bistro",
+     "affinity": 0.715622076707203
+    },
+    {
+     "name": "Romantic",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:romantic",
+     "affinity": 0.6932097597881597
+    },
+    {
+     "name": "Authentic Italian",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:authentic_italian",
+     "affinity": 0.9151406878070567
+    },
+    {
+     "name": "Vintage",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:vintage",
+     "affinity": 0.8292166549047283
+    },
+    {
+     "name": "Chic",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:chic",
+     "affinity": 0.8065783866538297
+    },
+    {
+     "name": "Inviting",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:inviting",
+     "affinity": 0.7480630577172165
+    },
+    {
+     "name": "Chill",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:chill",
+     "affinity": 0.7267703059259788
+    },
+    {
+     "name": "Lively",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:lively",
+     "affinity": 0.7218137284991437
+    },
+    {
+     "name": "Whimsical",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:whimsical",
+     "affinity": 0.6906630274081655
+    },
+    {
+     "name": "J. Cole",
+     "kind": "artist",
+     "id": "75422648-F55C-4620-91C8-C9CF153E28C0",
+     "affinity": 0.979
+    },
+    {
+     "name": "Young Thug",
+     "kind": "artist",
+     "id": "1BB0B537-8A33-4D8F-BDEA-213341BC0AB3",
+     "affinity": 0.978
+    },
+    {
+     "name": "Future",
+     "kind": "artist",
+     "id": "4233865C-095A-47B8-8499-8D20A9C25367",
+     "affinity": 0.975
+    },
+    {
+     "name": "ScHoolboy Q",
+     "kind": "artist",
+     "id": "870C2FE9-88A2-49D7-B263-F8F99D364CD6",
+     "affinity": 0.974
+    },
+    {
+     "name": "Pusha T",
+     "kind": "artist",
+     "id": "359CBD8C-FF15-4CDF-B3BA-B6BDC6EF1009",
+     "affinity": 0.973
+    },
+    {
+     "name": "Mac Miller",
+     "kind": "artist",
+     "id": "13C6A087-4614-473E-846A-FF156A41D028",
+     "affinity": 0.972
+    },
+    {
+     "name": "A$AP Rocky",
+     "kind": "artist",
+     "id": "E39030CC-3348-409F-B89F-66B4EA92BFD8",
+     "affinity": 0.971
+    },
+    {
+     "name": "Vince Staples",
+     "kind": "artist",
+     "id": "0112A4D2-65D7-4602-85D7-6FDB1E857658",
+     "affinity": 0.971
+    },
+    {
+     "name": "National Basketball Association",
+     "kind": "brand",
+     "id": "9EF3B4AA-C638-4930-B673-0A930A4063AD",
+     "affinity": 0.952
+    },
+    {
+     "name": "Air Jordan Product Line",
+     "kind": "brand",
+     "id": "E26BC58D-18D2-405B-BC7B-7C556ADE3829",
+     "affinity": 0.951
+    },
+    {
+     "name": "Beats Electronics",
+     "kind": "brand",
+     "id": "B038AF1A-FFE7-4214-ADA0-89289BF30D7C",
+     "affinity": 0.944
+    },
+    {
+     "name": "Foot Locker",
+     "kind": "brand",
+     "id": "4C160FEA-FDB6-4DEC-99FC-13899680A0F4",
+     "affinity": 0.942
+    },
+    {
+     "name": "Golden State Warriors",
+     "kind": "brand",
+     "id": "F8B5FC50-B377-41F9-9A5F-A422F391EDA3",
+     "affinity": 0.938
+    },
+    {
+     "name": "Adidas",
+     "kind": "brand",
+     "id": "FCEA7CA1-1D40-4680-B337-E74594D9BCF1",
+     "affinity": 0.938
+    },
+    {
+     "name": "BlacKkKlansman",
+     "kind": "movie",
+     "id": "375E97BE-B457-443C-960E-DFEE01DF8BD1",
+     "affinity": 0.918
+    },
+    {
+     "name": "Blindspotting",
+     "kind": "movie",
+     "id": "19ECFF12-037A-40F5-ABF5-412FD6C96668",
+     "affinity": 0.91
+    },
+    {
+     "name": "Creed II",
+     "kind": "movie",
+     "id": "D5D711E5-14A8-4FC1-BA77-63B74B12557D",
+     "affinity": 0.906
+    },
+    {
+     "name": "The Disaster Artist",
+     "kind": "movie",
+     "id": "0A1C0539-692C-4CB3-BB16-785A5FED0B08",
+     "affinity": 0.903
+    },
+    {
+     "name": "LeBron, Inc.: The Making of a Billion-Dollar Athlete",
+     "kind": "book",
+     "id": "F9EA7C2A-A4C9-4EB0-826C-4C537327E2B8",
+     "affinity": 0.902
+    },
+    {
+     "name": "The Sixth Man",
+     "kind": "book",
+     "id": "63720DD5-5CC1-4C44-87B0-A69543D3C126",
+     "affinity": 0.899
+    },
+    {
+     "name": "The Velvet Rope Economy: How Inequality Became Big Business",
+     "kind": "book",
+     "id": "B16C7649-9C67-49C7-BA98-A5D6FBC3277E",
+     "affinity": 0.895
+    },
+    {
+     "name": "Halfway Home: Race, Punishment, and the Afterlife of Mass Incarceration",
+     "kind": "book",
+     "id": "0DAE0006-2618-4ACB-8463-1B5B5FBABBE5",
+     "affinity": 0.893
+    }
+   ],
+   "baseline": {
+    "model": "anthropic/claude-haiku-5.5",
+    "picks": [
+     {
+      "kind": "decor",
+      "name": "Moody Neon",
+      "verdict": "known",
+      "match": "Moody"
+     },
+     {
+      "kind": "decor",
+      "name": "Gallery Wall",
+      "verdict": "known",
+      "match": "Gallery Wall"
+     },
+     {
+      "kind": "decor",
+      "name": "Warm Minimalism",
+      "verdict": "known",
+      "match": "Warm Minimalism"
+     },
+     {
+      "kind": "artist",
+      "name": "Kendrick Lamar",
+      "verdict": "ranked",
+      "match": "Kendrick Lamar"
+     },
+     {
+      "kind": "artist",
+      "name": "Anderson .Paak",
+      "verdict": "known",
+      "match": "Anderson Paak"
+     },
+     {
+      "kind": "artist",
+      "name": "Tyler, The Creator",
+      "verdict": "known",
+      "match": "Tyler, the Creator"
+     },
+     {
+      "kind": "brand",
+      "name": "Nike",
+      "verdict": "ranked",
+      "match": "Nike"
+     },
+     {
+      "kind": "brand",
+      "name": "Air Jordan",
+      "verdict": "known",
+      "match": "Air Jordan Product Line"
+     }
+    ],
+    "counts": {
+     "ranked": 2,
+     "known": 6,
+     "unknown": 0
+    },
+    "total": 8
+   }
+  },
+  {
+   "type": "done",
+   "qlooCalls": [
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Kendrick+Lamar&take=3",
+     "ms": 490,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Nike&take=3",
+     "ms": 156,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Jordan+Peele+films&take=3",
+     "ms": 212,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Issa+Rae&take=3",
+     "ms": 247,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Lakers&take=3",
+     "ms": 148,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Atag&filter.parents.types=urn%3Aentity%3Aplace&filter.tag.types=urn%3Atag%3Adecor%3Aqloo&signal.interests.entities=C915A918-39C5-47A3-A101-D9FA1DECBD9C%2CC70CE2B8-0AD1-4150-BF18-5A6347F2E860%2C5A9C8BCE-EAB2-46E1-B41A-8FF4042EE95F%2C6156038F-ADDE-4496-9BD1-7251B999A876%2C9EA0A171-B6E8-49BE-A216-739460F6FC91&take=10",
+     "ms": 904,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Atag&filter.parents.types=urn%3Aentity%3Aplace&filter.tag.types=urn%3Atag%3Ainterests%3Aqloo&signal.interests.entities=C915A918-39C5-47A3-A101-D9FA1DECBD9C%2CC70CE2B8-0AD1-4150-BF18-5A6347F2E860%2C5A9C8BCE-EAB2-46E1-B41A-8FF4042EE95F%2C6156038F-ADDE-4496-9BD1-7251B999A876%2C9EA0A171-B6E8-49BE-A216-739460F6FC91&take=8",
+     "ms": 1176,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Atag&filter.parents.types=urn%3Aentity%3Aplace&filter.tag.types=urn%3Atag%3Aambience%3Aqloo&signal.interests.entities=C915A918-39C5-47A3-A101-D9FA1DECBD9C%2CC70CE2B8-0AD1-4150-BF18-5A6347F2E860%2C5A9C8BCE-EAB2-46E1-B41A-8FF4042EE95F%2C6156038F-ADDE-4496-9BD1-7251B999A876%2C9EA0A171-B6E8-49BE-A216-739460F6FC91&take=10",
+     "ms": 1176,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Abrand&take=6&signal.interests.entities=C915A918-39C5-47A3-A101-D9FA1DECBD9C%2CC70CE2B8-0AD1-4150-BF18-5A6347F2E860%2C5A9C8BCE-EAB2-46E1-B41A-8FF4042EE95F%2C6156038F-ADDE-4496-9BD1-7251B999A876%2C9EA0A171-B6E8-49BE-A216-739460F6FC91",
+     "ms": 363,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Abook&take=4&signal.interests.entities=C915A918-39C5-47A3-A101-D9FA1DECBD9C%2CC70CE2B8-0AD1-4150-BF18-5A6347F2E860%2C5A9C8BCE-EAB2-46E1-B41A-8FF4042EE95F%2C6156038F-ADDE-4496-9BD1-7251B999A876%2C9EA0A171-B6E8-49BE-A216-739460F6FC91",
+     "ms": 838,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Amovie&take=4&signal.interests.entities=C915A918-39C5-47A3-A101-D9FA1DECBD9C%2CC70CE2B8-0AD1-4150-BF18-5A6347F2E860%2C5A9C8BCE-EAB2-46E1-B41A-8FF4042EE95F%2C6156038F-ADDE-4496-9BD1-7251B999A876%2C9EA0A171-B6E8-49BE-A216-739460F6FC91",
+     "ms": 1666,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Aartist&take=8&signal.interests.entities=C915A918-39C5-47A3-A101-D9FA1DECBD9C%2CC70CE2B8-0AD1-4150-BF18-5A6347F2E860%2C5A9C8BCE-EAB2-46E1-B41A-8FF4042EE95F%2C6156038F-ADDE-4496-9BD1-7251B999A876%2C9EA0A171-B6E8-49BE-A216-739460F6FC91",
+     "ms": 3357,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Ademographics&signal.interests.entities=C915A918-39C5-47A3-A101-D9FA1DECBD9C%2CC70CE2B8-0AD1-4150-BF18-5A6347F2E860%2C5A9C8BCE-EAB2-46E1-B41A-8FF4042EE95F%2C6156038F-ADDE-4496-9BD1-7251B999A876%2C9EA0A171-B6E8-49BE-A216-739460F6FC91",
+     "ms": 150,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Tyler%2C+The+Creator&types=urn%3Aentity%3Aartist&take=3",
+     "ms": 429,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/tags?filter.query=Warm+Minimalism&take=8",
+     "ms": 430,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Anderson+.Paak&types=urn%3Aentity%3Aartist&take=3",
+     "ms": 436,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/tags?filter.query=Gallery+Wall&take=8",
+     "ms": 466,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/tags?filter.query=Moody+Neon&take=8",
+     "ms": 503,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Air+Jordan&types=urn%3Aentity%3Abrand&take=3",
+     "ms": 501,
+     "ok": true
+    }
+   ]
+  }
+ ],
+ "renders": [
+  {
+   "id": "9f618f46-6568-457a-a991-a1e6e48cc375",
+   "url": "/img/demo-room-courtside-1.jpg",
+   "remoteUrl": "https://v3b.fal.media/files/b/0aaf4e04/q9RZ5B13VgjKmbfxyf_CO_nMWKCsOh.jpg",
+   "prompt": "Photoreal interior photograph at eye level of a private lounge with Art Deco influence. Walls in deep espresso lacquer with brushed brass reveal lines and a fluted walnut panel. A low charcoal velvet sectional sits on a cream wool rug, with a tall brass floor lamp casting warm amber light and recessed warm-white spotlights overhead. On a low walnut sideboard stands a vintage turntable beside a neat stack of record sleeves, a framed film poster in a matte black frame, and a pair of white and red basketball sneakers displayed under a glass dome. A small paper lantern hangs in the corner beside a ceramic vase. Soft evening light, clean lines, polished oak floorboards.",
+   "aspect": "3:2",
+   "model": "gpt-image-2.5/flare",
+   "signals": [
+    "Art Deco",
+    "Chill",
+    "Posh",
+    "Cozy",
+    "Inviting",
+    "Air Jordan Product Line",
+    "Vintage",
+    "Hip",
+    "LeBron, Inc.: The Making of a Billion-Dollar Athlete",
+    "The Sixth Man",
+    "Traditional Japanese",
+    "Eclectic",
+    "Beats Electronics",
+    "Mac Miller",
+    "Vince Staples",
+    "Lively"
+   ]
+  }
+ ],
+ "baseline": null,
+ "recorded": "2026-10-21T19:02:16.179Z"
+}

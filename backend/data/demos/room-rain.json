@@ -1,0 +1,1314 @@
+{
+ "site": "room",
+ "slug": "rain",
+ "title": "Rain Hour Study",
+ "request": {
+  "text": "Radiohead, Blade Runner, Haruki Murakami, Muji"
+ },
+ "events": [
+  {
+   "type": "step",
+   "id": "resolve",
+   "label": "Finding your favourites in Qloo"
+  },
+  {
+   "type": "step_done",
+   "id": "resolve",
+   "summary": "Radiohead, Blade Runner, Haruki Murakami, Muji"
+  },
+  {
+   "type": "step",
+   "id": "taste",
+   "label": "Asking Qloo what rooms people with your taste love"
+  },
+  {
+   "type": "step_done",
+   "id": "taste",
+   "summary": "decor: Japanese, Traditional Japanese, Intimate, Quaint · mood: Vintage, Rustic, Homey"
+  },
+  {
+   "type": "step",
+   "id": "culture",
+   "label": "Building the playlist, the shelf and the screen"
+  },
+  {
+   "type": "step_done",
+   "id": "culture",
+   "summary": "playlist: Pixies, The Smashing Pumpkins, Sonic Youth · brands: MoMA, the Museum of Modern Art, The New Yorker"
+  },
+  {
+   "type": "step",
+   "id": "who",
+   "label": "Reading who shares this taste"
+  },
+  {
+   "type": "step_done",
+   "id": "who",
+   "summary": "strongest age band: 45 to 54"
+  },
+  {
+   "type": "step",
+   "id": "brief",
+   "label": "Writing the room"
+  },
+  {
+   "type": "step_done",
+   "id": "brief",
+   "summary": "Quiet Signal Room"
+  },
+  {
+   "type": "step",
+   "id": "baseline",
+   "label": "Asking the same question without Qloo"
+  },
+  {
+   "type": "step",
+   "id": "paint",
+   "label": "Painting the room"
+  },
+  {
+   "type": "step_done",
+   "id": "baseline",
+   "summary": "0 of 8 picks hold up for this taste"
+  },
+  {
+   "type": "step_done",
+   "id": "paint",
+   "summary": "gpt-image-2.5/flare"
+  },
+  {
+   "type": "final",
+   "concept": {
+    "name": "Quiet Signal Room",
+    "tagline": "A small room for listening late and reading slowly.",
+    "brief": "This room is dim, warm, and deliberately uncluttered, with wood and paper softening the edges of an otherwise modern space. You spend evenings here with a record on, a paperback open, and a film you have already seen twice.",
+    "image_prompt": "Photoreal eye-level interior of a compact private room with polished dark wood floorboards and a low platform bed dressed in undyed linen. Warm off-white plaster walls with one exposed charcoal brick panel. A shoji-style paper screen filters soft amber light from a brass floor lamp and a small ceramic table lamp. A turntable rests on a walnut sideboard beside stacked vinyl sleeves and a framed modernist print in matte black with abstract shapes only. A grey North Face daypack hangs from a simple iron hook near a row of worn paperback novels. Muted sage and graphite palette, soft shadows, calm and warm.",
+    "design_choices": [
+     {
+      "element": "Lighting",
+      "choice": "Use a brass floor lamp and a ceramic table lamp on warm dimmers so the room never gets brighter than candlelight after dark.",
+      "signals": [
+       {
+        "name": "Intimate",
+        "grounded": true
+       },
+       {
+        "name": "Quaint",
+        "grounded": true
+       },
+       {
+        "name": "Comfortable (decor)",
+        "grounded": false
+       },
+       {
+        "name": "Homey",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Materials",
+      "choice": "Pair polished dark wood floors and a walnut sideboard with undyed linen and exposed brick for a worn, honest texture.",
+      "signals": [
+       {
+        "name": "Dark Wood",
+        "grounded": true
+       },
+       {
+        "name": "Polished",
+        "grounded": true
+       },
+       {
+        "name": "Industrial Chic",
+        "grounded": true
+       },
+       {
+        "name": "Authentic",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Screen",
+      "choice": "Place a projector facing a bare wall opposite the bed and show films such as Blade Runner-style night cityscapes and Magnolia on repeat.",
+      "signals": [
+       {
+        "name": "Brazil",
+        "grounded": true
+       },
+       {
+        "name": "Synecdoche, New York",
+        "grounded": true
+       },
+       {
+        "name": "Children of Men",
+        "grounded": true
+       },
+       {
+        "name": "Stylish",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Soundtrack",
+      "choice": "Keep a turntable on the sideboard and build the crate around Sonic Youth, The Velvet Underground, and The Smiths.",
+      "signals": [
+       {
+        "name": "Sonic Youth",
+        "grounded": true
+       },
+       {
+        "name": "The Velvet Underground",
+        "grounded": true
+       },
+       {
+        "name": "The Smiths",
+        "grounded": true
+       },
+       {
+        "name": "Vintage",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Shelf",
+      "choice": "Hold a short run of paperbacks such as Brave New World, Flowers for Algernon, and The Illustrated Man on a low open shelf at reading height.",
+      "signals": [
+       {
+        "name": "Brave New World",
+        "grounded": true
+       },
+       {
+        "name": "Flowers for Algernon",
+        "grounded": true
+       },
+       {
+        "name": "The Illustrated Man",
+        "grounded": true
+       },
+       {
+        "name": "The New Yorker",
+        "grounded": true
+       }
+      ]
+     }
+    ],
+    "first_track": "Interpol"
+   },
+   "render": {
+    "id": "cae57b31-0927-4faf-b12f-5e4c72751b6f",
+    "url": "/img/demo-room-rain-1.jpg",
+    "model": "gpt-image-2.5/flare",
+    "prompt": "Photoreal eye-level interior of a compact private room with polished dark wood floorboards and a low platform bed dressed in undyed linen. Warm off-white plaster walls with one exposed charcoal brick panel. A shoji-style paper screen filters soft amber light from a brass floor lamp and a small ceramic table lamp. A turntable rests on a walnut sideboard beside stacked vinyl sleeves and a framed modernist print in matte black with abstract shapes only. A grey North Face daypack hangs from a simple iron hook near a row of worn paperback novels. Muted sage and graphite palette, soft shadows, calm and warm.",
+    "aspect": "3:2",
+    "signals": [
+     "Intimate",
+     "Quaint",
+     "Comfortable (decor)",
+     "Homey",
+     "Dark Wood",
+     "Polished",
+     "Industrial Chic",
+     "Authentic",
+     "Brazil",
+     "Synecdoche, New York",
+     "Children of Men",
+     "Stylish",
+     "Sonic Youth",
+     "The Velvet Underground",
+     "The Smiths",
+     "Vintage",
+     "Brave New World",
+     "Flowers for Algernon",
+     "The Illustrated Man",
+     "The New Yorker"
+    ]
+   },
+   "taste": {
+    "decor": [
+     {
+      "id": "urn:tag:decor:qloo:japanese",
+      "name": "Japanese",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.8544568245125348,
+      "popularity": 0.9987493643931012
+     },
+     {
+      "id": "urn:tag:decor:qloo:traditional_japanese",
+      "name": "Traditional Japanese",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.8330035615354174,
+      "popularity": 0.9970738912557299
+     },
+     {
+      "id": "urn:tag:decor:qloo:intimate",
+      "name": "Intimate",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.8288113695090439,
+      "popularity": 0.999001250871235
+     },
+     {
+      "id": "urn:tag:decor:qloo:quaint",
+      "name": "Quaint",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.7777777777777778,
+      "popularity": 0.9992444976510231
+     },
+     {
+      "id": "urn:tag:decor:qloo:industrial_chic",
+      "name": "Industrial Chic",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.7541653054557335,
+      "popularity": 0.999742694074722
+     },
+     {
+      "id": "urn:tag:decor:qloo:dark_wood",
+      "name": "Dark Wood",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.7105327468230693,
+      "popularity": 0.9877258161883756
+     },
+     {
+      "id": "urn:tag:decor:qloo:polished",
+      "name": "Polished",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.6785505552308592,
+      "popularity": 0.9986103437924474
+     },
+     {
+      "id": "urn:tag:decor:qloo:comfortable",
+      "name": "Comfortable",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.6616766467065869,
+      "popularity": 0.9984920584678233
+     },
+     {
+      "id": "urn:tag:decor:qloo:sleek",
+      "name": "Sleek",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.6524136241117373,
+      "popularity": 0.9990610218752449
+     },
+     {
+      "id": "urn:tag:decor:qloo:cozy",
+      "name": "Cozy",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.63088017224593,
+      "popularity": 0.9999677974879841
+     }
+    ],
+    "ambience": [
+     {
+      "id": "urn:tag:ambience:qloo:vintage",
+      "name": "Vintage",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.8717948717948718,
+      "popularity": 0.9995252878472589
+     },
+     {
+      "id": "urn:tag:ambience:qloo:rustic",
+      "name": "Rustic",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.8658892128279884,
+      "popularity": 0.9999370872875007
+     },
+     {
+      "id": "urn:tag:ambience:qloo:homey",
+      "name": "Homey",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.8157166574432761,
+      "popularity": 0.9999056702026072
+     },
+     {
+      "id": "urn:tag:ambience:qloo:intimate",
+      "name": "Intimate",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.7994415243101183,
+      "popularity": 0.9999182370365646
+     },
+     {
+      "id": "urn:tag:ambience:qloo:authentic",
+      "name": "Authentic",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.7793120670979083,
+      "popularity": 0.9998694620122675
+     },
+     {
+      "id": "urn:tag:ambience:qloo:stylish",
+      "name": "Stylish",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.7670053383847081,
+      "popularity": 0.99995499502589
+     },
+     {
+      "id": "urn:tag:ambience:qloo:luxury",
+      "name": "Luxury",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.7486248624862486,
+      "popularity": 0.9857026344639452
+     },
+     {
+      "id": "urn:tag:ambience:qloo:adventurous",
+      "name": "Adventurous",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.6929723502304147,
+      "popularity": 0.9993088241323426
+     },
+     {
+      "id": "urn:tag:ambience:qloo:bustling",
+      "name": "Bustling",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.6870672413182768,
+      "popularity": 0.9997018518643606
+     },
+     {
+      "id": "urn:tag:ambience:qloo:boutique",
+      "name": "Boutique",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.6753040719196193,
+      "popularity": 0.9991089329297076
+     }
+    ],
+    "interests": [],
+    "artist": [
+     {
+      "name": "Pixies",
+      "id": "C9FC1FE6-2F92-4B49-9EE5-B531B8536B94",
+      "type": "artist",
+      "popularity": 1,
+      "affinity": 0.96,
+      "tags": [
+       "Rock",
+       "Pop Culture",
+       "David Bowie",
+       "Innovative",
+       "Psychology",
+       "Energetic"
+      ],
+      "image": "https://images.qloo.com/i/C9FC1FE6-2F92-4B49-9EE5-B531B8536B94-420x-auto.jpg",
+      "detail": "Pixies"
+     },
+     {
+      "name": "The Smashing Pumpkins",
+      "id": "4E2076A6-D484-45D5-A700-65F57E83A626",
+      "type": "artist",
+      "popularity": 1,
+      "affinity": 0.949,
+      "tags": [
+       "Passionate",
+       "90s",
+       "Diverse",
+       "Intense",
+       "Alienation",
+       "Black Sabbath"
+      ],
+      "image": "https://images.qloo.com/i/4E2076A6-D484-45D5-A700-65F57E83A626-420x-auto.jpg",
+      "detail": "The Smashing Pumpkins"
+     },
+     {
+      "name": "Sonic Youth",
+      "id": "CE859B17-DDB5-41B4-AEDC-B8DDA2F7CC1B",
+      "type": "artist",
+      "popularity": 0.999,
+      "affinity": 0.942,
+      "tags": [
+       "Alienation",
+       "Drums",
+       "Open-Minded",
+       "Alternative Rock",
+       "Urban Life",
+       "Noise Rock"
+      ],
+      "image": "https://images.qloo.com/i/CE859B17-DDB5-41B4-AEDC-B8DDA2F7CC1B-420x-auto.jpg",
+      "detail": "Sonic Youth"
+     },
+     {
+      "name": "Beck",
+      "id": "8431339C-7299-4A35-9AB3-DFE9DBEB7DED",
+      "type": "artist",
+      "popularity": 1,
+      "affinity": 0.941,
+      "tags": [
+       "Alternative Hip Hop",
+       "Alternative Rock",
+       "Prince",
+       "Social Commentary",
+       "Guitar",
+       "The Beatles"
+      ],
+      "image": "https://images.qloo.com/i/8431339C-7299-4A35-9AB3-DFE9DBEB7DED-420x-auto.jpg",
+      "detail": "Beck"
+     },
+     {
+      "name": "The Smiths",
+      "id": "9FCB92D1-9B48-4ADF-A6DC-350DAA7E91AF",
+      "type": "artist",
+      "popularity": 1,
+      "affinity": 0.94,
+      "tags": [
+       "Melancholic Post-Punk",
+       "Passionate",
+       "Indie",
+       "Influential",
+       "Social Critique",
+       "Poetic Alternative Rock"
+      ],
+      "image": "https://images.qloo.com/i/9FCB92D1-9B48-4ADF-A6DC-350DAA7E91AF-420x-auto.jpg",
+      "detail": "The Smiths"
+     },
+     {
+      "name": "The Velvet Underground",
+      "id": "87A1DBD4-1C1B-4272-A1F7-FA7E3891D05E",
+      "type": "artist",
+      "popularity": 0.999,
+      "affinity": 0.94,
+      "tags": [
+       "Artistic",
+       "Frank Zappa",
+       "The Rolling Stones",
+       "The Stooges",
+       "Sexuality",
+       "Proto-Punk"
+      ],
+      "image": "https://images.qloo.com/i/87A1DBD4-1C1B-4272-A1F7-FA7E3891D05E-420x-auto.jpg",
+      "detail": "The Velvet Underground"
+     },
+     {
+      "name": "The Cure",
+      "id": "CB36C13A-CC81-4081-98B6-D1EEA8DACC55",
+      "type": "artist",
+      "popularity": 1,
+      "affinity": 0.94,
+      "tags": [
+       "Alternative Rock",
+       "New Wave",
+       "Psychedelic Rock",
+       "Depression",
+       "Keyboards",
+       "Loyal"
+      ],
+      "image": "https://images.qloo.com/i/CB36C13A-CC81-4081-98B6-D1EEA8DACC55-420x-auto.jpg",
+      "detail": "The Cure"
+     },
+     {
+      "name": "Interpol",
+      "id": "D55AA58B-0DB2-43EF-B3B9-E2D40B215E7E",
+      "type": "artist",
+      "popularity": 1,
+      "affinity": 0.937,
+      "tags": [
+       "Relationships",
+       "Engaging",
+       "Guitar-Driven Indie Rock",
+       "Existentialism",
+       "3",
+       "Indie Rock"
+      ],
+      "image": "https://images.qloo.com/i/D55AA58B-0DB2-43EF-B3B9-E2D40B215E7E-420x-auto.jpg",
+      "detail": "Interpol"
+     }
+    ],
+    "brand": [
+     {
+      "name": "MoMA, the Museum of Modern Art",
+      "id": "F39AA5F6-30A9-450C-ABB2-E10A23D3A443",
+      "type": "brand",
+      "popularity": 0.998,
+      "affinity": 0.913,
+      "tags": [
+       "Cultural Arts",
+       "Minimalist Architecture",
+       "Modernist Design",
+       "Clean Typography",
+       "Curated Spatial Layouts",
+       "Artistic Fulfillment"
+      ],
+      "image": "https://images.qloo.com/i/F39AA5F6-30A9-450C-ABB2-E10A23D3A443-420x-auto.jpg",
+      "detail": "MoMA is a leading museum in New York City dedicated to modern and contemporary art, showcasing innovative and boundary-breaking artworks."
+     },
+     {
+      "name": "The New Yorker",
+      "id": "399654ED-B417-49C5-A9AA-8682BE35A85D",
+      "type": "brand",
+      "popularity": 0.999,
+      "affinity": 0.91,
+      "tags": [
+       "Media",
+       "Entertainment",
+       "Advertising Enabled",
+       "Art",
+       "News App",
+       "Reading App"
+      ],
+      "image": "https://images.qloo.com/i/399654ED-B417-49C5-A9AA-8682BE35A85D-420x-auto.jpg",
+      "detail": "The New Yorker is a magazine known for its unparalleled reporting and commentary on politics, culture, humor, cartoons, fiction, and poetry."
+     },
+     {
+      "name": "TED Talks",
+      "id": "3B0D64DD-29B7-4C90-8434-BA30589BF017",
+      "type": "brand",
+      "popularity": 0.998,
+      "affinity": 0.91,
+      "tags": [
+       "Education App",
+       "Mobile App",
+       "Website",
+       "Entertainment",
+       "Minimalist",
+       "Clean Typography"
+      ],
+      "image": "https://images.qloo.com/i/3B0D64DD-29B7-4C90-8434-BA30589BF017-420x-auto.jpg",
+      "detail": "TED Talks is a nonprofit platform sharing educational and inspiring ideas worldwide through influential talks and presentations."
+     },
+     {
+      "name": "Airbnb",
+      "id": "A5269DD4-5BCE-4EC7-BD50-355B29F3079F",
+      "type": "brand",
+      "popularity": 0.997,
+      "affinity": 0.898,
+      "tags": [
+       "2008 establishments in California",
+       "Companies based in San Francisco",
+       "Companies listed on the Nasdaq",
+       "Peer-to-peer",
+       "Y Combinator companies",
+       "Hospitality companies of the United States"
+      ],
+      "image": "https://images.qloo.com/i/A5269DD4-5BCE-4EC7-BD50-355B29F3079F-420x-auto.jpg",
+      "detail": "Airbnb is a global online marketplace for vacation rentals and unique travel experiences, offering homes, cabins, beach houses, and more worldwide."
+     },
+     {
+      "name": "NPR",
+      "id": "36A3F981-5BFB-45B5-A8CF-A16F273B04F0",
+      "type": "brand",
+      "popularity": 0.999,
+      "affinity": 0.897,
+      "tags": [
+       "Entertainment",
+       "News & Politics",
+       "Media",
+       "Website",
+       "Minimalist",
+       "Clean Typography"
+      ],
+      "image": "https://images.qloo.com/i/36A3F981-5BFB-45B5-A8CF-A16F273B04F0-420x-auto.jpg",
+      "detail": "NPR is a nonprofit media organization known for its news, cultural programming, and music content, including the popular Tiny Desk Concert series."
+     },
+     {
+      "name": "The North Face",
+      "id": "DB03F250-64F3-47AB-8756-BC1C4E13EBFD",
+      "type": "brand",
+      "popularity": 0.997,
+      "affinity": 0.895,
+      "tags": [
+       "2010s fashion",
+       "Clothing brands of the United States",
+       "Mountaineering equipment manufacturers",
+       "Sneakers",
+       "Clothing companies established in 1966",
+       "Footwear"
+      ],
+      "image": "https://images.qloo.com/i/DB03F250-64F3-47AB-8756-BC1C4E13EBFD-420x-auto.jpg",
+      "detail": "The North Face is a premier outdoor brand offering clothing, gear, backpacks, and footwear for exploration and adventure."
+     }
+    ],
+    "movie": [
+     {
+      "name": "Synecdoche, New York",
+      "id": "5FBAD562-A8AF-4643-A212-936B17AE97E0",
+      "type": "movie",
+      "popularity": 0.988,
+      "affinity": 0.93,
+      "tags": [
+       "Electronic translator",
+       "Earpiece",
+       "Bodily fluids",
+       "Atmospheric",
+       "Real estate agent",
+       "Illness"
+      ],
+      "image": "https://images.qloo.com/i/5FBAD562-A8AF-4643-A212-936B17AE97E0-420x-auto.jpg",
+      "detail": "2008, Charlie Kaufman"
+     },
+     {
+      "name": "Children of Men",
+      "id": "BB9AA6CE-8012-44B8-B554-54BE8A374A5E",
+      "type": "movie",
+      "popularity": 0.995,
+      "affinity": 0.924,
+      "tags": [
+       "Handheld",
+       "Mature",
+       "Newspaper",
+       "Rowing a boat",
+       "Shooting",
+       "Human worth"
+      ],
+      "image": "https://images.qloo.com/i/BB9AA6CE-8012-44B8-B554-54BE8A374A5E-420x-auto.jpg",
+      "detail": "2006, Alfonso Cuarón"
+     },
+     {
+      "name": "Magnolia",
+      "id": "BB5B7CFF-8EFB-4CED-BCD1-6DF7E16407DD",
+      "type": "movie",
+      "popularity": 0.993,
+      "affinity": 0.922,
+      "tags": [
+       "Ambulance",
+       "Redemption",
+       "Game show host",
+       "Key",
+       "Death bed",
+       "Redheaded woman"
+      ],
+      "image": "https://images.qloo.com/i/BB5B7CFF-8EFB-4CED-BCD1-6DF7E16407DD-420x-auto.jpg",
+      "detail": "1999, Paul Thomas Anderson"
+     },
+     {
+      "name": "Brazil",
+      "id": "E8CE8A37-0E07-4F6B-9F07-CB3A9E57D34A",
+      "type": "movie",
+      "popularity": 0.989,
+      "affinity": 0.922,
+      "tags": [
+       "Typewriter",
+       "Enemy",
+       "Fake ears",
+       "Finger gun",
+       "Tragic event",
+       "Dystopia"
+      ],
+      "image": "https://images.qloo.com/i/E8CE8A37-0E07-4F6B-9F07-CB3A9E57D34A-420x-auto.jpg",
+      "detail": "1985, Terry Gilliam"
+     }
+    ],
+    "book": [
+     {
+      "name": "The Illustrated Man",
+      "id": "1100C931-98AF-4FA0-A2D8-0DD61D668587",
+      "type": "book",
+      "popularity": 0.99,
+      "affinity": 0.893,
+      "tags": [
+       "Science Fiction Fantasy",
+       "Horror",
+       "Short Stories",
+       "Audiobook",
+       "Fiction",
+       "Literature"
+      ],
+      "image": "https://images.qloo.com/i/1100C931-98AF-4FA0-A2D8-0DD61D668587-420x-auto.jpg",
+      "detail": "1951, Ray Bradbury"
+     },
+     {
+      "name": "Brave New World",
+      "id": "F038CFAC-7515-4840-9F22-E45479E56439",
+      "type": "book",
+      "popularity": 0.999,
+      "affinity": 0.858,
+      "tags": [
+       "Adult",
+       "Science Fiction Fantasy",
+       "Audiobook",
+       "Literature",
+       "School",
+       "Novels"
+      ],
+      "image": "https://images.qloo.com/i/F038CFAC-7515-4840-9F22-E45479E56439-420x-auto.jpg",
+      "detail": "1932, Aldous Huxley"
+     },
+     {
+      "name": "The Tao of Pooh",
+      "id": "C17C0A25-039C-4601-88A5-FA459A9B528D",
+      "type": "book",
+      "popularity": 0.924,
+      "affinity": 0.855,
+      "tags": [],
+      "image": "https://images.qloo.com/i/C17C0A25-039C-4601-88A5-FA459A9B528D-420x-auto.jpg",
+      "detail": "1982, Benjamin Hoff"
+     },
+     {
+      "name": "Flowers for Algernon",
+      "id": "8F4E1999-1AF2-4ACB-9F7A-8D1C1DF9615B",
+      "type": "book",
+      "popularity": 0.999,
+      "affinity": 0.848,
+      "tags": [
+       "Psychology",
+       "Young Adult",
+       "Adult",
+       "School",
+       "Literature",
+       "Fiction"
+      ],
+      "image": "https://images.qloo.com/i/8F4E1999-1AF2-4ACB-9F7A-8D1C1DF9615B-420x-auto.jpg",
+      "detail": "1966, Daniel Keyes"
+     }
+    ],
+    "demographics": {
+     "age": {
+      "24_and_younger": -0.03,
+      "25_to_29": -0.07,
+      "30_to_34": -0.46,
+      "35_to_44": 0.03,
+      "45_to_54": 0.08,
+      "55_and_older": -0.26
+     }
+    },
+    "seeds": [
+     {
+      "phrase": "Radiohead",
+      "name": "Radiohead",
+      "id": "70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C",
+      "type": "artist",
+      "popularity": 1,
+      "tags": [
+       "Electronic",
+       "Indie",
+       "Alternative Rock",
+       "Rock",
+       "Loyal",
+       "Intellectual"
+      ],
+      "image": "https://images.qloo.com/i/70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C-420x-auto.jpg",
+      "detail": "Radiohead",
+      "types": [
+       "urn:entity:artist"
+      ]
+     },
+     {
+      "phrase": "Blade Runner",
+      "name": "Blade Runner",
+      "id": "A74A74BB-CE73-4A76-807B-8BD1714BC463",
+      "type": "movie",
+      "popularity": 0.998,
+      "tags": [
+       "Femme fatale",
+       "Production design",
+       "Corporation",
+       "Neon drenched",
+       "Intellectually curious",
+       "Moral ambiguity"
+      ],
+      "image": "https://images.qloo.com/i/A74A74BB-CE73-4A76-807B-8BD1714BC463-420x-auto.jpg",
+      "detail": "1982",
+      "types": [
+       "urn:entity:movie"
+      ]
+     },
+     {
+      "phrase": "Haruki Murakami",
+      "name": "Haruki Murakami",
+      "id": "E96DF441-451B-4C26-9415-257594472F52",
+      "type": "author",
+      "popularity": 1,
+      "tags": [
+       "Asian_literature",
+       "China",
+       "Paranormal:witches",
+       "Gardening",
+       "Childrens:1st_grade",
+       "Mystery:noir"
+      ],
+      "detail": "Haruki Murakami",
+      "types": [
+       "urn:entity:author"
+      ]
+     },
+     {
+      "phrase": "Muji",
+      "name": "Muji",
+      "id": "E12201A5-CC50-40AF-97AE-C54A2CA303F7",
+      "type": "brand",
+      "popularity": 0.984,
+      "tags": [
+       "Retail companies established in 1980",
+       "Retail",
+       "All accuracy disputes",
+       "Japanese companies established in 1980",
+       "Companies listed on the Tokyo Stock Exchange",
+       "Clothing brands of Japan"
+      ],
+      "image": "https://images.qloo.com/i/E12201A5-CC50-40AF-97AE-C54A2CA303F7-420x-auto.jpg",
+      "detail": "Muji is a Japanese retail brand offering minimalist, quality household goods, clothing, stationery, and furniture.",
+      "types": [
+       "urn:entity:brand"
+      ]
+     }
+    ]
+   },
+   "signals": [
+    {
+     "name": "Radiohead",
+     "kind": "artist",
+     "id": "70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C",
+     "seed": true
+    },
+    {
+     "name": "Blade Runner",
+     "kind": "movie",
+     "id": "A74A74BB-CE73-4A76-807B-8BD1714BC463",
+     "seed": true
+    },
+    {
+     "name": "Haruki Murakami",
+     "kind": "author",
+     "id": "E96DF441-451B-4C26-9415-257594472F52",
+     "seed": true
+    },
+    {
+     "name": "Muji",
+     "kind": "brand",
+     "id": "E12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "seed": true
+    },
+    {
+     "name": "Japanese",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:japanese",
+     "affinity": 0.8544568245125348
+    },
+    {
+     "name": "Traditional Japanese",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:traditional_japanese",
+     "affinity": 0.8330035615354174
+    },
+    {
+     "name": "Intimate",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:intimate",
+     "affinity": 0.8288113695090439
+    },
+    {
+     "name": "Quaint",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:quaint",
+     "affinity": 0.7777777777777778
+    },
+    {
+     "name": "Industrial Chic",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:industrial_chic",
+     "affinity": 0.7541653054557335
+    },
+    {
+     "name": "Dark Wood",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:dark_wood",
+     "affinity": 0.7105327468230693
+    },
+    {
+     "name": "Polished",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:polished",
+     "affinity": 0.6785505552308592
+    },
+    {
+     "name": "Comfortable",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:comfortable",
+     "affinity": 0.6616766467065869
+    },
+    {
+     "name": "Sleek",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:sleek",
+     "affinity": 0.6524136241117373
+    },
+    {
+     "name": "Cozy",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:cozy",
+     "affinity": 0.63088017224593
+    },
+    {
+     "name": "Vintage",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:vintage",
+     "affinity": 0.8717948717948718
+    },
+    {
+     "name": "Rustic",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:rustic",
+     "affinity": 0.8658892128279884
+    },
+    {
+     "name": "Homey",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:homey",
+     "affinity": 0.8157166574432761
+    },
+    {
+     "name": "Authentic",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:authentic",
+     "affinity": 0.7793120670979083
+    },
+    {
+     "name": "Stylish",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:stylish",
+     "affinity": 0.7670053383847081
+    },
+    {
+     "name": "Luxury",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:luxury",
+     "affinity": 0.7486248624862486
+    },
+    {
+     "name": "Adventurous",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:adventurous",
+     "affinity": 0.6929723502304147
+    },
+    {
+     "name": "Bustling",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:bustling",
+     "affinity": 0.6870672413182768
+    },
+    {
+     "name": "Boutique",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:boutique",
+     "affinity": 0.6753040719196193
+    },
+    {
+     "name": "Pixies",
+     "kind": "artist",
+     "id": "C9FC1FE6-2F92-4B49-9EE5-B531B8536B94",
+     "affinity": 0.96
+    },
+    {
+     "name": "The Smashing Pumpkins",
+     "kind": "artist",
+     "id": "4E2076A6-D484-45D5-A700-65F57E83A626",
+     "affinity": 0.949
+    },
+    {
+     "name": "Sonic Youth",
+     "kind": "artist",
+     "id": "CE859B17-DDB5-41B4-AEDC-B8DDA2F7CC1B",
+     "affinity": 0.942
+    },
+    {
+     "name": "Beck",
+     "kind": "artist",
+     "id": "8431339C-7299-4A35-9AB3-DFE9DBEB7DED",
+     "affinity": 0.941
+    },
+    {
+     "name": "The Smiths",
+     "kind": "artist",
+     "id": "9FCB92D1-9B48-4ADF-A6DC-350DAA7E91AF",
+     "affinity": 0.94
+    },
+    {
+     "name": "The Velvet Underground",
+     "kind": "artist",
+     "id": "87A1DBD4-1C1B-4272-A1F7-FA7E3891D05E",
+     "affinity": 0.94
+    },
+    {
+     "name": "The Cure",
+     "kind": "artist",
+     "id": "CB36C13A-CC81-4081-98B6-D1EEA8DACC55",
+     "affinity": 0.94
+    },
+    {
+     "name": "Interpol",
+     "kind": "artist",
+     "id": "D55AA58B-0DB2-43EF-B3B9-E2D40B215E7E",
+     "affinity": 0.937
+    },
+    {
+     "name": "MoMA, the Museum of Modern Art",
+     "kind": "brand",
+     "id": "F39AA5F6-30A9-450C-ABB2-E10A23D3A443",
+     "affinity": 0.913
+    },
+    {
+     "name": "The New Yorker",
+     "kind": "brand",
+     "id": "399654ED-B417-49C5-A9AA-8682BE35A85D",
+     "affinity": 0.91
+    },
+    {
+     "name": "TED Talks",
+     "kind": "brand",
+     "id": "3B0D64DD-29B7-4C90-8434-BA30589BF017",
+     "affinity": 0.91
+    },
+    {
+     "name": "Airbnb",
+     "kind": "brand",
+     "id": "A5269DD4-5BCE-4EC7-BD50-355B29F3079F",
+     "affinity": 0.898
+    },
+    {
+     "name": "NPR",
+     "kind": "brand",
+     "id": "36A3F981-5BFB-45B5-A8CF-A16F273B04F0",
+     "affinity": 0.897
+    },
+    {
+     "name": "The North Face",
+     "kind": "brand",
+     "id": "DB03F250-64F3-47AB-8756-BC1C4E13EBFD",
+     "affinity": 0.895
+    },
+    {
+     "name": "Synecdoche, New York",
+     "kind": "movie",
+     "id": "5FBAD562-A8AF-4643-A212-936B17AE97E0",
+     "affinity": 0.93
+    },
+    {
+     "name": "Children of Men",
+     "kind": "movie",
+     "id": "BB9AA6CE-8012-44B8-B554-54BE8A374A5E",
+     "affinity": 0.924
+    },
+    {
+     "name": "Magnolia",
+     "kind": "movie",
+     "id": "BB5B7CFF-8EFB-4CED-BCD1-6DF7E16407DD",
+     "affinity": 0.922
+    },
+    {
+     "name": "Brazil",
+     "kind": "movie",
+     "id": "E8CE8A37-0E07-4F6B-9F07-CB3A9E57D34A",
+     "affinity": 0.922
+    },
+    {
+     "name": "The Illustrated Man",
+     "kind": "book",
+     "id": "1100C931-98AF-4FA0-A2D8-0DD61D668587",
+     "affinity": 0.893
+    },
+    {
+     "name": "Brave New World",
+     "kind": "book",
+     "id": "F038CFAC-7515-4840-9F22-E45479E56439",
+     "affinity": 0.858
+    },
+    {
+     "name": "The Tao of Pooh",
+     "kind": "book",
+     "id": "C17C0A25-039C-4601-88A5-FA459A9B528D",
+     "affinity": 0.855
+    },
+    {
+     "name": "Flowers for Algernon",
+     "kind": "book",
+     "id": "8F4E1999-1AF2-4ACB-9F7A-8D1C1DF9615B",
+     "affinity": 0.848
+    }
+   ],
+   "baseline": {
+    "model": "anthropic/claude-haiku-5.5",
+    "picks": [
+     {
+      "kind": "decor",
+      "name": "Neon Noir",
+      "verdict": "known",
+      "match": "Noir"
+     },
+     {
+      "kind": "decor",
+      "name": "Minimalist Calm",
+      "verdict": "known",
+      "match": "Minimalist"
+     },
+     {
+      "kind": "decor",
+      "name": "Rain-Streaked Glass",
+      "verdict": "unknown",
+      "match": null
+     },
+     {
+      "kind": "artist",
+      "name": "Vangelis",
+      "verdict": "known",
+      "match": "Vangelis"
+     },
+     {
+      "kind": "artist",
+      "name": "Brian Eno",
+      "verdict": "known",
+      "match": "Brian Eno"
+     },
+     {
+      "kind": "artist",
+      "name": "Boards of Canada",
+      "verdict": "known",
+      "match": "Boards of Canada"
+     },
+     {
+      "kind": "brand",
+      "name": "Muji Desk Lamp",
+      "verdict": "known",
+      "match": "Muji"
+     },
+     {
+      "kind": "brand",
+      "name": "Vitra Eames Chair",
+      "verdict": "known",
+      "match": "VITRA"
+     }
+    ],
+    "counts": {
+     "ranked": 0,
+     "known": 7,
+     "unknown": 1
+    },
+    "total": 8
+   }
+  },
+  {
+   "type": "done",
+   "qlooCalls": [
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Radiohead&take=3",
+     "ms": 474,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Blade+Runner&take=3",
+     "ms": 144,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Haruki+Murakami&take=3",
+     "ms": 156,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Muji&take=3",
+     "ms": 154,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Atag&filter.parents.types=urn%3Aentity%3Aplace&filter.tag.types=urn%3Atag%3Aambience%3Aqloo&signal.interests.entities=70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C%2CA74A74BB-CE73-4A76-807B-8BD1714BC463%2CE96DF441-451B-4C26-9415-257594472F52%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7&take=10",
+     "ms": 1892,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Atag&filter.parents.types=urn%3Aentity%3Aplace&filter.tag.types=urn%3Atag%3Adecor%3Aqloo&signal.interests.entities=70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C%2CA74A74BB-CE73-4A76-807B-8BD1714BC463%2CE96DF441-451B-4C26-9415-257594472F52%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7&take=10",
+     "ms": 1914,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Atag&filter.parents.types=urn%3Aentity%3Aplace&filter.tag.types=urn%3Atag%3Ainterests%3Aqloo&signal.interests.entities=70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C%2CA74A74BB-CE73-4A76-807B-8BD1714BC463%2CE96DF441-451B-4C26-9415-257594472F52%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7&take=8",
+     "ms": 1951,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Abrand&take=6&signal.interests.entities=70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C%2CA74A74BB-CE73-4A76-807B-8BD1714BC463%2CE96DF441-451B-4C26-9415-257594472F52%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "ms": 373,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Abook&take=4&signal.interests.entities=70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C%2CA74A74BB-CE73-4A76-807B-8BD1714BC463%2CE96DF441-451B-4C26-9415-257594472F52%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "ms": 861,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Amovie&take=4&signal.interests.entities=70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C%2CA74A74BB-CE73-4A76-807B-8BD1714BC463%2CE96DF441-451B-4C26-9415-257594472F52%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "ms": 1759,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Aartist&take=8&signal.interests.entities=70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C%2CA74A74BB-CE73-4A76-807B-8BD1714BC463%2CE96DF441-451B-4C26-9415-257594472F52%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "ms": 3383,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Ademographics&signal.interests.entities=70CAE5BF-2F4C-445C-A3E5-4EDACFC3591C%2CA74A74BB-CE73-4A76-807B-8BD1714BC463%2CE96DF441-451B-4C26-9415-257594472F52%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "ms": 154,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/tags?filter.query=Rain-Streaked+Glass&take=8",
+     "ms": 431,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/tags?filter.query=Minimalist+Calm&take=8",
+     "ms": 447,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Vangelis&types=urn%3Aentity%3Aartist&take=3",
+     "ms": 452,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Muji+Desk+Lamp&types=urn%3Aentity%3Abrand&take=3",
+     "ms": 470,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Brian+Eno&types=urn%3Aentity%3Aartist&take=3",
+     "ms": 474,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Vitra+Eames+Chair&types=urn%3Aentity%3Abrand&take=3",
+     "ms": 473,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Boards+of+Canada&types=urn%3Aentity%3Aartist&take=3",
+     "ms": 478,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/tags?filter.query=Neon+Noir&take=8",
+     "ms": 494,
+     "ok": true
+    }
+   ]
+  }
+ ],
+ "renders": [
+  {
+   "id": "cae57b31-0927-4faf-b12f-5e4c72751b6f",
+   "url": "/img/demo-room-rain-1.jpg",
+   "remoteUrl": "https://v3b.fal.media/files/b/0aaf4e0e/RBkwGvGGD6cqK65c1bWmB_YAIqrGjJ.jpg",
+   "prompt": "Photoreal eye-level interior of a compact private room with polished dark wood floorboards and a low platform bed dressed in undyed linen. Warm off-white plaster walls with one exposed charcoal brick panel. A shoji-style paper screen filters soft amber light from a brass floor lamp and a small ceramic table lamp. A turntable rests on a walnut sideboard beside stacked vinyl sleeves and a framed modernist print in matte black with abstract shapes only. A grey North Face daypack hangs from a simple iron hook near a row of worn paperback novels. Muted sage and graphite palette, soft shadows, calm and warm.",
+   "aspect": "3:2",
+   "model": "gpt-image-2.5/flare",
+   "signals": [
+    "Intimate",
+    "Quaint",
+    "Comfortable (decor)",
+    "Homey",
+    "Dark Wood",
+    "Polished",
+    "Industrial Chic",
+    "Authentic",
+    "Brazil",
+    "Synecdoche, New York",
+    "Children of Men",
+    "Stylish",
+    "Sonic Youth",
+    "The Velvet Underground",
+    "The Smiths",
+    "Vintage",
+    "Brave New World",
+    "Flowers for Algernon",
+    "The Illustrated Man",
+    "The New Yorker"
+   ]
+  }
+ ],
+ "baseline": null,
+ "recorded": "2026-10-21T19:03:59.575Z"
+}

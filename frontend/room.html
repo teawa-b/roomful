@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Roomful</title>
+  <meta name="description" content="Name a few things you love. Qloo reads the taste, designs the room, paints it and plays the music.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/img/roomful-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/img/roomful-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="/room.css">
+  <script type="module" src="/room.js"></script>
+</head>
+<body>
+  <header class="nav">
+    <a class="wordmark" href="/"><img src="/img/roomful-180.png" alt="" width="28" height="28"><span>Roomful</span></a>
+    <span class="nav-note">Taste data by Qloo</span>
+  </header>
+
+  <main>
+    <!-- Intro -->
+    <div id="intro">
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Your taste, as a room you can <span class="accent">walk into</span>.</h1>
+          <p class="sub">Name a few things you love. Qloo reads the taste, designs the room, paints it and plays the music.</p>
+          <form id="ask" class="ask">
+            <label for="text">What do you love?</label>
+            <div class="field">
+              <input id="text" maxlength="600" autocomplete="off" placeholder="Khruangbin, Wong Kar-wai, Murakami, Aesop" aria-describedby="text-help">
+              <button class="btn" id="go">Build my room</button>
+            </div>
+            <p class="help" id="text-help">Bands, films, books, brands or places, separated by commas.</p>
+          </form>
+        </div>
+        <figure class="hero-media">
+          <button type="button" class="hero-pick" data-demo="rain" data-ex="Radiohead, Blade Runner, Haruki Murakami, Muji" aria-label="Open the Quiet Signal Room">
+            <img src="/img/demo-room-rain-1.jpg" alt="A dim bedroom at night with paper screens, a walnut sideboard with a turntable, a table lamp and a low bed" width="1024" height="768" fetchpriority="high">
+          </button>
+          <figcaption>Quiet Signal Room, made from Radiohead, Blade Runner, Murakami and Muji.</figcaption>
+        </figure>
+      </section>
+
+      <section class="presets" aria-labelledby="presets-title">
+        <h2 id="presets-title">Or start from someone else's taste</h2>
+        <div class="preset-grid" id="examples">
+          <button type="button" class="preset" data-demo="heartbreak" data-ex="Phoebe Bridgers, Fleabag, Sally Rooney, Glossier, Dr. Martens">
+            <img src="/img/demo-room-heartbreak-1.jpg" alt="" width="1024" height="768" loading="lazy">
+            <span class="preset-text"><b>Velvet Speakeasy Lounge</b><span>Phoebe Bridgers, Fleabag, Sally Rooney, Glossier</span></span>
+          </button>
+          <button type="button" class="preset" data-demo="courtside" data-ex="Kendrick Lamar, Nike, Jordan Peele films, Issa Rae, Lakers">
+            <img src="/img/demo-room-courtside-1.jpg" alt="" width="1024" height="768" loading="lazy">
+            <span class="preset-text"><b>Art Deco Court</b><span>Kendrick Lamar, Nike, Jordan Peele, Issa Rae</span></span>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- The room -->
+    <div id="build" hidden>
+      <section class="result">
+        <figure id="hero" class="stage">
+          <img id="hero-img" alt="Your room">
+          <div id="hero-shimmer" class="skeleton"><div class="painting" role="status" aria-live="polite"><i class="ph ph-hourglass-medium"></i><span id="hero-shimmer-text">Reading your taste…</span></div></div>
+        </figure>
+        <aside class="panel">
+          <p class="status" id="r-kicker" aria-live="polite">Reading your taste</p>
+          <h1 id="r-name">One moment</h1>
+          <p id="r-tag" class="tagline"></p>
+          <p id="demo-note" class="demo-note" hidden>A recorded run of this example, so it opens instantly. Type your own favourites to build one live.</p>
+          <div class="actions" id="hero-actions" hidden>
+            <button id="walk" class="btn" hidden>Walk inside</button>
+            <button id="change" class="btn quiet">Change something</button>
+          </div>
+          <form id="refine" class="refine" hidden>
+            <label for="refine-input">What should change?</label>
+            <div class="field">
+              <input id="refine-input" maxlength="300" placeholder="More plants, a green velvet sofa">
+              <button class="btn">Repaint</button>
+            </div>
+          </form>
+          <section class="player" id="player" hidden aria-labelledby="player-title">
+            <h2 id="player-title">Now playing</h2>
+            <div id="yt" class="yt"></div>
+            <ul id="tracks" class="tracks"></ul>
+          </section>
+        </aside>
+      </section>
+
+      <ol id="steps" class="steps" aria-label="Progress"></ol>
+
+      <div id="r-body" hidden>
+        <section class="brief">
+          <h2>The brief</h2>
+          <p id="r-brief" class="brief-text"></p>
+          <div id="r-chips" class="tags"></div>
+        </section>
+        <section class="choices-section">
+          <h2>Every choice, and the taste behind it</h2>
+          <ul id="r-choices" class="choices"></ul>
+        </section>
+        <section id="r-compare" class="compare" hidden>
+          <h2>With and without Qloo</h2>
+          <p class="compare-intro">The same favourites, given to an LLM alone. Each of its picks is checked against what Qloo returned for this taste.</p>
+          <p id="cmp-score" class="compare-score"></p>
+          <ul id="cmp-list" class="cmp"></ul>
+          <p id="cmp-foot" class="compare-foot"></p>
+        </section>
+        <details id="r-charts" class="taste" hidden>
+          <summary><h2>Your taste, according to Qloo</h2><span class="toggle"></span></summary>
+          <div id="chart-list" class="taste-cols"></div>
+        </details>
+        <button id="again" class="btn quiet again">Build another room</button>
+      </div>
+    </div>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <footer class="foot">Taste data from <a href="https://www.qloo.com" target="_blank" rel="noreferrer">Qloo</a>. Rooms are generated images.</footer>
+</body>
+</html>
