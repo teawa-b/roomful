@@ -16,7 +16,8 @@ const files = {
   '/': ['room.html', 'text/html'], '/room.js': ['room.js', 'text/javascript'], '/room.css': ['room.css', 'text/css'],
   '/room3d': ['room3d.html', 'text/html'], '/room3d.js': ['room3d.js', 'text/javascript'],
   '/live': ['live.html', 'text/html'], '/live.js': ['live.js', 'text/javascript'],
-  '/style.css': ['style.css', 'text/css'], '/favicon.svg': ['favicon.svg', 'image/svg+xml']
+  '/style.css': ['style.css', 'text/css'], '/favicon.svg': ['favicon.svg', 'image/svg+xml'],
+  '/sound.js': ['sound.js', 'text/javascript']
 };
 const cdn = 'https://cdn.jsdelivr.net';
 

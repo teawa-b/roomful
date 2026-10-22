@@ -1,3 +1,4 @@
+import { tick, chime } from '/sound.js';
 const $ = id => document.getElementById(id);
 // Model-written text never shows an em or en dash used as punctuation (house style); a comma reads the same.
 const tidy = v => typeof v === 'string' ? v.replace(/(\d)\s*–\s*(\d)/g, '$1-$2').replace(/\s*[—–]\s*/g, ', ') : v;
@@ -28,6 +29,7 @@ async function build(text, demo = null) {
   if (!text || running) return;
   if (!demo && !config.qloo) return toast('This server has no Qloo key yet.');
   running = true; render = null; concept = null; taste = null; world = worlds[demo] || null;
+  tick();
   $('demo-note').hidden = !demo;
   $('intro').hidden = true; $('build').hidden = false; $('build').classList.remove('complete');
   scrollTo({ top: 0 });
@@ -95,7 +97,7 @@ function show(ev) {
   const actions = [];
   if (render?.url) {
     const img = $('hero-img'); img.src = safeUrl(render.url);
-    img.decode().catch(() => {}).finally(() => { $('hero').classList.add('ready'); $('hero-shimmer').hidden = true; });
+    img.decode().catch(() => {}).finally(() => { $('hero').classList.add('ready'); $('hero-shimmer').hidden = true; chime(); });
     const walkable = world || config.room3d || config.liveWorld;
     if (walkable) actions.push($('walk'));
     actions.push($('change'));
