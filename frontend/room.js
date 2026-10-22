@@ -1,4 +1,5 @@
 import { tick, chime } from '/sound.js';
+import { keepFresh } from '/fresh.js';
 const $ = id => document.getElementById(id);
 // Model-written text never shows an em or en dash used as punctuation (house style); a comma reads the same.
 const tidy = v => typeof v === 'string' ? v.replace(/(\d)\s*–\s*(\d)/g, '$1-$2').replace(/\s*[—–]\s*/g, ', ') : v;
@@ -7,6 +8,7 @@ const safeUrl = v => { try { const u = new URL(v, location.origin); return ['htt
 let config = {}, render = null, concept = null, taste = null, running = false;
 
 function toast(text, ms = 4000) { $('toast').textContent = text; $('toast').hidden = !text; clearTimeout(toast.t); if (text) toast.t = setTimeout(() => { $('toast').hidden = true; }, ms); }
+keepFresh(() => running || $('intro').hidden, toast);
 async function api(path, body) {
   const res = await fetch(path, body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : undefined);
   const data = await res.json().catch(() => ({}));
