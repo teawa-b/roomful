@@ -232,7 +232,7 @@ export function createApp({ env = process.env, fetcher = fetch } = {}) {
           if (!render?.remoteUrl) return send(404, { error: 'That render has expired. Run the agent again.' });
           if (!limit.take('live', ip) || !limit.take('liveIpDaily', ip) || !limit.take('liveDaily', 'all')) return send(429, { error: 'Live walkthrough limit reached. Try again later.' });
           const concept = body.concept && typeof body.concept === 'object' ? { name: String(body.concept.name || '').slice(0, 80), tagline: String(body.concept.tagline || '').slice(0, 160) } : {};
-          const world = { url: render.remoteUrl, prompt: `Walking through ${concept.name || 'a redesigned venue'}, a newly renovated interior. ${String(render.prompt || '').split('\n')[0].slice(0, 900)}`, concept };
+          const world = { url: render.remoteUrl, prompt: `Walking slowly through ${concept.name || 'a bedroom'}, a calm bedroom made from someone's favourite things. ${String(render.prompt || '').split('\n')[0].slice(0, 900)}`, concept };
           return send(200, { ...(await live.start(world)), world });
         }
         if (path === '/api/live/session') return send(200, await live.session(liveId, body.sdp, body.type));
@@ -249,7 +249,7 @@ export function createApp({ env = process.env, fetcher = fetch } = {}) {
         if (render.worldOp) return send(200, { worldId: render.worldOp });
         if (!limit.take('world', ip) || !limit.take('worldDaily', 'all')) return send(429, { error: '3D world limit reached. Try again later.' });
         const name = String(body.name || 'A Roomful room').slice(0, 64);
-        const { operationId } = await worldClient.start({ image: await worldImage(render), caption: `Interior of ${name}, a calm room to step into: ${String(render.prompt || '').split('\n')[0]}`, name: `Roomful: ${name}` });
+        const { operationId } = await worldClient.start({ image: await worldImage(render), caption: `${name}, a calm bedroom to step into: ${String(render.prompt || '').split('\n')[0]}`, name: `Roomful: ${name}` });
         render.worldOp = operationId;
         return send(200, { worldId: operationId });
       }

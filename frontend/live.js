@@ -15,13 +15,13 @@ const post = async (path, body) => {
 const times = {
   morning: 'Early morning: soft cool daylight through the windows, lights off, quiet and fresh.',
   afternoon: 'Bright afternoon: strong natural daylight, lively and airy, warm sunlight patches on the floor.',
-  golden: 'Golden hour: low warm sunset light streaming in, long shadows, pendant lights just turned on.',
-  evening: 'Evening: dark blue dusk outside, warm pendant and candle light inside, intimate and glowing.',
-  late: 'Late night: night outside the windows, dim amber lighting, candles on tables, moody bar atmosphere.'
+  golden: 'Golden hour: low warm sunset light streaming in, long shadows, a bedside lamp just turned on.',
+  evening: 'Evening: dark blue dusk outside, warm lamp and candle light inside, quiet and glowing.',
+  late: 'Late night: night outside the windows, a single dim lamp by the bed, still and restful.'
 };
 
 let pc, channel, liveId, world, heartbeat, busyPrompt = false;
-$('live-name').textContent = concept.name || 'Your redesign';
+$('live-name').textContent = concept.name || 'Your room';
 document.title = concept.name || 'Walk inside';
 // The walkthrough wears this app's wordmark.
 const logos = { room: ['room', 'ful'] };
@@ -30,7 +30,7 @@ fetch('/api/config').then(r => r.json()).then(c => {
   const logo = $('live-logo'); logo.textContent = a; if (b) logo.append(Object.assign(document.createElement('b'), { textContent: b }));
   document.title = `${concept.name || 'Walk inside'} — ${c.siteName}`;
 }).catch(() => {});
-if (!renderId) $('gate-status').textContent = 'Open this from a finished redesign.';
+if (!renderId) $('gate-status').textContent = 'Open this from a finished room.';
 
 $('enter').addEventListener('click', async () => {
   $('enter').disabled = true;
@@ -49,7 +49,7 @@ async function connect() {
   pc.onconnectionstatechange = () => { if (['failed', 'closed'].includes(pc.connectionState)) ended('The connection dropped.'); };
   channel = pc.createDataChannel('control');
   channel.onopen = () => {
-    status('Building the world from your redesign…');
+    status('Building the world from your room…');
     channel.send(JSON.stringify({ type: 'configure', image_url: world.url, prompt: world.prompt, enable_prompt_expansion: true }));
   };
   channel.onmessage = e => onMessage(typeof e.data === 'string' ? e.data : new TextDecoder().decode(e.data));
