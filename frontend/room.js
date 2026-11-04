@@ -22,8 +22,9 @@ $('ask').addEventListener('submit', e => { e.preventDefault(); const t = $('text
 $('again').addEventListener('click', () => { $('build').hidden = true; $('intro').hidden = false; scrollTo({ top: 0, behavior: 'smooth' }); $('text').focus(); });
 $('change').addEventListener('click', () => { $('refine').hidden = !$('refine').hidden; if (!$('refine').hidden) $('refine-input').focus(); });
 
-// Every room can be walked in 3D: the viewer lifts the painting into 3D on the spot (fal's MoGe-2). This example's
-// 3D room ships with the site, so it opens instantly.
+// Every room can be walked in 3D. With a World Labs key, the painting becomes a Marble world (/walk, about five
+// minutes). Without one, the viewer lifts the painting into 3D on the spot (fal's MoGe-2), and this example's 3D
+// room ships with the site, so it opens instantly.
 const worlds = { rain: 'room-rain-depth' };
 let world = null;
 
@@ -100,11 +101,11 @@ function show(ev) {
   if (render?.url) {
     const img = $('hero-img'); img.src = safeUrl(render.url);
     img.decode().catch(() => {}).finally(() => { $('hero').classList.add('ready'); $('hero-shimmer').hidden = true; chime(); });
-    const walkable = world || config.room3d || config.liveWorld;
+    const walkable = config.world || world || config.room3d || config.liveWorld;
     if (walkable) actions.push($('walk'));
     actions.push($('change'));
     $('walk').hidden = !walkable;
-    $('walk').textContent = world || config.room3d ? 'Walk inside in 3D' : 'Walk inside';
+    $('walk').textContent = config.world || world || config.room3d ? 'Walk inside in 3D' : 'Walk inside';
   } else {
     $('hero-shimmer').hidden = true;
     $('hero').classList.add('ready');
@@ -173,6 +174,7 @@ function charts() {
 
 $('walk').addEventListener('click', () => {
   if (!render) return;
+  if (config.world) return window.open(`/walk?${new URLSearchParams({ render: render.id, name: concept.name })}`, '_blank', 'noopener');
   if (world) return window.open(`/room3d?${new URLSearchParams({ room: world, name: concept.name })}`, '_blank', 'noopener');
   if (config.room3d) return window.open(`/room3d?${new URLSearchParams({ img: render.url, name: concept.name })}`, '_blank', 'noopener');
   const q = new URLSearchParams({ render: render.id, name: concept.name, tagline: concept.tagline });

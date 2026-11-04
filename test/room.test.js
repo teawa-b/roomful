@@ -103,3 +103,41 @@ test('roomful: a painting becomes a 3D room through MoGe-2, streamed back throug
   assert.ok(calls.filter(c => c.host === 'queue.fal.run').every(c => c.auth === `Key ${FKEY}`));
   assert.ok(calls.filter(c => c.host !== 'queue.fal.run').every(c => !c.auth), 'the key only goes to the fal queue');
 });
+
+test('roomful: a painted room becomes a World Labs world, walked through this server', async t => {
+  const WKEY = 'worldlabs-secret-key', calls = [];
+  let polls = 0;
+  const fetcher = async (url, options = {}) => {
+    url = new URL(url);
+    calls.push({ host: url.host, key: options.headers?.['WLT-Api-Key'], body: options.body && JSON.parse(options.body) });
+    if (url.host === 'api.worldlabs.ai' && url.pathname.endsWith('/worlds:generate')) return Response.json({ operation_id: 'op-123' });
+    if (url.host === 'api.worldlabs.ai' && url.pathname === '/marble/v1/operations/op-123') {
+      polls++;
+      return Response.json(polls < 2 ? { done: false, metadata: { progress_percentage: 40 } } : { done: true, response: { world_id: 'w1', world_marble_url: 'https://marble.worldlabs.ai/world/w1', assets: { splats: { spz_urls: { '500k': 'https://cdn.worldlabs.ai/w1-500k.spz' } } } } });
+    }
+    if (url.host === 'cdn.worldlabs.ai') return new Response(new Uint8Array([1, 2, 3]));
+    throw new Error(`unexpected ${url}`);
+  };
+  const base = await serve(t, { SITE: 'room', WORLDLABS_API_KEY: WKEY }, fetcher);
+  assert.equal((await (await fetch(`${base}/api/config`)).json()).world.model, 'marble-1.1');
+  const page = await fetch(`${base}/walk`);
+  assert.match(page.headers.get('content-security-policy'), /wasm-unsafe-eval/);
+  const post = body => fetch(`${base}/api/world`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  assert.equal((await post({ renderId: 'not-a-real-render' })).status, 404);
+  // A recorded example's painting is sent as the bytes that ship with the site.
+  const demo = (await import('../backend/data/demos/room-rain.json', { with: { type: 'json' } })).default.renders[0];
+  const started = await (await post({ renderId: demo.id, name: 'Quiet Signal Room' })).json();
+  assert.equal(started.worldId, 'op-123');
+  assert.equal(calls[0].body.world_prompt.image_prompt.source, 'data_base64');
+  assert.equal((await (await post({ renderId: demo.id })).json()).worldId, 'op-123', 'one world per render');
+  assert.equal(calls.filter(c => c.host === 'api.worldlabs.ai').length, 1);
+  assert.deepEqual(await (await fetch(`${base}/api/world/op-123`)).json(), { done: false, progress: 40 });
+  const done = await (await fetch(`${base}/api/world/op-123`)).json();
+  assert.deepEqual(done.assets.splat, ['500k']);
+  assert.ok(!JSON.stringify(done).includes('cdn.worldlabs.ai'), 'the page never sees the asset URLs');
+  const splat = await fetch(`${base}/api/world/op-123/asset?res=500k`);
+  assert.deepEqual([...new Uint8Array(await splat.arrayBuffer())], [1, 2, 3]);
+  assert.equal((await fetch(`${base}/api/world/op-123/asset?res=full_res`)).status, 404);
+  assert.ok(calls.filter(c => c.host === 'api.worldlabs.ai').every(c => c.key === WKEY));
+  assert.ok(calls.filter(c => c.host !== 'api.worldlabs.ai').every(c => !c.key), 'the key only goes to World Labs');
+});

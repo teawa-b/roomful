@@ -1,6 +1,6 @@
 import http from 'node:http';
 import { readFile } from 'node:fs/promises';
-import { randomUUID } from 'node:crypto';
+import { randomUUID, createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { createQloo, qlooHosts } from './lib/qloo.js';
 import { chooseLlm } from './lib/llm.js';
@@ -8,6 +8,7 @@ import { chooseImageModel } from './lib/images.js';
 import { createLimiter } from './lib/limits.js';
 import { createLive } from './lib/live.js';
 import { createDepth3d } from './lib/depth3d.js';
+import { createWorlds } from './lib/world.js';
 import { buildRoom } from './lib/room.js';
 import { loadDemo, listDemos, replay, demoRender } from './lib/demos.js';
 
@@ -15,16 +16,22 @@ import { loadDemo, listDemos, replay, demoRender } from './lib/demos.js';
 const files = {
   '/': ['room.html', 'text/html'], '/room.js': ['room.js', 'text/javascript'], '/room.css': ['room.css', 'text/css'],
   '/room3d': ['room3d.html', 'text/html'], '/room3d.js': ['room3d.js', 'text/javascript'],
+  '/walk': ['walk.html', 'text/html'], '/walk.js': ['walk.js', 'text/javascript'],
   '/live': ['live.html', 'text/html'], '/live.js': ['live.js', 'text/javascript'],
   '/style.css': ['style.css', 'text/css'], '/favicon.svg': ['favicon.svg', 'image/svg+xml'],
   '/sound.js': ['sound.js', 'text/javascript'], '/fresh.js': ['fresh.js', 'text/javascript']
 };
 const cdn = 'https://cdn.jsdelivr.net';
+// The walk's import map is inline, so it is allowed by its hash rather than 'unsafe-inline'.
+const walkHtml = await readFile(new URL('../frontend/walk.html', import.meta.url), 'utf8');
+const importMapHash = createHash('sha256').update(walkHtml.match(/<script type="importmap">([\s\S]*?)<\/script>/)[1]).digest('base64');
 
 const csp = {
   // Roomful plays its playlist through YouTube's search embed; its 3D room loads three.js from jsDelivr.
   home: `default-src 'self'; img-src 'self' https: data: blob:; style-src 'self' ${cdn} https://fonts.googleapis.com; font-src https://fonts.gstatic.com ${cdn}; script-src 'self' ${cdn}; frame-src https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self' blob: ${cdn}; base-uri 'none'; frame-ancestors 'none'`,
   // The live walkthrough plays a WebRTC stream; media flows peer-to-peer, signalling goes through this server.
+  // The World Labs walk draws Gaussian splats with Spark, which runs WebAssembly in workers.
+  walk: `default-src 'self'; img-src 'self' https: data: blob:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' ${cdn} 'sha256-${importMapHash}' 'wasm-unsafe-eval'; worker-src 'self' blob:; connect-src 'self' ${cdn} data: blob:; base-uri 'none'; frame-ancestors 'none'`,
   live: "default-src 'self'; img-src 'self' https: data: blob:; media-src 'self' blob:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'"
 };
 
@@ -37,6 +44,8 @@ function boundedMap(limit) {
 export function createApp({ env = process.env, fetcher = fetch } = {}) {
   const renders = boundedMap(300), videos = new Map();
   const llm = chooseLlm(env, fetcher), imageModel = chooseImageModel(env, fetcher);
+  const worldClient = env.WORLDLABS_API_KEY ? createWorlds({ key: env.WORLDLABS_API_KEY, model: env.WORLDLABS_MODEL || undefined, fetcher }) : null;
+  const worlds = boundedMap(200);
   const depth3d = env.FAL_KEY ? createDepth3d({ key: env.FAL_KEY, fetcher }) : null;
   const live = env.FAL_KEY ? createLive({ key: env.FAL_KEY, model: env.FAL_WORLD_MODEL || undefined, maxSeconds: Number(env.LIVE_MAX_SECONDS || 180), fetcher }) : null;
   const qlooHost = qlooHosts.includes(env.QLOO_API_HOST) ? env.QLOO_API_HOST : qlooHosts[0];
@@ -49,6 +58,8 @@ export function createApp({ env = process.env, fetcher = fetch } = {}) {
     live: [Number(env.LIVE_SESSIONS_PER_HOUR || 2), 3600e3],
     liveIpDaily: [Number(env.LIVE_SESSIONS_PER_IP_PER_DAY || 3), 86400e3],
     liveDaily: [Number(env.LIVE_SESSIONS_PER_DAY || 20), 86400e3, true],
+    world: [Number(env.WORLDS_PER_HOUR || 3), 3600e3],
+    worldDaily: [Number(env.WORLDS_PER_DAY || 25), 86400e3, true],
     room3d: [Number(env.ROOMS_3D_PER_HOUR || 20), 3600e3],
     room3dDaily: [Number(env.ROOMS_3D_PER_DAY || 300), 86400e3, true]
   });
@@ -60,6 +71,20 @@ export function createApp({ env = process.env, fetcher = fetch } = {}) {
     return render;
   }
   const renderImage = r => r.remoteUrl ? { url: r.remoteUrl } : { bytes: r.bytes, type: r.type };
+  // A recorded example's painting ships with the site, so World Labs gets those bytes rather than an old link.
+  const worldImage = async r => {
+    const local = String(r.url || '').match(/^\/img\/([a-z0-9-]+)\.(jpg|png)$/);
+    const bytes = local && await readFile(new URL(`../frontend/img/${local[1]}.${local[2]}`, import.meta.url)).catch(() => null);
+    return bytes ? { bytes, type: local[2] === 'jpg' ? 'image/jpeg' : 'image/png' } : renderImage(r);
+  };
+  // A world's status, cached once it is finished. Asked of World Labs on a miss, so any instance can answer.
+  const worldStatus = async id => {
+    const known = worlds.get(id);
+    if (known?.done) return known;
+    const status = await worldClient.status(id);
+    if (status.done && !status.error) worlds.set(id, status);
+    return status;
+  };
   // A render made on this instance, or one from a recorded example (any instance can serve those).
   const getRender = async id => renders.get(String(id || '')) || (await demoRender(id).then(r => r && renders.set(r.id, { ...r })));
 
@@ -84,14 +109,14 @@ export function createApp({ env = process.env, fetcher = fetch } = {}) {
       const entry = files[path];
       if (req.method === 'GET' && entry) {
         const [name, type] = entry;
-        res.setHeader('Content-Security-Policy', csp[path.startsWith('/live') ? 'live' : 'home'] || csp.home);
+        res.setHeader('Content-Security-Policy', csp[['walk', 'live'].find(p => path.startsWith(`/${p}`))] || csp.home);
         res.writeHead(200, { 'Content-Type': `${type}; charset=utf-8`, 'Cache-Control': 'no-cache' });
         return res.end(await readFile(new URL(`../frontend/${name}`, import.meta.url)));
       }
       if (req.method === 'GET' && path === '/api/health') return send(200, { ok: true, version: env.VERCEL_DEPLOYMENT_ID || env.VERCEL_URL || 'local' });
       if (req.method === 'GET' && path === '/api/demos') return send(200, { demos: await listDemos('room') });
       if (req.method === 'GET' && path === '/api/config') {
-        return send(200, { site: 'room', siteName: 'Roomful', qloo: Boolean(env.QLOO_API_KEY), qlooHost, llm: llm?.label || null, image: imageModel?.label || null, liveWorld: live ? { model: live.model, maxSeconds: live.maxSeconds } : null, room3d: Boolean(depth3d) });
+        return send(200, { site: 'room', siteName: 'Roomful', qloo: Boolean(env.QLOO_API_KEY), qlooHost, llm: llm?.label || null, image: imageModel?.label || null, liveWorld: live ? { model: live.model, maxSeconds: live.maxSeconds } : null, room3d: Boolean(depth3d), world: worldClient ? { model: worldClient.model } : null });
       }
       // Roomful's player: the first YouTube result for an artist, found without an API key (the
       // results page lists video ids inline). Cached per query; the browser then embeds that one video.
@@ -125,6 +150,24 @@ export function createApp({ env = process.env, fetcher = fetch } = {}) {
         if (!depth3d || !/^https:\/\/[\w.-]+\.fal\.media\/[\w./-]+\.glb$/.test(src)) return send(404, { error: 'Not found' });
         const upstream = await depth3d.open(src);
         res.writeHead(200, { 'Content-Type': 'model/gltf-binary', 'Cache-Control': 'public, max-age=86400' });
+        for await (const chunk of upstream.body) res.write(chunk);
+        return res.end();
+      }
+
+      // A World Labs world: its progress while it builds, then its splats, streamed through this server so the page
+      // only talks to its own origin, and only to URLs World Labs returned.
+      match = path.match(/^\/api\/world\/([\w.:-]{1,120})(\/asset)?$/);
+      if (req.method === 'GET' && match) {
+        if (!worldClient) return send(404, { error: 'Unknown world.' });
+        const world = await worldStatus(match[1]);
+        if (!world.done) return send(200, { done: false, progress: world.progress });
+        if (world.error) return send(200, { done: true, error: world.error });
+        if (!match[2]) return send(200, { done: true, marbleUrl: world.marbleUrl, assets: { splat: Object.keys(world.splats || {}).filter(k => world.splats[k]) } });
+        const target = world.splats?.[url.searchParams.get('res') || '500k'];
+        if (!target) return send(404, { error: 'Asset not available.' });
+        const upstream = await fetcher(target, { signal: AbortSignal.timeout(120000) });
+        if (!upstream.ok) return send(502, { error: `World asset returned HTTP ${upstream.status}.` });
+        res.writeHead(200, { 'Content-Type': 'application/octet-stream', 'Cache-Control': 'private, max-age=86400', ...(upstream.headers.get('content-length') ? { 'Content-Length': upstream.headers.get('content-length') } : {}) });
         for await (const chunk of upstream.body) res.write(chunk);
         return res.end();
       }
@@ -195,6 +238,19 @@ export function createApp({ env = process.env, fetcher = fetch } = {}) {
         if (path === '/api/live/heartbeat') return send(200, await live.heartbeat(liveId));
         if (path === '/api/live/end') { live.end(liveId); return send(200, { ok: true }); }
         return send(404, { error: 'Not found' });
+      }
+
+      // Start a World Labs world from a painted room. One world per render on this instance.
+      if (path === '/api/world') {
+        if (!worldClient) return send(503, { error: 'This server has no World Labs key, so 3D worlds are off.' });
+        const render = await getRender(body.renderId);
+        if (!render) return send(404, { error: 'That room has expired. Build it again.' });
+        if (render.worldOp) return send(200, { worldId: render.worldOp });
+        if (!limit.take('world', ip) || !limit.take('worldDaily', 'all')) return send(429, { error: '3D world limit reached. Try again later.' });
+        const name = String(body.name || 'A Roomful room').slice(0, 64);
+        const { operationId } = await worldClient.start({ image: await worldImage(render), caption: `Interior of ${name}, a calm room to step into: ${String(render.prompt || '').split('\n')[0]}`, name: `Roomful: ${name}` });
+        render.worldOp = operationId;
+        return send(200, { worldId: operationId });
       }
 
       // A painting widened to 21:9 first, so its 3D room has more to walk into. The painting is one of this site's
