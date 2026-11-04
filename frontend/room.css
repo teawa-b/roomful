@@ -27,6 +27,24 @@ button:disabled { opacity: .55; cursor: default; }
 a { color: inherit; }
 img { display: block; max-width: 100%; }
 [hidden] { display: none !important; }
+
+/* Loading screen: the logo breathes, slowly, with the lamp's glow behind it, until the page is ready. It hides
+   itself after a few seconds even if the script never runs. */
+.splash { position: fixed; inset: 0; z-index: 100; display: grid; place-content: center; justify-items: center; gap: 18px; background: var(--bg); transition: opacity .7s var(--ease), visibility .7s; animation: splash-away .7s 7s forwards; }
+.splash.done { opacity: 0; visibility: hidden; pointer-events: none; }
+.splash-mark { position: relative; width: 132px; height: 132px; display: grid; place-items: center; }
+.splash-mark img { position: relative; width: 96px; height: 96px; animation: breathe 8s ease-in-out infinite; }
+.splash-glow { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 42%, transparent) 0%, transparent 70%); animation: glow 8s ease-in-out infinite; }
+.splash-word { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -.03em; animation: enter 1s .1s var(--ease) both; }
+.splash-breath { position: relative; margin: 0; height: 1.6em; width: 12em; text-align: center; font-size: 14px; color: var(--muted); }
+.splash-breath span { position: absolute; inset: 0; opacity: 0; animation: breath-in 8s ease-in-out infinite; }
+.splash-breath span + span { animation-name: breath-out; }
+@keyframes breathe { 0%, 100% { transform: scale(.94); } 50% { transform: scale(1.06); } }
+@keyframes glow { 0%, 100% { transform: scale(.7); opacity: .35; } 50% { transform: scale(1.25); opacity: 1; } }
+@keyframes breath-in { 0%, 45%, 100% { opacity: 0; } 8%, 37% { opacity: 1; } }
+@keyframes breath-out { 0%, 50%, 95% { opacity: 0; } 58%, 87% { opacity: 1; } }
+@keyframes splash-away { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+@media (prefers-reduced-motion: reduce) { .splash { animation: splash-away .01s 7s forwards !important; } .splash-mark img, .splash-glow { animation: none; } .splash-breath span:first-child { animation: none; opacity: 1; } .splash-breath span + span { display: none; } }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -.03em; }
 h2 { font-size: 24px; line-height: 1.2; }

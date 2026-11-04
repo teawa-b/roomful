@@ -197,7 +197,17 @@ $('refine').addEventListener('submit', async e => {
   finally { $('hero').classList.add('ready'); $('hero-shimmer').hidden = true; button.disabled = false; button.textContent = 'Repaint'; }
 });
 
+const opened = performance.now();
 try { config = await api('/api/config'); } catch { toast('Could not reach the server.'); }
+// The loading screen lifts once the page can be used and the first painting is ready (or after 2.5 seconds, so a
+// slow image never holds it up), and stays at least long enough for one gentle breath in rather than a flicker.
+{
+  const hero = document.querySelector('.hero-pick img');
+  await Promise.race([hero?.decode().catch(() => {}), new Promise(r => setTimeout(r, 2500))]);
+  await new Promise(r => setTimeout(r, Math.max(0, 1400 - (performance.now() - opened))));
+  $('splash').classList.add('done');
+  setTimeout(() => $('splash').remove(), 900);
+}
 const preset = new URLSearchParams(location.search).get('q');
 if (preset) { $('text').value = preset; build(preset); }
 // Deep link to an example, e.g. /?demo=rain
