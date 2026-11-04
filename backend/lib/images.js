@@ -119,9 +119,10 @@ export async function gptImageEdit({ key, image, prompt, fast = false, quality, 
   return { url, type: 'image/jpeg', model: model.replace(/^openai\//, '').replace(/\/edit$/, '') };
 }
 
-// GPT Image leans warm: left alone it gives every picture a yellow, sepia, slightly grainy cast. Every painting and
-// repaint asks for a clean digital photograph with neutral white balance instead.
-export const photoLook = 'Shot on a modern full-frame digital camera: crisp and clean, neutral white balance with true-to-life colours, natural contrast and clear whites. No film grain or noise, no sepia, yellow or orange colour cast, no haze, no vintage filter.';
+// GPT Image lays a yellow, sepia, slightly grainy filter over everything. Every painting and repaint asks for a clean
+// digital photograph instead, keeping the scene's own light: asking for neutral or white tones as well pushed every
+// spot cold, toward snow and ice.
+export const photoLook = 'Shot on a modern digital camera: crisp and clean, with true-to-life colours that keep the scene\'s own light, warm or cool as the scene calls for. No film grain or noise, no overall yellow or sepia filter, no haze, no vintage look.';
 
 // Text to image, for rooms that exist only as a taste profile (no photo to edit): GPT Image 2.5 Flare on fal.
 // image_size takes fal's presets (landscape_4_3, landscape_16_9, square_hd…) or { width, height }.
