@@ -19,6 +19,7 @@ const files = {
   '/walk': ['walk.html', 'text/html'], '/walk.js': ['walk.js', 'text/javascript'],
   '/live': ['live.html', 'text/html'], '/live.js': ['live.js', 'text/javascript'],
   '/style.css': ['style.css', 'text/css'], '/favicon.svg': ['favicon.svg', 'image/svg+xml'],
+  '/favicon.ico': ['favicon.ico', 'image/x-icon'], '/site.webmanifest': ['site.webmanifest', 'application/manifest+json'],
   '/sound.js': ['sound.js', 'text/javascript'], '/music.js': ['music.js', 'text/javascript'], '/music.css': ['music.css', 'text/css'], '/fresh.js': ['fresh.js', 'text/javascript']
 };
 const cdn = 'https://cdn.jsdelivr.net';
@@ -110,7 +111,7 @@ export function createApp({ env = process.env, fetcher = fetch } = {}) {
       if (req.method === 'GET' && entry) {
         const [name, type] = entry;
         res.setHeader('Content-Security-Policy', csp[['walk', 'live'].find(p => path.startsWith(`/${p}`))] || csp.home);
-        res.writeHead(200, { 'Content-Type': `${type}; charset=utf-8`, 'Cache-Control': 'no-cache' });
+        res.writeHead(200, { 'Content-Type': type.startsWith('image/x') ? type : `${type}; charset=utf-8`, 'Cache-Control': name.startsWith('favicon') || name.endsWith('manifest') ? 'public, max-age=86400' : 'no-cache' });
         return res.end(await readFile(new URL(`../frontend/${name}`, import.meta.url)));
       }
       if (req.method === 'GET' && path === '/api/health') return send(200, { ok: true, version: env.VERCEL_DEPLOYMENT_ID || env.VERCEL_URL || 'local' });
