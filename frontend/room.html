@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#c42d61">
-  <meta name="description" content="A room of your own to escape into: name a few things you love and step inside a room made from them, with its own music.">
+  <meta name="description" content="A meditation spot made from what you love: a quiet place to breathe, ease anxiety and clear your head, with its own music.">
   <meta name="color-scheme" content="light dark">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,14 +34,14 @@
     <div id="intro">
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">A room of your own to escape into</p>
-          <h1>Your taste, as a room you can <span class="accent">walk into</span>.</h1>
-          <p class="sub">Name a few things you love. Qloo reads the taste, designs a room around it, paints it and plays the music. Then you step inside and get away for a while.</p>
+          <p class="eyebrow">A meditation spot, made from what you love</p>
+          <h1>A quiet place to <span class="accent">clear your head</span>.</h1>
+          <p class="sub">When your mind is busy, step somewhere that feels like yours. Name a few things you love: Qloo reads your taste and builds a peaceful spot from their world, paints it and plays the music. Then you step inside, breathe slowly and let your thoughts settle.</p>
           <form id="ask" class="ask">
             <label for="text">What do you love?</label>
             <div class="field">
               <input id="text" maxlength="600" autocomplete="off" placeholder="Khruangbin, Wong Kar-wai, Murakami, Aesop" aria-describedby="text-help">
-              <button class="btn" id="go">Build my room</button>
+              <button class="btn" id="go">Find my spot</button>
             </div>
             <p class="help" id="text-help">Bands, films, books, brands or places, separated by commas.</p>
           </form>
@@ -73,7 +73,7 @@
     <div id="build" hidden>
       <section class="result">
         <figure id="hero" class="stage">
-          <img id="hero-img" alt="Your room">
+          <img id="hero-img" alt="Your meditation spot">
           <div id="hero-shimmer" class="skeleton"><div class="painting" role="status" aria-live="polite"><i class="ph ph-hourglass-medium"></i><span id="hero-shimmer-text">Reading your taste…</span></div></div>
         </figure>
         <aside class="panel">
@@ -123,7 +123,7 @@
           <summary><h2>Your taste, according to Qloo</h2><span class="toggle"></span></summary>
           <div id="chart-list" class="taste-cols"></div>
         </details>
-        <button id="again" class="btn quiet again">Build another room</button>
+        <button id="again" class="btn quiet again">Find another spot</button>
       </div>
     </div>
   </main>

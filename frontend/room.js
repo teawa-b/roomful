@@ -44,7 +44,7 @@ async function build(text, demo = null) {
     const stall = new AbortController();
     let watchdog = setTimeout(() => stall.abort(), 50000);
     const res = await fetch('/api/room', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(demo ? { text, demo, pace: new URLSearchParams(location.search).get('pace') } : { text }), signal: stall.signal });
-    if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || 'The room could not start.');
+    if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || 'Your spot could not start.');
     const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
     let buffer = '';
     for (;;) {
@@ -59,7 +59,7 @@ async function build(text, demo = null) {
     }
     clearTimeout(watchdog);
   } catch (error) { failed(error.name === 'AbortError' ? 'The server stopped responding. Try again.' : error.message); }
-  finally { running = false; if (!concept) { $('hero-shimmer').hidden = true; if ($('r-kicker').textContent !== 'Something went wrong') failed('The room stopped before it was finished. Try again.'); } }
+  finally { running = false; if (!concept) { $('hero-shimmer').hidden = true; if ($('r-kicker').textContent !== 'Something went wrong') failed('Your spot stopped before it was finished. Try again.'); } }
 }
 function failed(message) {
   $('r-kicker').textContent = 'Something went wrong'; $('r-name').textContent = 'That didn’t work'; $('r-tag').textContent = message;
@@ -69,7 +69,7 @@ function failed(message) {
 }
 
 function handle(ev, pending) {
-  if (ev.type === 'step') { const li = el('li', 'busy'); li.append(el('span', 'dot'), el('span', '', ev.label)); $('steps').append(li); pending.set(ev.id, li); $('r-kicker').textContent = ev.label; $('hero-shimmer-text').textContent = ev.id === 'paint' ? 'Painting your room. About 30 seconds…' : 'Reading your taste…'; }
+  if (ev.type === 'step') { const li = el('li', 'busy'); li.append(el('span', 'dot'), el('span', '', ev.label)); $('steps').append(li); pending.set(ev.id, li); $('r-kicker').textContent = ev.label; $('hero-shimmer-text').textContent = ev.id === 'paint' ? 'Painting your spot. Breathe in slowly… about 30 seconds.' : 'Reading your taste…'; }
   else if (ev.type === 'step_done') { const li = pending.get(ev.id); if (li) { li.className = 'done'; if (ev.summary) li.append(el('small', '', ev.summary)); } }
   else if (ev.type === 'step_error') { const li = pending.get(ev.id); if (li) { li.className = 'err'; li.append(el('small', '', ev.message)); } }
   else if (ev.type === 'final') show(ev);
@@ -83,7 +83,7 @@ function tags(list) {
 function show(ev) {
   concept = ev.concept; render = ev.render; taste = ev.taste;
   const seeds = taste.seeds.map(s => s.name);
-  $('r-kicker').textContent = `${concept.scripted ? 'Scripted. ' : ''}A room for someone who loves ${seeds.slice(0, 3).join(', ')}${seeds.length > 3 ? ' and more' : ''}`;
+  $('r-kicker').textContent = `${concept.scripted ? 'Scripted. ' : ''}A meditation spot for someone who loves ${seeds.slice(0, 3).join(', ')}${seeds.length > 3 ? ' and more' : ''}`;
   $('r-name').textContent = tidy(concept.name); $('r-tag').textContent = tidy(concept.tagline); $('r-brief').textContent = tidy(concept.brief);
   const cited = [...new Set(concept.design_choices.flatMap(d => d.signals).filter(s => s.grounded).map(s => s.name))].slice(0, 8);
   $('r-chips').replaceChildren(...tags(cited.map(name => ({ name }))));
@@ -152,7 +152,7 @@ function compare(b) {
     li.append(el('span', 'cmp-name', p.name), el('span', 'cmp-kind', p.kind), el('span', 'cmp-verdict', label[p.verdict] + (p.match && p.match !== p.name ? ` (Qloo: ${p.match})` : '')));
     return li;
   }));
-  $('cmp-foot').textContent = `LLM alone: ${b.model}. Everything in the room above came from Qloo's results; anything that didn't is marked unverified.`;
+  $('cmp-foot').textContent = `LLM alone: ${b.model}. Everything in the spot above came from Qloo's results; anything that didn't is marked unverified.`;
 }
 
 // Qloo's ranked lists, plainly: the name and its affinity score, strongest first.
@@ -198,7 +198,7 @@ $('refine').addEventListener('submit', async e => {
   e.preventDefault();
   const instruction = $('refine-input').value.trim(); if (!instruction || !render) return;
   const button = $('refine').querySelector('button'); button.disabled = true; button.textContent = 'Repainting…';
-  $('hero').classList.remove('ready'); $('hero-shimmer').hidden = false; $('hero-shimmer-text').textContent = 'Repainting your room…';
+  $('hero').classList.remove('ready'); $('hero-shimmer').hidden = false; $('hero-shimmer-text').textContent = 'Repainting your spot…';
   try {
     const { render: next } = await api('/api/refine', { renderId: render.id, instruction });
     render = next; const img = $('hero-img'); img.src = safeUrl(next.url);

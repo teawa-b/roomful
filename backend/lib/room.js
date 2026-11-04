@@ -40,13 +40,13 @@ export async function buildRoom({ qloo, llm, imageModel, text, emit, saveRender 
 
   // 2. What Qloo knows about people with these tastes: rooms, playlist, brands, screen and shelf.
   const taste = {};
-  await step('taste', 'Asking Qloo what rooms people with your taste love', async () => {
+  await step('taste', 'Asking Qloo what places people with your taste love', async () => {
     const [decor, ambience, interests] = await Promise.all([qloo.fanTags(ids, placeTagTypes.decor, 10), qloo.fanTags(ids, placeTagTypes.ambience, 10), qloo.fanTags(ids, placeTagTypes.interests, 8)]);
     Object.assign(taste, { decor, ambience, interests });
     [...decor, ...ambience, ...interests].forEach(t => record(t.name, 'tag', { id: t.id, affinity: t.affinity }));
     return { summary: `decor: ${decor.slice(0, 4).map(t => t.name).join(', ')} · mood: ${ambience.slice(0, 3).map(t => t.name).join(', ')}` };
   });
-  await step('culture', 'Building the playlist, the shelf and the screen', async () => {
+  await step('culture', 'Building the playlist and the world around it', async () => {
     const own = new Set(ids);
     const grab = async (type, take) => (await qloo.fanEntities(ids, type, { take })).filter(e => !own.has(e.id));
     const [artist, brand, movie, book] = await Promise.all([grab('artist', 8), grab('brand', 6), grab('movie', 4), grab('book', 4)]);
@@ -67,29 +67,22 @@ export async function buildRoom({ qloo, llm, imageModel, text, emit, saveRender 
   const facts = { favourites: seeds.map(s => s.name), decor: names(taste.decor), ambience: names(taste.ambience), interests: names(taste.interests), playlist: names(taste.artist), brands: names(taste.brand), films: names(taste.movie), books: names(taste.book) };
   let brief = null;
   if (llm) {
-    brief = await step('brief', 'Writing the room', async () => {
+    brief = await step('brief', 'Finding your meditation spot', async () => {
       const session = llm.create({
-        system: 'You are an interior designer who works only from evidence, and no two of your rooms look alike. Reply with JSON only. Write plainly and never use em dashes.',
+        system: 'You design meditation spots: places where one person can sit, breathe and clear their head, each one built from the world of what they love. You work only from evidence, you lean into a theme boldly, and no two of your spots look alike. Reply with JSON only. Write plainly and never use em dashes.',
         tools: [],
-        // The room is always their retreat: a private room for one, somewhere to settle, with light to look at. Its mood
-        // follows the taste (soft and quiet for one person, dark and loud for another), so it never defaults to a spa. What kind
-        // of room, where, its light and palette come from what this person loves, decided before the painting is
-        // described. Left to itself, the model paints one cosy default every time
-        // (walnut, brass, amber lamps, a turntable and a poster), so that look is ruled out unless the taste asks for it.
-        user: `Design a retreat for a person who loves ${facts.favourites.join(', ')}: a private place of their own where they go to switch off and come back with a clear head. Switching off looks different for everyone: for one person it is soft and quiet, for another it is dark, loud and intense. Let the mood come from the taste, not from the idea of a spa. Whatever form it takes, it must be:
-1. a private room for one person, indoors or sheltered (never a bar, club, restaurant, gym, public pool, shop or any kind of venue)
-2. somewhere to settle that this person would actually choose, clearly in view: a bed, a window seat, a gaming chair, a studio chair at a mixing desk, a low leather couch, a car seat, floor cushions
-3. lit by a window or another source of light worth looking at
-4. small enough to feel held, like a room you could walk around in a few steps
-The favourites are the strongest signal: think about the worlds they come from (their places, eras, landscapes, materials, colours, light and textures), not just the things themselves.
-Qloo adds what people with this taste love: rooms tagged ${facts.decor.join(', ')} (decor, from venues they rate) and ${facts.ambience.join(', ')} (mood); interests ${facts.interests.join(', ')}; a playlist leaning ${facts.playlist.join(', ')}; brands ${facts.brands.join(', ')}; films ${facts.films.join(', ')}; books ${facts.books.join(', ')}. Use the tags that fit these favourites and skip the generic ones.
-Make deliberate choices that only this taste would make:
-- what kind of retreat it is and where, whatever this taste suggests: e.g. a bedroom in a Tokyo flat, a window seat in a mountain cabin, a home studio booth in red light, a garage with a car under a cover, a rooftop room above a city at night, an attic under the eaves, a sunroom full of plants, a concrete loft with a sound system, a reading nook, a teenage bedroom, a houseboat cabin
-- its architecture and the place to settle
-- the time of day and the light: morning sun, noon glare, overcast daylight, golden hour, blue hour, neon at night, candlelight and so on
-- a palette of two or three colours that this taste suggests
-Avoid the default cosy look (warm amber lamplight, walnut sideboards, brass, velvet, a turntable with vinyl, a framed poster) unless these favourites specifically point there. Objects should come from the favourites and Qloo's lists, not stand in for them.
-Reply as JSON: {"space": "what kind of retreat, in a few words", "setting": "where it is and its architecture, one line", "light": "time of day and light, one line", "palette": "two or three colours", "name": "a two or three word room name", "tagline": "one line", "brief": "two sentences on how the room feels and what you do in it", "image_prompt": "60-100 words for a photoreal interior photograph of this room at eye level, with the place to settle in view, built from the space, setting, light and palette above: name the materials, furniture and two or three objects that come straight from the tastes above. Positive phrasing, no readable text or signs, no people.", "design_choices": [4-6 of {"element": "Space|Lighting|Seating|Materials|Walls|Objects|Soundtrack|Screen|Shelf", "choice": "one sentence", "signals": ["exact Qloo names from the lists above, or the favourites"]}], "first_track": "one artist from the playlist to play first"}`
+        // A meditation spot from the world the favourites come from, indoors or out. The model names that world, sketches
+        // three very different spots and picks the most specific, because left to itself it settles on one generic
+        // answer (a small room, a chair by a window, warm lamps, walnut, a turntable) whatever the taste. Nothing here
+        // asks for furniture or a room, so the theme decides what the place is.
+        user: `Design a meditation spot for a person who loves ${facts.favourites.join(', ')}: a place they can go when their head is full, to breathe, let anxiety settle and come back clearer.
+First find the world these favourites come from: where they live and what they look and feel like (landscapes, cities, eras, weather, materials, colours, textures, light, sounds and their most recognisable imagery). Build the spot from that world, so someone who knows these favourites would recognise it at once. Be bold with the theme; a vague or generic place is a failure.
+The spot can be anywhere, indoors or out, real or a little dreamlike: a mossy forest clearing, a temple garden in rain, a rooftop at dawn, a tide pool, a greenhouse, a desert at dusk, a snowed-in cabin, an empty stage after the show, a floating island, a night train carriage, a lighthouse, a field of flowers. A room is fine only when these favourites point to one.
+Calm does not mean generic or soft. It means a quiet moment inside their world: for a hard rap fan, an empty rooftop court above the city at dawn; for a gamer, a blocky floating island at sunrise; for a horror fan, a misty graveyard garden at first light.
+Keep only these rules: it is for one person, peaceful enough to sit and breathe in, with no crowds, and with somewhere natural to sit (a step, a rock, a cushion, a jetty, the floor is enough; it needs no furniture).
+Qloo adds what people with this taste love: places tagged ${facts.decor.join(', ')} (decor, from venues they rate) and ${facts.ambience.join(', ')} (mood); interests ${facts.interests.join(', ')}; a playlist leaning ${facts.playlist.join(', ')}; brands ${facts.brands.join(', ')}; films ${facts.films.join(', ')}; books ${facts.books.join(', ')}. Use what fits these favourites and ignore venue tags that pull toward bars, restaurants or lounges.
+Avoid the defaults every spot drifts toward: a chair or armchair by a window, a small room with a bed or sofa, warm amber lamps, walnut, brass, velvet, a turntable with vinyl, a framed poster.
+Reply as JSON: {"world": "one line: the world these favourites share", "ideas": ["three very different spots this world suggests, a few words each"], "spot": "the idea most specific to these favourites, in a few words", "setting": "where it is, one line", "light": "time of day, weather and light, one line", "palette": "two or three colours", "name": "a two or three word name for the spot", "tagline": "one line", "brief": "two sentences on how the spot feels and how it helps them breathe and let go", "image_prompt": "60-100 words for a photoreal wide photograph of this spot at eye level, as if about to step into it: lead with the place itself, its setting, weather and light, then textures, nature and two or three details straight from the favourites. Positive phrasing, no readable text or signs, no people.", "design_choices": [4-6 of {"element": "Place|Light|Sound|Nature|Materials|Details|Palette|View", "choice": "one sentence", "signals": ["exact Qloo names from the lists above, or the favourites"]}], "first_track": "one artist from the playlist to play first"}`
       });
       const { text: out } = await session.next();
       const json = JSON.parse(out.slice(out.indexOf('{'), out.lastIndexOf('}') + 1));
@@ -102,8 +95,8 @@ Reply as JSON: {"space": "what kind of retreat, in a few words", "setting": "whe
     // Scripted fallback: a template over the strongest signals.
     const d = facts.decor.slice(0, 2), m = facts.ambience.slice(0, 2);
     brief = {
-      name: `${m[0] || 'Quiet'} room`, tagline: `A room shaped by ${facts.favourites.slice(0, 2).join(' and ')}.`, brief: `Built around ${d.join(' and ').toLowerCase() || 'warm natural'} finishes with a ${m.join(', ').toLowerCase() || 'calm'} mood.`,
-      image_prompt: `Photorealistic interior photograph, eye level, of a small private room of their own with a place to sit by a window, with ${d.join(' and ').toLowerCase() || 'warm wood'} finishes, ${m.join(', ').toLowerCase() || 'calm'} mood, soft lamplight, a record player and shelves of books and vinyl, a framed poster without readable text, a worn leather armchair, plants by the window. No people, no readable text.`,
+      name: `${m[0] || 'Quiet'} spot`, tagline: `A place to breathe, shaped by ${facts.favourites.slice(0, 2).join(' and ')}.`, brief: `Built around ${d.join(' and ').toLowerCase() || 'warm natural'} finishes with a ${m.join(', ').toLowerCase() || 'calm'} mood.`,
+      image_prompt: `Photorealistic wide photograph, eye level, of a quiet meditation spot shaped by ${facts.favourites.slice(0, 3).join(', ')}, with ${d.join(' and ').toLowerCase() || 'natural'} textures and a ${m.join(', ').toLowerCase() || 'peaceful'} mood, soft natural light, a cushion on the ground to sit and breathe, plants and open sky. No people, no readable text.`,
       design_choices: [d.length && { element: 'Materials', choice: `Finishes around ${d.join(' and ')}.`, signals: d.map(n => ({ name: n, grounded: true })) }, m.length && { element: 'Lighting', choice: `Lit for a ${m.join(' / ').toLowerCase()} mood.`, signals: m.map(n => ({ name: n, grounded: true })) }, facts.playlist.length && { element: 'Soundtrack', choice: `Starts with ${facts.playlist.slice(0, 3).join(', ')}.`, signals: facts.playlist.slice(0, 3).map(n => ({ name: n, grounded: true })) }].filter(Boolean),
       first_track: facts.playlist[0] || '', scripted: true
     };
@@ -133,7 +126,7 @@ Reply as JSON: {"space": "what kind of retreat, in a few words", "setting": "whe
     return { data: { model: session.model, picks: checks, counts, total: checks.length }, summary: `${counts.ranked} of ${checks.length} picks hold up for this taste` };
   }) : null;
   if (imageModel?.generate) {
-    render = await step('paint', 'Painting the room', async () => {
+    render = await step('paint', 'Painting your spot', async () => {
       const result = await imageModel.generate({ prompt: brief.image_prompt });
       const saved = await saveRender({ ...result, prompt: brief.image_prompt, aspect: '3:2', signals: brief.design_choices.flatMap(d => d.signals.map(s => s.name)) });
       return { data: saved, summary: result.model };
