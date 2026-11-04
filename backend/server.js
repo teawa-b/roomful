@@ -19,7 +19,7 @@ const files = {
   '/walk': ['walk.html', 'text/html'], '/walk.js': ['walk.js', 'text/javascript'],
   '/live': ['live.html', 'text/html'], '/live.js': ['live.js', 'text/javascript'],
   '/style.css': ['style.css', 'text/css'], '/favicon.svg': ['favicon.svg', 'image/svg+xml'],
-  '/sound.js': ['sound.js', 'text/javascript'], '/fresh.js': ['fresh.js', 'text/javascript']
+  '/sound.js': ['sound.js', 'text/javascript'], '/music.js': ['music.js', 'text/javascript'], '/music.css': ['music.css', 'text/css'], '/fresh.js': ['fresh.js', 'text/javascript']
 };
 const cdn = 'https://cdn.jsdelivr.net';
 // The walk's import map is inline, so it is allowed by its hash rather than 'unsafe-inline'.
@@ -31,8 +31,8 @@ const csp = {
   home: `default-src 'self'; img-src 'self' https: data: blob:; style-src 'self' ${cdn} https://fonts.googleapis.com; font-src https://fonts.gstatic.com ${cdn}; script-src 'self' ${cdn}; frame-src https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self' blob: ${cdn}; base-uri 'none'; frame-ancestors 'none'`,
   // The live walkthrough plays a WebRTC stream; media flows peer-to-peer, signalling goes through this server.
   // The World Labs walk draws Gaussian splats with Spark, which runs WebAssembly in workers.
-  walk: `default-src 'self'; img-src 'self' https: data: blob:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' ${cdn} 'sha256-${importMapHash}' 'wasm-unsafe-eval'; worker-src 'self' blob:; connect-src 'self' ${cdn} data: blob:; base-uri 'none'; frame-ancestors 'none'`,
-  live: "default-src 'self'; img-src 'self' https: data: blob:; media-src 'self' blob:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'"
+  walk: `default-src 'self'; img-src 'self' https: data: blob:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' ${cdn} 'sha256-${importMapHash}' 'wasm-unsafe-eval'; worker-src 'self' blob:; frame-src https://www.youtube-nocookie.com; connect-src 'self' ${cdn} data: blob:; base-uri 'none'; frame-ancestors 'none'`,
+  live: "default-src 'self'; img-src 'self' https: data: blob:; media-src 'self' blob:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'"
 };
 
 // Bounded in-memory stores. A single instance is enough for a demo; restarts clear them.

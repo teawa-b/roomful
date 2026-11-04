@@ -1,4 +1,6 @@
+import { startMusic } from '/music.js';
 const $ = id => document.getElementById(id);
+startMusic();
 const params = new URLSearchParams(location.search);
 const renderId = params.get('render');
 const concept = { name: params.get('name') || '', tagline: params.get('tagline') || '' };

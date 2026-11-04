@@ -4,6 +4,8 @@
 // so a reload or a shared link picks up the same world instead of building another.
 import * as THREE from 'three';
 import { SparkRenderer, SplatMesh } from '@sparkjsdev/spark';
+import { startMusic } from '/music.js';
+startMusic();
 
 const $ = id => document.getElementById(id);
 const params = new URLSearchParams(location.search);
@@ -90,7 +92,8 @@ async function load() {
     const renderId = params.get('render');
     if (!renderId) return fail('No room to step into yet.');
     ({ worldId } = await api('/api/world', { renderId, name }));
-    history.replaceState(null, '', `/walk?${new URLSearchParams({ id: worldId, name })}`);
+    const keep = Object.fromEntries(['music', 'at', 'yt'].filter(k => params.has(k)).map(k => [k, params.get(k)]));
+    history.replaceState(null, '', `/walk?${new URLSearchParams({ id: worldId, name, ...keep })}`);
   }
   const world = await api(`/api/world/${encodeURIComponent(worldId)}`);
   if (!world.done) {

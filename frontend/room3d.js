@@ -4,6 +4,8 @@
 //   round in it. ?room=<name>-depth is one of these saved with the site.
 // - ?room=<name>: a Hunyuan World mesh (scripts/world-to-glb.js), 360 degrees with baked colours.
 // jsDelivr's +esm builds rewrite the loader's bare "three" import to the same URL, so both share one copy.
+import { startMusic } from '/music.js';
+startMusic();
 const THREE = await import('https://cdn.jsdelivr.net/npm/three@0.180.0/+esm');
 const { GLTFLoader } = await import('https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/GLTFLoader.js/+esm');
 const $ = id => document.getElementById(id);

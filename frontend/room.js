@@ -5,7 +5,7 @@ const $ = id => document.getElementById(id);
 const tidy = v => typeof v === 'string' ? v.replace(/(\d)\s*–\s*(\d)/g, '$1-$2').replace(/\s*[—–]\s*/g, ', ') : v;
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = tidy(text); return n; };
 const safeUrl = v => { try { const u = new URL(v, location.origin); return ['https:', 'http:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
-let config = {}, render = null, concept = null, taste = null, running = false;
+let config = {}, render = null, concept = null, taste = null, running = false, playing = null;
 
 function toast(text, ms = 4000) { $('toast').textContent = text; $('toast').hidden = !text; clearTimeout(toast.t); if (text) toast.t = setTimeout(() => { $('toast').hidden = true; }, ms); }
 keepFresh(() => running || $('intro').hidden, toast);
@@ -135,7 +135,8 @@ async function play(name) {
   try {
     const { id } = await api(`/api/yt?q=${encodeURIComponent(`${name} official audio`)}`);
     if (!/^[A-Za-z0-9_-]{11}$/.test(id)) throw new Error('Bad video id.');
-    const f = el('iframe'); f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    playing = { name, id };
+    const f = el('iframe'); f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&enablejsapi=1&origin=${encodeURIComponent(location.origin)}`;
     f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.referrerPolicy = 'strict-origin-when-cross-origin'; f.title = `${name} on YouTube`;
     $('yt').replaceChildren(f);
   } catch (error) { $('yt').replaceChildren(el('p', 'yt-status', `Couldn't load ${name}. ${error.message}`)); }
@@ -172,16 +173,26 @@ function charts() {
   $('chart-list').replaceChildren(...list); $('r-charts').hidden = !list.length;
 }
 
+// The song carries into the 3D page (see music.js), and pauses here so it doesn't play twice.
+function soundtrack() {
+  const artists = (taste?.artist || []).slice(0, 8).map(a => a.name);
+  if (!artists.length) return {};
+  const name = playing?.name.replace(/ official audio$/, '');
+  const at = Math.max(0, artists.indexOf(name));
+  $('yt').querySelector('iframe')?.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }), 'https://www.youtube-nocookie.com');
+  return { music: artists.join('|'), at: String(at), ...(playing?.id && artists[at] === name ? { yt: playing.id } : {}) };
+}
 $('walk').addEventListener('click', () => {
   if (!render) return;
+  const music = soundtrack();
   if (config.liveWorld) {
     // The painting's own link too, so any server instance can start the walk (see /api/live/start).
-    const q = new URLSearchParams({ render: render.id, name: concept.name, tagline: concept.tagline, ...(/^https:/.test(render.url) ? { img: render.url } : {}) });
+    const q = new URLSearchParams({ render: render.id, name: concept.name, tagline: concept.tagline, ...(/^https:/.test(render.url) ? { img: render.url } : {}), ...music });
     return window.open(`/live?${q}`, '_blank', 'noopener');
   }
-  if (config.world) return window.open(`/walk?${new URLSearchParams({ render: render.id, name: concept.name })}`, '_blank', 'noopener');
-  if (world) return window.open(`/room3d?${new URLSearchParams({ room: world, name: concept.name })}`, '_blank', 'noopener');
-  window.open(`/room3d?${new URLSearchParams({ img: render.url, name: concept.name })}`, '_blank', 'noopener');
+  if (config.world) return window.open(`/walk?${new URLSearchParams({ render: render.id, name: concept.name, ...music })}`, '_blank', 'noopener');
+  if (world) return window.open(`/room3d?${new URLSearchParams({ room: world, name: concept.name, ...music })}`, '_blank', 'noopener');
+  window.open(`/room3d?${new URLSearchParams({ img: render.url, name: concept.name, ...music })}`, '_blank', 'noopener');
 });
 $('refine').addEventListener('submit', async e => {
   e.preventDefault();

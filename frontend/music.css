@@ -1,0 +1,16 @@
+/* The music player on the 3D pages: a dark glass pill under the header, with the mute button always in view. */
+.music { position: fixed; top: 72px; right: 16px; z-index: 20; display: flex; align-items: center; gap: 10px; max-width: min(340px, calc(100vw - 32px)); padding: 6px 6px 6px 6px; border-radius: 16px; background: rgba(18, 12, 16, .72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, .12); color: #f6ece4; font: 500 13px/1.3 'Geist', system-ui, sans-serif; }
+.music-video { flex: none; width: 80px; height: 45px; border: 0; border-radius: 10px; background: #000; }
+.music-meta { flex: 1; min-width: 0; display: grid; }
+.music-meta span { font-size: 11px; color: rgba(246, 236, 228, .6); }
+.music-meta b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.music-btn { flex: none; width: 40px; height: 40px; display: grid; place-items: center; border: 0; border-radius: 12px; background: rgba(255, 255, 255, .1); color: inherit; cursor: pointer; transition: background .15s, transform .1s; }
+.music-btn:hover { background: rgba(255, 255, 255, .18); }
+.music-btn:active { transform: scale(.94); }
+.music-btn:focus-visible { outline: 2px solid #ef5c8c; outline-offset: 2px; }
+.music-btn svg { width: 20px; height: 20px; }
+.music-mute { background: #ef5c8c; color: #1d1218; }
+.music-mute:hover { background: #f27aa1; }
+.music.muted .music-mute { background: rgba(255, 255, 255, .1); color: inherit; }
+.music.muted .music-meta b { opacity: .6; }
+@media (max-width: 480px) { .music { top: 66px; right: 12px; max-width: calc(100vw - 24px); } .music-video { width: 64px; height: 36px; } }
