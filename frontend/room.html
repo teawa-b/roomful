@@ -103,10 +103,16 @@
       <ol id="steps" class="steps" aria-label="Progress"></ol>
 
       <div id="r-body" hidden>
-        <section class="brief">
-          <h2>The brief</h2>
-          <p id="r-brief" class="brief-text"></p>
+        <section class="summary" aria-labelledby="summary-title">
+          <h2 id="summary-title" class="sr-only">In short</h2>
+          <p id="r-summary" class="summary-text"></p>
           <div id="r-chips" class="tags"></div>
+          <button id="more" type="button" class="more" aria-expanded="false" aria-controls="r-more">Read more</button>
+        </section>
+        <div id="r-more" class="more-body" hidden>
+        <section class="brief">
+          <h2>The idea</h2>
+          <p id="r-brief" class="brief-text"></p>
         </section>
         <section class="choices-section">
           <h2>Every choice, and the taste behind it</h2>
@@ -123,6 +129,7 @@
           <summary><h2>Your taste, according to Qloo</h2><span class="toggle"></span></summary>
           <div id="chart-list" class="taste-cols"></div>
         </details>
+        </div>
         <button id="again" class="btn quiet again">Find another spot</button>
       </div>
     </div>

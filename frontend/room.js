@@ -20,6 +20,11 @@ async function api(path, body) {
 document.querySelectorAll('[data-ex]').forEach(b => b.addEventListener('click', () => { $('text').value = b.dataset.ex; build(b.dataset.ex, b.dataset.demo); }));
 $('ask').addEventListener('submit', e => { e.preventDefault(); const t = $('text').value.trim(); if (!t) { toast('Name a few things you love first.'); $('text').focus(); return; } build(t); });
 $('again').addEventListener('click', () => { $('build').hidden = true; $('intro').hidden = false; scrollTo({ top: 0, behavior: 'smooth' }); $('text').focus(); });
+$('more').addEventListener('click', () => {
+  const open = $('r-more').hidden;
+  $('r-more').hidden = !open; $('more').setAttribute('aria-expanded', String(open)); $('more').textContent = open ? 'Show less' : 'Read more';
+  if (open) $('r-more').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
 $('change').addEventListener('click', () => { $('refine').hidden = !$('refine').hidden; if (!$('refine').hidden) $('refine-input').focus(); });
 
 // Walking inside works as it does in Openhere: fal's real-time world model (Lingbot World 2, /live) first; a World
@@ -85,7 +90,11 @@ function show(ev) {
   const seeds = taste.seeds.map(s => s.name);
   $('r-kicker').textContent = `${concept.scripted ? 'Scripted. ' : ''}A meditation spot for someone who loves ${seeds.slice(0, 3).join(', ')}${seeds.length > 3 ? ' and more' : ''}`;
   $('r-name').textContent = tidy(concept.name); $('r-tag').textContent = tidy(concept.tagline); $('r-brief').textContent = tidy(concept.brief);
-  const cited = [...new Set(concept.design_choices.flatMap(d => d.signals).filter(s => s.grounded).map(s => s.name))].slice(0, 8);
+  // In short: the brief's first sentence and a handful of the taste behind it; the rest waits behind Read more.
+  const brief = tidy(concept.brief || '');
+  $('r-summary').textContent = (brief.match(/^.+?[.!?](?=\s|$)/) || [brief])[0];
+  $('r-more').hidden = true; $('more').setAttribute('aria-expanded', 'false'); $('more').textContent = 'Read more';
+  const cited = [...new Set(concept.design_choices.flatMap(d => d.signals).filter(s => s.grounded).map(s => s.name))].slice(0, 5);
   $('r-chips').replaceChildren(...tags(cited.map(name => ({ name }))));
   // Six-column grid: the first two choices take half a row each, the rest a third, and the last row always
   // fills the width (one leftover spans the row, two leftovers split it), so there is never an empty cell.

@@ -112,12 +112,16 @@ export async function gptImageEdit({ key, image, prompt, fast = false, quality, 
   const data = await fetchJson(fetcher, `https://fal.run/${model}`, {
     method: 'POST',
     headers: { authorization: `Key ${key}`, 'content-type': 'application/json' },
-    body: JSON.stringify({ prompt, image_urls: [await falImageInput(image, fetcher)], quality: quality || (fast ? 'low' : 'medium'), image_size: 'auto', output_format: 'jpeg' })
+    body: JSON.stringify({ prompt: `${prompt}\n${photoLook}`, image_urls: [await falImageInput(image, fetcher)], quality: quality || (fast ? 'low' : 'medium'), image_size: 'auto', output_format: 'jpeg' })
   }, { label: 'GPT Image edit', secrets: [key], timeout: 180000 });
   const url = data.images?.[0]?.url;
   if (!url) throw new UpstreamError('The image model returned no image.');
   return { url, type: 'image/jpeg', model: model.replace(/^openai\//, '').replace(/\/edit$/, '') };
 }
+
+// GPT Image leans warm: left alone it gives every picture a yellow, sepia, slightly grainy cast. Every painting and
+// repaint asks for a clean digital photograph with neutral white balance instead.
+export const photoLook = 'Shot on a modern full-frame digital camera: crisp and clean, neutral white balance with true-to-life colours, natural contrast and clear whites. No film grain or noise, no sepia, yellow or orange colour cast, no haze, no vintage filter.';
 
 // Text to image, for rooms that exist only as a taste profile (no photo to edit): GPT Image 2.5 Flare on fal.
 // image_size takes fal's presets (landscape_4_3, landscape_16_9, square_hd…) or { width, height }.
@@ -125,7 +129,7 @@ export async function gptImageGenerate({ key, prompt, size = 'landscape_4_3', qu
   const data = await fetchJson(fetcher, `https://fal.run/${model}`, {
     method: 'POST',
     headers: { authorization: `Key ${key}`, 'content-type': 'application/json' },
-    body: JSON.stringify({ prompt, image_size: size, quality, num_images: 1, output_format: 'jpeg' })
+    body: JSON.stringify({ prompt: `${prompt}\n${photoLook}`, image_size: size, quality, num_images: 1, output_format: 'jpeg' })
   }, { label: 'GPT Image', secrets: [key], timeout: 180000 });
   const url = data.images?.[0]?.url;
   if (!url) throw new UpstreamError('The image model returned no image.');
