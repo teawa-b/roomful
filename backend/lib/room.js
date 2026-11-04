@@ -69,10 +69,21 @@ export async function buildRoom({ qloo, llm, imageModel, text, emit, saveRender 
   if (llm) {
     brief = await step('brief', 'Writing the room', async () => {
       const session = llm.create({
-        system: 'You are an interior designer who works only from evidence. Reply with JSON only. Write plainly and never use em dashes.',
+        system: 'You are an interior designer who works only from evidence, and no two of your rooms look alike. Reply with JSON only. Write plainly and never use em dashes.',
         tools: [],
-        user: `Design one private room for a person who loves ${facts.favourites.join(', ')}. Qloo says people with this taste rate rooms tagged ${facts.decor.join(', ')} (decor) and ${facts.ambience.join(', ')} (mood); their interests include ${facts.interests.join(', ')}; their playlist leans ${facts.playlist.join(', ')}; brands they love: ${facts.brands.join(', ')}; films: ${facts.films.join(', ')}; books: ${facts.books.join(', ')}.
-Reply as JSON: {"name": "a two or three word room name", "tagline": "one line", "brief": "two sentences on how the room feels and what you do in it", "image_prompt": "60-100 words for a photoreal interior photograph of this room at eye level: name the materials, colours, lighting, furniture and two or three objects that come straight from the tastes above (a record player, a film poster without readable text, a brand's product). Positive phrasing, no readable text or signs, no people.", "design_choices": [4-6 of {"element": "Lighting|Seating|Materials|Walls|Objects|Soundtrack|Screen|Shelf", "choice": "one sentence", "signals": ["exact Qloo names from the lists above"]}], "first_track": "one artist from the playlist to play first"}`
+        // Each room commits to its own kind of space, light and palette before the painting is described, drawn from
+        // what this person loves. Left to itself, the model paints one cosy default every time (an evening lounge,
+        // walnut, brass, amber lamps, a turntable and a poster), so that look is ruled out unless the taste asks for it.
+        user: `Design one room for a person who loves ${facts.favourites.join(', ')}. It is a room to escape into for a while and come back with a clear head.
+The favourites are the strongest signal: think about the worlds they come from (their places, eras, landscapes, materials, colours, light and textures), not just the things themselves.
+Qloo adds what people with this taste love: rooms tagged ${facts.decor.join(', ')} (decor, from venues they rate) and ${facts.ambience.join(', ')} (mood); interests ${facts.interests.join(', ')}; a playlist leaning ${facts.playlist.join(', ')}; brands ${facts.brands.join(', ')}; films ${facts.films.join(', ')}; books ${facts.books.join(', ')}. Use the tags that fit these favourites and skip the generic ones.
+Make deliberate choices that only this taste would make:
+- the kind of space: any room anywhere, e.g. a sunlit studio, an attic, a greenhouse, a rooftop, a bathhouse, a workshop, a reading nook, a garage, a cabin, a kitchen, a corridor, a courtyard, a concrete loft, a tiled pool room (not a lounge by default)
+- where it is and its architecture
+- the time of day and the light: morning sun, noon glare, overcast daylight, golden hour, blue hour, neon at night, candlelight and so on
+- a palette of two or three colours that this taste suggests
+Avoid the default cosy look (warm amber lamplight, walnut sideboards, brass, velvet, a turntable with vinyl, a framed poster) unless these favourites specifically point there. Objects should come from the favourites and Qloo's lists, not stand in for them.
+Reply as JSON: {"space": "the kind of room, in a few words", "setting": "where it is and its architecture, one line", "light": "time of day and light, one line", "palette": "two or three colours", "name": "a two or three word room name", "tagline": "one line", "brief": "two sentences on how the room feels and what you do in it", "image_prompt": "60-100 words for a photoreal interior photograph of this room at eye level, built from the space, setting, light and palette above: name the materials, furniture and two or three objects that come straight from the tastes above. Positive phrasing, no readable text or signs, no people.", "design_choices": [4-6 of {"element": "Space|Lighting|Seating|Materials|Walls|Objects|Soundtrack|Screen|Shelf", "choice": "one sentence", "signals": ["exact Qloo names from the lists above, or the favourites"]}], "first_track": "one artist from the playlist to play first"}`
       });
       const { text: out } = await session.next();
       const json = JSON.parse(out.slice(out.indexOf('{'), out.lastIndexOf('}') + 1));
