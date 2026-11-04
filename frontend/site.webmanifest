@@ -1,7 +1,7 @@
 {
   "name": "Roomful",
   "short_name": "Roomful",
-  "description": "A meditation: a calm room made from what you love, to step into and clear your head.",
+  "description": "A room of your own to escape into, made from what you love.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#121214",
