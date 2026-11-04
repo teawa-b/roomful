@@ -22,9 +22,9 @@ $('ask').addEventListener('submit', e => { e.preventDefault(); const t = $('text
 $('again').addEventListener('click', () => { $('build').hidden = true; $('intro').hidden = false; scrollTo({ top: 0, behavior: 'smooth' }); $('text').focus(); });
 $('change').addEventListener('click', () => { $('refine').hidden = !$('refine').hidden; if (!$('refine').hidden) $('refine-input').focus(); });
 
-// Every room can be walked in 3D. With a World Labs key, the painting becomes a Marble world (/walk, about five
-// minutes). Without one, the viewer lifts the painting into 3D on the spot (fal's MoGe-2), and this example's 3D
-// room ships with the site, so it opens instantly.
+// Walking inside works as it does in Openhere: fal's real-time world model (Lingbot World 2, /live) first; a World
+// Labs Marble world (/walk) without it; otherwise the painting lifted into 3D on the spot (fal's MoGe-2), where this
+// example's 3D room ships with the site, so it opens instantly.
 const worlds = { rain: 'room-rain-depth' };
 let world = null;
 
@@ -101,11 +101,11 @@ function show(ev) {
   if (render?.url) {
     const img = $('hero-img'); img.src = safeUrl(render.url);
     img.decode().catch(() => {}).finally(() => { $('hero').classList.add('ready'); $('hero-shimmer').hidden = true; chime(); });
-    const walkable = config.world || world || config.room3d || config.liveWorld;
+    const walkable = config.liveWorld || config.world || world || config.room3d;
     if (walkable) actions.push($('walk'));
     actions.push($('change'));
     $('walk').hidden = !walkable;
-    $('walk').textContent = config.world || world || config.room3d ? 'Walk inside in 3D' : 'Walk inside';
+    $('walk').textContent = config.liveWorld ? 'Walk inside' : 'Walk inside in 3D';
   } else {
     $('hero-shimmer').hidden = true;
     $('hero').classList.add('ready');
@@ -174,11 +174,14 @@ function charts() {
 
 $('walk').addEventListener('click', () => {
   if (!render) return;
+  if (config.liveWorld) {
+    // The painting's own link too, so any server instance can start the walk (see /api/live/start).
+    const q = new URLSearchParams({ render: render.id, name: concept.name, tagline: concept.tagline, ...(/^https:/.test(render.url) ? { img: render.url } : {}) });
+    return window.open(`/live?${q}`, '_blank', 'noopener');
+  }
   if (config.world) return window.open(`/walk?${new URLSearchParams({ render: render.id, name: concept.name })}`, '_blank', 'noopener');
   if (world) return window.open(`/room3d?${new URLSearchParams({ room: world, name: concept.name })}`, '_blank', 'noopener');
-  if (config.room3d) return window.open(`/room3d?${new URLSearchParams({ img: render.url, name: concept.name })}`, '_blank', 'noopener');
-  const q = new URLSearchParams({ render: render.id, name: concept.name, tagline: concept.tagline });
-  window.open(`/live?${q}`, '_blank', 'noopener');
+  window.open(`/room3d?${new URLSearchParams({ img: render.url, name: concept.name })}`, '_blank', 'noopener');
 });
 $('refine').addEventListener('submit', async e => {
   e.preventDefault();

@@ -14,7 +14,7 @@
 2. Look at the room: the painting, the name, and the first track playing from the room's Qloo playlist.
 3. Scroll to **Every choice, and the taste behind it**: each design choice names the Qloo result behind it. Anything Qloo did not return is marked unverified.
 4. Read **With and without Qloo**: the same favourites given to an LLM alone, each of its picks checked against Qloo.
-5. Click **Walk inside in 3D**. With a World Labs key, Roomful turns the painting into a Marble world (Gaussian splats, drawn in the browser with Spark), the same world model Openhere uses. It takes about five minutes; the page shows progress and opens the world by itself. Walk in with W, A, S and D, look with the arrow keys or by dragging, use the on-screen buttons on a phone, or press Enter VR on a headset. Without a World Labs key, it falls back to fal: Luma Photon Reframe paints the room out to 21:9 and MoGe-2 lifts it into 3D in about 30 seconds.
+5. Click **Walk inside**. Just like Openhere, Roomful opens the painting in fal's real-time world model (Lingbot World 2), streamed live so you can steer through the room. Without it, a World Labs Marble world (Gaussian splats drawn with Spark, about five minutes to build, needs `WORLDLABS_API_KEY`) is used instead. Failing that, Roomful paints the room out to 21:9 (Luma Photon Reframe on fal) and lifts it into 3D (MoGe-2), in about 30 seconds.
 
 ## Try it in 10 seconds
 
@@ -101,8 +101,8 @@ Then open http://localhost:3301. The recorded examples work with no keys at all.
 
 - `QLOO_API_KEY`: Qloo, for the taste behind the room
 - `OPENROUTER_API_KEY`: writes the room from what Qloo returned (Claude Haiku 5.5 by default; `LLM_MODEL` changes it)
-- `FAL_KEY`: paints the room (GPT Image 2.5 Flare), and builds the fallback 3D walk (Luma Reframe and MoGe-2)
-- `WORLDLABS_API_KEY`: builds the 3D walk as a World Labs Marble world (`WORLDLABS_MODEL` changes the model, `marble-1.1` by default; `WORLDS_PER_HOUR` and `WORLDS_PER_DAY` cap it)
+- `FAL_KEY`: paints the room (GPT Image 2.5 Flare) and runs the walk inside (Lingbot World 2, real time; `FAL_WORLD_MODEL` changes it), with Luma Reframe and MoGe-2 for the 3D fallback
+- `WORLDLABS_API_KEY` (optional): when there is no real-time world model, builds the walk as a World Labs Marble world (`WORLDLABS_MODEL` changes the model, `marble-1.1` by default; `WORLDS_PER_HOUR` and `WORLDS_PER_DAY` cap it)
 
 ```bash
 npm test
