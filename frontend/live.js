@@ -17,7 +17,7 @@ const times = {
   afternoon: 'Bright afternoon: strong natural daylight, lively and airy, warm sunlight patches on the floor.',
   golden: 'Golden hour: low warm sunset light streaming in, long shadows, a bedside lamp just turned on.',
   evening: 'Evening: dark blue dusk outside, warm lamp and candle light inside, quiet and glowing.',
-  late: 'Late night: night outside the windows, a single dim lamp by the bed, still and restful.'
+  late: 'Late night: night outside the windows, a single dim lamp by the place to rest, still and restful.'
 };
 
 let pc, channel, liveId, world, heartbeat, busyPrompt = false;
