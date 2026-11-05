@@ -124,9 +124,9 @@ export async function gptImageEdit({ key, image, prompt, fast = false, quality, 
 // spot cold, toward snow and ice.
 export const photoLook = 'Shot on a modern digital camera: crisp and clean, with true-to-life colours that keep the scene\'s own light, warm or cool as the scene calls for. No film grain or noise, no overall yellow or sepia filter, no haze, no vintage look.';
 
-// Text to image, for rooms that exist only as a taste profile (no photo to edit): GPT Image 2.5 Flare on fal.
+// Text to image, for rooms that exist only as a taste profile (no photo to edit): GPT Image 2.6 Flare on fal.
 // image_size takes fal's presets (landscape_4_3, landscape_16_9, square_hd…) or { width, height }.
-export async function gptImageGenerate({ key, prompt, size = 'landscape_4_3', quality = 'medium', fetcher = fetch, model = 'openai/gpt-image-2.5/flare/text-to-image' }) {
+export async function gptImageGenerate({ key, prompt, size = 'landscape_4_3', quality = 'medium', fetcher = fetch, model = 'openai/gpt-image-2.6/flare/text-to-image' }) {
   const data = await fetchJson(fetcher, `https://fal.run/${model}`, {
     method: 'POST',
     headers: { authorization: `Key ${key}`, 'content-type': 'application/json' },
