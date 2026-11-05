@@ -252,7 +252,9 @@ label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
   .hero h1 { font-size: clamp(36px, 10.4vw, 46px); }
   .eyebrow { font-size: 14px; }
   .sub { font-size: 16.5px; max-width: 34ch; }
-  .hero-art { margin: -84px -16px 0; aspect-ratio: 20 / 19; }
+  /* The painting takes whatever height is left, so the whole form card is on screen when the page opens,
+     even with the browser's bars showing (svh). */
+  .hero-art { margin: -84px -16px 0; aspect-ratio: auto; height: clamp(170px, calc(100vh - 404px), 420px); height: clamp(170px, calc(100svh - 404px), 420px); }
   .hero-art img { object-position: 28% 100%; }
   .ask { padding: 18px 16px 16px; border-radius: 24px; margin-top: -44px; }
   .ask label { font-size: 18px; }
