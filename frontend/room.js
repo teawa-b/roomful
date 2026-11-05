@@ -16,9 +16,62 @@ async function api(path, body) {
   return data;
 }
 
+// Likes: each favourite is added on its own (Enter, a comma or the Add button) and shown as a bubble.
+const MAX_LIKES = 12, MAX_TEXT = 600;
+let likes = [];
+const clean = v => String(v).replace(/["“”]/g, '').replace(/\s+/g, ' ').trim().slice(0, 60);
+// The server splits on commas and words like "and", but keeps quoted titles whole, so a like that contains one is quoted.
+const likesText = (list = likes) => list.map(l => /[,;.!?\n]|\s(?:and|also|plus|as well as)\s/i.test(l) ? `"${l}"` : l).join(', ');
+function renderLikes() {
+  $('likes').replaceChildren(...likes.map(like => {
+    const li = el('li', 'like'), x = el('button');
+    li.append(el('span', '', like), x);
+    x.type = 'button'; x.setAttribute('aria-label', `Remove ${like}`); x.innerHTML = '<i class="ph ph-x" aria-hidden="true"></i>';
+    x.addEventListener('click', () => { li.classList.add('out'); setTimeout(() => { removeLike(like); $('text').focus(); }, 180); });
+    return li;
+  }));
+  $('likes').hidden = !likes.length;
+  $('text').placeholder = likes.length >= MAX_LIKES ? 'That’s the most you can add' : likes.length ? 'Add another…' : 'Type one, then press Enter';
+  $('text').disabled = likes.length >= MAX_LIKES;
+}
+function addLikes(raw) {
+  const parts = String(raw).split(/[,\n;]+/).map(clean).filter(Boolean);
+  let added = 0;
+  for (const part of parts) {
+    if (likes.some(l => l.toLowerCase() === part.toLowerCase())) continue;
+    if (likes.length >= MAX_LIKES) { toast(`You can add up to ${MAX_LIKES}.`); break; }
+    if (likesText([...likes, part]).length > MAX_TEXT) { toast('That’s as much as fits. Make your spot, or remove one.'); break; }
+    likes.push(part); added++;
+  }
+  if (added) { renderLikes(); tick(); }
+  return added;
+}
+function removeLike(like) { likes = likes.filter(l => l !== like); renderLikes(); }
+function setLikes(list) { likes = []; addLikes(list.join('\n')); renderLikes(); }
+const showAdd = () => { $('add').hidden = !$('text').value.trim(); };
+function commitTyped() { const v = $('text').value; if (!v.trim()) return false; addLikes(v); $('text').value = ''; showAdd(); return true; }
+$('text').addEventListener('input', () => { if (/[,\n]/.test($('text').value)) commitTyped(); showAdd(); });
+$('text').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.isComposing) {
+    // Enter adds what's typed; with nothing typed and at least one like, it makes the spot.
+    if (commitTyped() || !likes.length) e.preventDefault();
+  } else if (e.key === 'Backspace' && !$('text').value && likes.length) {
+    e.preventDefault(); removeLike(likes[likes.length - 1]);
+  }
+});
+$('text').addEventListener('paste', e => {
+  const t = e.clipboardData?.getData('text') || '';
+  if (/[,\n;]/.test(t)) { e.preventDefault(); addLikes($('text').value + t); $('text').value = ''; showAdd(); }
+});
+$('add').addEventListener('click', () => { commitTyped(); $('text').focus(); });
+
 // An example replays its recorded run instantly; typing your own favourites builds live.
-document.querySelectorAll('[data-ex]').forEach(b => b.addEventListener('click', () => { $('text').value = b.dataset.ex; build(b.dataset.ex, b.dataset.demo); }));
-$('ask').addEventListener('submit', e => { e.preventDefault(); const t = $('text').value.trim(); if (!t) { toast('Name a few things you love first.'); $('text').focus(); return; } build(t); });
+document.querySelectorAll('[data-ex]').forEach(b => b.addEventListener('click', () => { setLikes(b.dataset.ex.split(', ')); build(b.dataset.ex, b.dataset.demo); }));
+$('ask').addEventListener('submit', e => {
+  e.preventDefault(); commitTyped();
+  if (!likes.length) { toast('Add at least one thing you love first.'); $('text').focus(); return; }
+  build(likesText());
+});
 $('again').addEventListener('click', () => { $('build').hidden = true; $('intro').hidden = false; scrollTo({ top: 0, behavior: 'smooth' }); $('text').focus(); });
 $('more').addEventListener('click', () => {
   const open = $('r-more').hidden;
@@ -33,9 +86,9 @@ const surprises = [
   'Erykah Badu, Spike Lee, Toni Morrison, Telfar', 'Brian Eno, Lost in Translation, Kazuo Ishiguro, Byredo'
 ];
 $('surprise').addEventListener('click', () => {
-  const choices = surprises.filter(s => s !== $('text').value);
-  $('text').value = choices[Math.floor(Math.random() * choices.length)];
-  for (const [n, c] of [[$('text'), 'filled'], [$('surprise'), 'spun']]) { n.classList.remove(c); void n.offsetWidth; n.classList.add(c); }
+  const choices = surprises.filter(s => s !== likes.join(', '));
+  $('text').value = ''; showAdd(); setLikes(choices[Math.floor(Math.random() * choices.length)].split(', '));
+  for (const [n, c] of [[$('likes'), 'filled'], [$('surprise'), 'spun']]) { n.classList.remove(c); void n.offsetWidth; n.classList.add(c); }
   $('text').focus(); tick();
 });
 // The menu: a small sheet under the button; Escape, a click outside or a link closes it.
@@ -67,7 +120,7 @@ async function build(text, demo = null) {
   scrollTo({ top: 0 });
   $('steps').replaceChildren(); $('r-body').hidden = true; $('hero-actions').hidden = true; $('refine').hidden = true;
   $('hero-img').removeAttribute('src'); $('hero').classList.remove('ready'); $('hero-shimmer').hidden = false; $('hero-shimmer-text').textContent = 'Reading your taste…';
-  $('r-kicker').textContent = 'Reading your taste'; $('r-name').textContent = text.split(',').slice(0, 3).join(', '); $('r-tag').textContent = '';
+  $('r-kicker').textContent = 'Reading your taste'; $('r-name').textContent = text.replace(/"/g, '').split(',').slice(0, 3).map(t => t.trim()).join(', '); $('r-tag').textContent = '';
   const pending = new Map();
   try {
     const stall = new AbortController();
@@ -253,7 +306,7 @@ try { config = await api('/api/config'); } catch { toast('Could not reach the se
   setTimeout(() => $('splash').remove(), 900);
 }
 const preset = new URLSearchParams(location.search).get('q');
-if (preset) { $('text').value = preset; build(preset); }
+if (preset) { setLikes(preset.split(',')); build(preset); }
 // Deep link to an example, e.g. /?demo=rain
 const linked = new URLSearchParams(location.search).get('demo');
 if (linked) document.querySelector(`[data-demo="${CSS.escape(linked)}"]`)?.click();

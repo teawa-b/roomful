@@ -31,7 +31,7 @@
     <div class="menu">
       <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu-list" aria-label="Menu"><i class="ph ph-list" aria-hidden="true"></i></button>
       <ul class="menu-list" id="menu-list" hidden>
-        <li><a href="/#ask" data-close>Find my spot</a></li>
+        <li><a href="/#ask" data-close>Make my spot</a></li>
         <li><a href="/#presets" data-close>Try an example</a></li>
         <li><a href="https://www.qloo.com" target="_blank" rel="noreferrer">Taste data by Qloo <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></li>
       </ul>
@@ -55,9 +55,13 @@
             <label for="text">What do you love?</label>
             <button type="button" class="surprise" id="surprise"><i class="ph ph-shuffle" aria-hidden="true"></i>Surprise me</button>
           </div>
-          <input id="text" class="ask-input" maxlength="600" autocomplete="off" enterkeyhint="go" placeholder="E.g. Studio Ghibli, Nujabes, Muji…" aria-describedby="text-help">
-          <p class="sr-only" id="text-help">Bands, films, books, brands or places, separated by commas.</p>
-          <button class="btn-go" id="go"><i class="ph-fill ph-sparkle" aria-hidden="true"></i><span>Find my spot</span><i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+          <ul class="likes" id="likes" aria-label="Things you love" aria-live="polite" hidden></ul>
+          <div class="ask-field">
+            <input id="text" class="ask-input" maxlength="60" autocomplete="off" autocapitalize="words" enterkeyhint="enter" placeholder="Type one, then press Enter" aria-describedby="text-help">
+            <button type="button" class="ask-add" id="add" hidden><i class="ph ph-plus" aria-hidden="true"></i>Add</button>
+          </div>
+          <p class="sr-only" id="text-help">Add a band, film, game, book, brand or place, then press Enter. Add as many as you like, up to 12, then make your spot.</p>
+          <button class="btn-go" id="go"><i class="ph-fill ph-sparkle" aria-hidden="true"></i><span>Make my spot</span><i class="ph ph-arrow-right" aria-hidden="true"></i></button>
         </form>
         <ul class="features" aria-label="What you get">
           <li><span class="feature-icon"><i class="ph ph-mountains" aria-hidden="true"></i></span>Your style</li>

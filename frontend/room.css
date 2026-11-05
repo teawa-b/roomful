@@ -99,6 +99,20 @@ label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
 .ask-input:focus { border-color: color-mix(in srgb, var(--accent) 75%, transparent); background: #ffffff0f; box-shadow: 0 0 0 4px var(--accent-soft); }
 .ask-input.filled { animation: fill .6s var(--ease); }
 @keyframes fill { 30% { background: var(--accent-soft); } }
+/* Likes: each favourite becomes a bubble above the field. */
+.likes { list-style: none; margin: 0; padding: 0 2px; display: flex; flex-wrap: wrap; gap: 8px; }
+.like { display: inline-flex; align-items: center; gap: 4px; max-width: 100%; padding: 6px 6px 6px 14px; border-radius: 999px; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); color: var(--text); font-size: 15px; font-weight: 500; animation: like-in .35s var(--ease) both; }
+.like span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.like button { flex: none; width: 24px; height: 24px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 14px; transition: background .2s, color .2s; }
+.like button:hover { background: #ffffff1f; color: var(--text); }
+.like.out { animation: like-out .2s ease both; }
+@keyframes like-in { from { opacity: 0; transform: scale(.85); } }
+@keyframes like-out { to { opacity: 0; transform: scale(.85); } }
+.ask-field { position: relative; }
+.ask-field .ask-input { padding-right: 92px; }
+.ask-add { position: absolute; right: 7px; top: 50%; transform: translateY(-50%); height: 40px; display: inline-flex; align-items: center; gap: 6px; padding: 0 14px; border: 0; border-radius: 999px; background: #ffffff17; color: var(--text); font-size: 15px; font-weight: 600; animation: like-in .25s var(--ease) both; transition: background .2s; }
+.ask-add:hover { background: #ffffff26; }
+.ask-add i { font-size: 16px; color: var(--accent-light); }
 .btn-go { display: grid; grid-template-columns: 24px 1fr 24px; align-items: center; height: 56px; padding: 0 22px; border: 0; border-radius: 999px; color: #fff; font-size: 17px; font-weight: 600; letter-spacing: -.01em; background: linear-gradient(100deg, #f472a8, var(--accent) 45%, var(--accent-2)); box-shadow: 0 16px 36px -14px #f0609ae6, inset 0 1px 0 #ffffff40; transition: transform .3s var(--ease), box-shadow .3s, filter .2s; }
 .btn-go i { font-size: 22px; }
 .btn-go .ph-arrow-right { justify-self: end; transition: transform .3s var(--ease); }
@@ -260,6 +274,7 @@ label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
   .ask label { font-size: 18px; }
   .surprise { font-size: 14.5px; }
   .ask-input, .btn-go { height: 52px; }
+  .ask-add { height: 38px; }
   .features { gap: 8px; padding: 0; } .features li { font-size: 14px; }
   .feature-icon { width: 72px; height: 48px; font-size: 26px; }
   .preset-grid { grid-template-columns: repeat(3, 82%); margin: 0 -16px; padding: 4px 16px 16px; scroll-padding: 0 16px; gap: 12px; }
