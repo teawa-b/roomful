@@ -161,6 +161,8 @@ label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
 .status { margin: 0; font-size: 14px; color: var(--accent); font-weight: 500; }
 .panel h1 { font-size: clamp(32px, 3.2vw, 44px); line-height: 1.05; }
 .tagline { margin: 0; font-size: 17px; color: var(--muted); }
+.why { margin: 2px 0 0; display: flex; gap: 10px; align-items: flex-start; padding: 14px 16px; border-radius: 16px; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); font-size: 15px; line-height: 1.55; color: var(--text); animation: enter .6s var(--ease) both; }
+.why i { flex: none; margin-top: 3px; font-size: 18px; color: var(--accent); }
 .actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
 .demo-note { margin: 0; padding: 10px 14px; border-radius: 12px; background: var(--raised); font-size: 13.5px; color: var(--muted); }
 .refine label { margin-top: 4px; }

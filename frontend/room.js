@@ -120,7 +120,7 @@ async function build(text, demo = null) {
   scrollTo({ top: 0 });
   $('steps').replaceChildren(); $('r-body').hidden = true; $('hero-actions').hidden = true; $('refine').hidden = true;
   $('hero-img').removeAttribute('src'); $('hero').classList.remove('ready'); $('hero-shimmer').hidden = false; $('hero-shimmer-text').textContent = 'Reading your taste…';
-  $('r-kicker').textContent = 'Reading your taste'; $('r-name').textContent = text.replace(/"/g, '').split(',').slice(0, 3).map(t => t.trim()).join(', '); $('r-tag').textContent = '';
+  $('r-why').hidden = true; $('r-kicker').textContent = 'Reading your taste'; $('r-name').textContent = text.replace(/"/g, '').split(',').slice(0, 3).map(t => t.trim()).join(', '); $('r-tag').textContent = '';
   const pending = new Map();
   try {
     const stall = new AbortController();
@@ -166,6 +166,7 @@ function show(ev) {
   concept = ev.concept; render = ev.render; taste = ev.taste;
   const seeds = taste.seeds.map(s => s.name);
   $('r-kicker').textContent = `${concept.scripted ? 'Scripted. ' : ''}A meditation spot for someone who loves ${seeds.slice(0, 3).join(', ')}${seeds.length > 3 ? ' and more' : ''}`;
+  $('r-why-text').textContent = tidy(concept.reasoning || ''); $('r-why').hidden = !concept.reasoning;
   $('r-name').textContent = tidy(concept.name); $('r-tag').textContent = tidy(concept.tagline); $('r-brief').textContent = tidy(concept.brief);
   // In short: the brief's first sentence and a handful of the taste behind it; the rest waits behind Read more.
   const brief = tidy(concept.brief || '');
