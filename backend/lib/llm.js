@@ -91,11 +91,12 @@ function openrouterResearch({ key, model, fetcher, extra = {} }) {
   };
 }
 
-// Two tiers, both cheap by default (prices per million tokens in/out on OpenRouter, October 2026):
-//   main  the agent, briefs and web research          LLM_MODEL       default Claude Haiku 5.5 ($0.10/$0.50)
-//   fast  short, latency-bound calls              LLM_FAST_MODEL  default Gemini 2.5 Flash Lite ($0.10/$0.40)
+// Three tiers (prices per million tokens in/out on OpenRouter, November 2026):
+//   brief  writes the spot and its image prompt       LLM_BRIEF_MODEL default Claude Sonnet 5.5 ($2/$10)
+//   main   the agent, comparisons and web research    LLM_MODEL       default Claude Haiku 5.5 ($0.10/$0.50)
+//   fast   short, latency-bound calls                 LLM_FAST_MODEL  default Gemini 2.5 Flash Lite ($0.10/$0.40)
 // Any OpenRouter model id works for either (e.g. openai/gpt-5-mini, google/gemini-3-flash-preview).
-export const defaultModels = { main: 'anthropic/claude-haiku-5.5', fast: 'google/gemini-2.5-flash-lite' };
+export const defaultModels = { brief: 'anthropic/claude-sonnet-5.5', main: 'anthropic/claude-haiku-5.5', fast: 'google/gemini-2.5-flash-lite' };
 
 export function chooseLlm(env, fetcher = fetch) {
   // OpenRouter speaks the OpenAI chat-completions protocol, so it reuses that adapter.
@@ -112,11 +113,13 @@ export function chooseLlm(env, fetcher = fetch) {
       };
     };
     const main = env.LLM_MODEL || env.OPENROUTER_MODEL || defaultModels.main;
-    return { ...via(main), fast: via(env.LLM_FAST_MODEL || defaultModels.fast, main) };
+    // The brief falls back to the main model if Sonnet is rate-limited or down.
+    return { ...via(main), brief: via(env.LLM_BRIEF_MODEL || defaultModels.brief, main), fast: via(env.LLM_FAST_MODEL || defaultModels.fast, main) };
   }
   if (env.ANTHROPIC_API_KEY) {
-    const model = env.ANTHROPIC_MODEL || 'claude-haiku-5-5';
-    return { create: opts => anthropicSession({ ...opts, fetcher, key: env.ANTHROPIC_API_KEY, model }), label: `Claude (${model})`, look: anthropicLook({ key: env.ANTHROPIC_API_KEY, model, fetcher }) };
+    const model = env.ANTHROPIC_MODEL || 'claude-haiku-5-5', briefModel = env.ANTHROPIC_BRIEF_MODEL || 'claude-sonnet-5-5';
+    return { create: opts => anthropicSession({ ...opts, fetcher, key: env.ANTHROPIC_API_KEY, model }), label: `Claude (${model})`, look: anthropicLook({ key: env.ANTHROPIC_API_KEY, model, fetcher }),
+      brief: { create: opts => anthropicSession({ ...opts, fetcher, key: env.ANTHROPIC_API_KEY, model: briefModel }), label: `Claude (${briefModel})` } };
   }
   if (env.OPENAI_API_KEY) {
     const model = env.OPENAI_MODEL || 'gpt-5-mini';

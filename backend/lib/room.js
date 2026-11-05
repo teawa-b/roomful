@@ -68,7 +68,8 @@ export async function buildRoom({ qloo, llm, imageModel, text, emit, saveRender 
   let brief = null;
   if (llm) {
     brief = await step('brief', 'Finding your meditation spot', async () => {
-      const session = llm.create({
+      // The brief (and the image prompt in it) comes from the brief tier, Claude Sonnet 5.5 by default.
+      const session = (llm.brief || llm).create({
         system: 'You design meditation spots: places where one person can sit, breathe and clear their head, each one built from the world of what they love. You work only from evidence, you lean into a theme boldly, and no two of your spots look alike. Reply with JSON only. Write plainly and never use em dashes.',
         tools: [],
         // A meditation spot from the world the favourites come from, indoors or out. The model names that world, sketches

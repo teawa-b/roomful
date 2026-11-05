@@ -100,7 +100,7 @@ npm start
 Then open http://localhost:3301. The recorded examples work with no keys at all. For live runs, put these in a `.env` file next to `package.json`:
 
 - `QLOO_API_KEY`: Qloo, for the taste behind the room
-- `OPENROUTER_API_KEY`: writes the room from what Qloo returned (Claude Haiku 5.5 by default; `LLM_MODEL` changes it)
+- `OPENROUTER_API_KEY`: writes the room and its image prompt from what Qloo returned (Claude Sonnet 5.5 by default; `LLM_BRIEF_MODEL` changes it). The "LLM alone" comparison uses Claude Haiku 5.5 (`LLM_MODEL`)
 - `FAL_KEY`: paints the room (GPT Image 2.6 Flare; repaints use GPT Image 2.5 Flare Edit) and runs the walk inside (Lingbot World 2, real time; `FAL_WORLD_MODEL` changes it), with Luma Reframe and MoGe-2 for the 3D fallback
 - `WORLDLABS_API_KEY` (optional): when there is no real-time world model, builds the walk as a World Labs Marble world (`WORLDLABS_MODEL` changes the model, `marble-1.1` by default; `WORLDS_PER_HOUR` and `WORLDS_PER_DAY` cap it)
 
