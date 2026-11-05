@@ -186,6 +186,17 @@ label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
 #build.complete .steps { display: none; }
 
 /* Body under the room */
+.blend { display: flex; flex-direction: column; gap: 12px; }
+.blend-intro { margin: 0; max-width: 62ch; color: var(--muted); font-size: 15px; }
+.blend-list { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.blend-list li { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line); animation: enter .6s var(--ease) both; }
+.blend-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.blend-head b { font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+.blend-role { flex: none; font: 500 12px var(--mono); color: var(--faint); text-transform: lowercase; }
+.blend-list p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--text); }
+.blend-via { align-self: flex-start; font-size: 12.5px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-light); }
+.blend-via.no { background: transparent; border: 1px dashed var(--line); color: var(--faint); }
+
 #r-body { display: flex; flex-direction: column; gap: 40px; padding-top: 48px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .summary { max-width: 720px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }

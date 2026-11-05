@@ -183,6 +183,17 @@ function show(ev) {
     t.append(...tags(d.signals));
     li.append(el('h3', '', d.element), el('p', '', d.choice), t); return li;
   }));
+  // How each favourite came in, and the Qloo result that decided it (older recordings have no blend).
+  const blend = concept.blend || [];
+  $('r-blend').hidden = !blend.length;
+  $('blend-list').replaceChildren(...blend.map((b, i) => {
+    const li = el('li'), head = el('div', 'blend-head');
+    li.style.animationDelay = `${i * 60}ms`;
+    head.append(el('b', '', b.favourite), ...(b.role ? [el('span', 'blend-role', b.role)] : []));
+    li.append(head, el('p', '', b.visible));
+    if (b.qloo?.name) li.append(el('span', `blend-via${b.qloo.grounded ? '' : ' no'}`, b.qloo.grounded ? `Qloo: ${b.qloo.name}` : `${b.qloo.name} (not from Qloo)`));
+    return li;
+  }));
   const actions = [];
   if (render?.url) {
     const img = $('hero-img'); img.src = safeUrl(render.url);
