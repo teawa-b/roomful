@@ -25,6 +25,30 @@ $('more').addEventListener('click', () => {
   $('r-more').hidden = !open; $('more').setAttribute('aria-expanded', String(open)); $('more').textContent = open ? 'Show less' : 'Read more';
   if (open) $('r-more').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
+// Surprise me: a few hand-picked tastes to start from, never the same one twice in a row.
+const surprises = [
+  'Studio Ghibli, Nujabes, Mary Oliver, Muji', 'Wong Kar-wai, Khruangbin, Haruki Murakami, Aesop',
+  'Frank Ocean, Moonlight, Kinfolk, Patagonia', 'Björk, Kyoto, Ryuichi Sakamoto, Arc’teryx',
+  'Fleetwood Mac, Wes Anderson, Joan Didion, Le Creuset', 'Bon Iver, The Lord of the Rings, Mary Oliver, Filson',
+  'Erykah Badu, Spike Lee, Toni Morrison, Telfar', 'Brian Eno, Lost in Translation, Kazuo Ishiguro, Byredo'
+];
+$('surprise').addEventListener('click', () => {
+  const choices = surprises.filter(s => s !== $('text').value);
+  $('text').value = choices[Math.floor(Math.random() * choices.length)];
+  for (const [n, c] of [[$('text'), 'filled'], [$('surprise'), 'spun']]) { n.classList.remove(c); void n.offsetWidth; n.classList.add(c); }
+  $('text').focus(); tick();
+});
+// The menu: a small sheet under the button; Escape, a click outside or a link closes it.
+const menu = open => { $('menu-list').hidden = !open; $('menu-btn').setAttribute('aria-expanded', String(open)); $('menu-btn').firstElementChild.className = `ph ${open ? 'ph-x' : 'ph-list'}`; };
+$('menu-btn').addEventListener('click', e => { e.stopPropagation(); menu($('menu-list').hidden); });
+document.addEventListener('click', e => { if (!$('menu-list').hidden && !e.target.closest('.menu')) menu(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('menu-list').hidden) { menu(false); $('menu-btn').focus(); } });
+$('menu-list').querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', e => {
+  menu(false);
+  if ($('intro').hidden) return; // on a result, the plain link reloads the home page
+  e.preventDefault(); const target = document.querySelector(a.hash);
+  target.scrollIntoView({ behavior: 'smooth' }); if (a.hash === '#ask') setTimeout(() => $('text').focus({ preventScroll: true }), 400);
+}));
 $('change').addEventListener('click', () => { $('refine').hidden = !$('refine').hidden; if (!$('refine').hidden) $('refine-input').focus(); });
 
 // Walking inside works as it does in Openhere: fal's real-time world model (Lingbot World 2, /live) first; a World
@@ -222,7 +246,7 @@ try { config = await api('/api/config'); } catch { toast('Could not reach the se
 // The loading screen lifts once the page can be used and the first painting is ready (or after 2.5 seconds, so a
 // slow image never holds it up), and stays at least long enough for one gentle breath in rather than a flicker.
 {
-  const hero = document.querySelector('.hero-pick img');
+  const hero = document.querySelector('.hero-art img');
   await Promise.race([hero?.decode().catch(() => {}), new Promise(r => setTimeout(r, 2500))]);
   await new Promise(r => setTimeout(r, Math.max(0, 1400 - (performance.now() - opened))));
   $('splash').classList.add('done');
