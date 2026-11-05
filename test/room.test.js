@@ -85,7 +85,7 @@ test('roomful: a painting becomes a 3D room through MoGe-2, streamed back throug
   const base = await serve(t, { SITE: 'room', FAL_KEY: FKEY }, fetcher);
   assert.equal((await (await fetch(`${base}/api/config`)).json()).room3d, true);
   // Widen: a site image is sent inline; anything that isn't this site's or fal's is refused.
-  const wide = await (await fetch(`${base}/api/room3d/widen`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ painting: '/img/demo-room-rain-1.jpg' }) })).json();
+  const wide = await (await fetch(`${base}/api/room3d/widen`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ painting: '/img/demo-room-ghibli-1.jpg' }) })).json();
   assert.equal(wide.image, 'https://v3b.fal.media/files/wide.jpg');
   const foreign = await fetch(`${base}/api/room3d/widen`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ painting: 'https://example.com/x.jpg' }) });
   assert.equal(foreign.status, 404);
@@ -125,7 +125,7 @@ test('roomful: a painted room becomes a World Labs world, walked through this se
   const post = body => fetch(`${base}/api/world`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
   assert.equal((await post({ renderId: 'not-a-real-render' })).status, 404);
   // A recorded example's painting is sent as the bytes that ship with the site.
-  const demo = (await import('../backend/data/demos/room-rain.json', { with: { type: 'json' } })).default.renders[0];
+  const demo = (await import('../backend/data/demos/room-ghibli.json', { with: { type: 'json' } })).default.renders[0];
   const started = await (await post({ renderId: demo.id, name: 'Quiet Signal Room' })).json();
   assert.equal(started.worldId, 'op-123');
   assert.equal(calls[0].body.world_prompt.image_prompt.source, 'data_base64');

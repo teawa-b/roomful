@@ -107,7 +107,7 @@ $('change').addEventListener('click', () => { $('refine').hidden = !$('refine').
 // Walking inside works as it does in Openhere: fal's real-time world model (Lingbot World 2, /live) first; a World
 // Labs Marble world (/walk) without it; otherwise the painting lifted into 3D on the spot (fal's MoGe-2), where this
 // example's 3D room ships with the site, so it opens instantly.
-const worlds = { rain: 'room-rain-depth' };
+const worlds = {}; // example slug → a 3D room shipped in frontend/img, so it opens instantly
 let world = null;
 
 async function build(text, demo = null) {
@@ -307,6 +307,6 @@ try { config = await api('/api/config'); } catch { toast('Could not reach the se
 }
 const preset = new URLSearchParams(location.search).get('q');
 if (preset) { setLikes(preset.split(',')); build(preset); }
-// Deep link to an example, e.g. /?demo=rain
+// Deep link to an example, e.g. /?demo=ghibli
 const linked = new URLSearchParams(location.search).get('demo');
 if (linked) document.querySelector(`[data-demo="${CSS.escape(linked)}"]`)?.click();

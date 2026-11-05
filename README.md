@@ -10,7 +10,7 @@
 
 ## Judge in 60 seconds
 
-1. Open the site and click the **Quiet Signal Room** example. It is a recorded real run, so it opens in seconds.
+1. Open the site and click the **Last Bus Stop** example. It is a recorded real run, so it opens in seconds.
 2. Look at the room: the painting, the name, and the first track playing from the room's Qloo playlist.
 3. Scroll to **Every choice, and the taste behind it**: each design choice names the Qloo result behind it. Anything Qloo did not return is marked unverified.
 4. Read **With and without Qloo**: the same favourites given to an LLM alone, each of its picks checked against Qloo.
@@ -20,9 +20,9 @@
 
 | Example | Favourites | Link |
 |---|---|---|
-| Quiet Signal Room | Radiohead, Blade Runner, Haruki Murakami, Muji | `/?demo=rain` |
-| Velvet Speakeasy Lounge | Phoebe Bridgers, Fleabag, Sally Rooney, Glossier, Dr. Martens | `/?demo=heartbreak` |
-| Art Deco Court | Kendrick Lamar, Nike, Jordan Peele films, Issa Rae, Lakers | `/?demo=courtside` |
+| Last Bus Stop | Studio Ghibli, Nujabes, Mary Oliver, Muji | `/?demo=ghibli` |
+| Blue Moon Shore | Frank Ocean, Moonlight, Kinfolk, Patagonia | `/?demo=tides` |
+| Brick Tide Jetty | Minecraft, Lorde, Billie Eilish, LEGO | `/?demo=blocks` |
 
 ![A finished room: the painting, the playlist and the reasons](docs/roomful-result.png)
 
@@ -52,11 +52,11 @@ After the room is written, the same favourites go to an LLM with no tools, and e
 
 | Example | Picks that hold up without Qloo |
 |---|---|
-| Quiet Signal Room | 0 of 8 |
-| Velvet Speakeasy Lounge | 3 of 8 |
-| Art Deco Court | 2 of 8 |
+| Last Bus Stop | 1 of 8 |
+| Blue Moon Shore | 3 of 8 |
+| Brick Tide Jetty | 2 of 8 |
 
-The LLM's picks are often real (Vangelis, Brian Eno, an Eames chair) but not what people with this taste actually rate, and some are not in Qloo at all ("Rain-Streaked Glass").
+The LLM's picks are often real (Joe Hisaishi, Cornelius, C418) but not what people with this taste actually rate, and some are not in Qloo at all ("Cozy Reading Nook", "LEGO Botanicals").
 
 ## How the code is laid out
 
@@ -73,7 +73,7 @@ backend/
     depth3d.js    the fallback 3D room: widens the painting with Luma Reframe and lifts it into 3D with MoGe-2
     live.js       fal's real-time world model, for the live walk
     llm.js        the OpenRouter client
-    demos.js      replays the recorded rooms in backend/data/demos
+    demos.js      replays the recorded rooms in backend/data/demos (record new ones with scripts/record-demos.js)
     limits.js     per-visitor and daily limits on everything that costs money
     http.js       fetch with timeouts, and key redaction in error messages
   data/        the recorded example runs

@@ -1,0 +1,1336 @@
+{
+ "site": "room",
+ "slug": "ghibli",
+ "title": "Last Bus Stop",
+ "request": {
+  "text": "Studio Ghibli, Nujabes, Mary Oliver, Muji"
+ },
+ "events": [
+  {
+   "type": "step",
+   "id": "resolve",
+   "label": "Finding your favourites in Qloo"
+  },
+  {
+   "type": "step_done",
+   "id": "resolve",
+   "summary": "Studio Ghibli, Nujabes, Mary Oliver, Muji"
+  },
+  {
+   "type": "step",
+   "id": "taste",
+   "label": "Asking Qloo what places people with your taste love"
+  },
+  {
+   "type": "step_done",
+   "id": "taste",
+   "summary": "decor: Japanese, Traditional Japanese, Industrial Chic, Dark Wood · mood: Homey, Quiet, Stylish"
+  },
+  {
+   "type": "step",
+   "id": "culture",
+   "label": "Building the playlist and the world around it"
+  },
+  {
+   "type": "step_done",
+   "id": "culture",
+   "summary": "playlist: MASS OF THE FERMENTING DREGS, The Pillows, Fishmans · brands: Uniqlo, Niko And..."
+  },
+  {
+   "type": "step",
+   "id": "who",
+   "label": "Reading who shares this taste"
+  },
+  {
+   "type": "step_done",
+   "id": "who",
+   "summary": "strongest age band: 35 to 44"
+  },
+  {
+   "type": "step",
+   "id": "brief",
+   "label": "Finding your meditation spot"
+  },
+  {
+   "type": "step_done",
+   "id": "brief",
+   "summary": "Last Bus Stop"
+  },
+  {
+   "type": "step",
+   "id": "baseline",
+   "label": "Asking the same question without Qloo"
+  },
+  {
+   "type": "step",
+   "id": "paint",
+   "label": "Painting your spot"
+  },
+  {
+   "type": "step_done",
+   "id": "baseline",
+   "summary": "1 of 8 picks hold up for this taste"
+  },
+  {
+   "type": "step_done",
+   "id": "paint",
+   "summary": "gpt-image-2.6/flare"
+  },
+  {
+   "type": "final",
+   "concept": {
+    "name": "Last Bus Stop",
+    "tagline": "The bus is late, and nothing needs you until it comes.",
+    "brief": "Rain taps the tin roof in a slow, uneven rhythm while frogs and the last cicadas fill the paddies, so the mind has one soft thing to follow, as Mary Oliver would say. Breathe in the wet grass and warm earth, count the drops from the eave, and let the thoughts drift off like the road into the dusk.",
+    "image_prompt": "A small weathered wooden bus shelter with a tin roof and a plain ash-wood bench, standing alone on a gravel road beside flooded rice paddies at dusk in gentle summer rain. A huge camphor tree rises behind it, its leaves dripping. Puddles reflect lavender-grey clouds and a thin gold line near the horizon. A blank round sign on a slim pole, a clear plastic umbrella hooked on the bench end, a small paper-wrapped parcel tied with twine on the seat, tall wet grass and fireflies in the paddies. Photoreal wide shot at eye level.",
+    "design_choices": [
+     {
+      "element": "Place",
+      "choice": "The spot is the roadside bus shelter with one bench, taken straight from Totoro, so sitting there feels like waiting with no destination.",
+      "signals": [
+       {
+        "name": "Studio Ghibli",
+        "grounded": true
+       },
+       {
+        "name": "Traditional Japanese",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Light",
+      "choice": "Dusk rain under thick cloud gives soft, shadowless light with a thin gold seam at the horizon, like a Ghibli background painting.",
+      "signals": [
+       {
+        "name": "Studio Ghibli",
+        "grounded": true
+       },
+       {
+        "name": "The Tale of The Princess Kaguya",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Sound",
+      "choice": "Rain on tin, frogs and fading cicadas make a loose, unhurried beat in the spirit of a Nujabes loop, with Fishmans drifting in faintly from far off.",
+      "signals": [
+       {
+        "name": "Nujabes",
+        "grounded": true
+       },
+       {
+        "name": "Fishmans",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Nature",
+      "choice": "Flooded paddies, wet grass, fireflies and a dripping camphor tree invite the slow, close looking that Mary Oliver writes about.",
+      "signals": [
+       {
+        "name": "Mary Oliver",
+        "grounded": true
+       },
+       {
+        "name": "The Wind Rises",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Materials",
+      "choice": "Plain ash-wood bench, unbleached cotton, kraft paper and twine keep everything quiet and uncluttered, in the Muji manner.",
+      "signals": [
+       {
+        "name": "Muji",
+        "grounded": true
+       },
+       {
+        "name": "Homey",
+        "grounded": true
+       },
+       {
+        "name": "Comfortable",
+        "grounded": true
+       }
+      ]
+     },
+     {
+      "element": "Details",
+      "choice": "A clear umbrella on the bench end and a twine-tied paper parcel are small, ordinary objects that make the stop feel lived in and gently modern.",
+      "signals": [
+       {
+        "name": "Muji",
+        "grounded": true
+       },
+       {
+        "name": "Niko And...",
+        "grounded": true
+       },
+       {
+        "name": "Quiet",
+        "grounded": true
+       }
+      ]
+     }
+    ],
+    "first_track": "Fishmans"
+   },
+   "render": {
+    "id": "a1a3d8e4-be09-4415-8bcd-5ed8fdf3a38f",
+    "url": "/img/demo-room-ghibli-1.jpg",
+    "model": "gpt-image-2.6/flare",
+    "prompt": "A small weathered wooden bus shelter with a tin roof and a plain ash-wood bench, standing alone on a gravel road beside flooded rice paddies at dusk in gentle summer rain. A huge camphor tree rises behind it, its leaves dripping. Puddles reflect lavender-grey clouds and a thin gold line near the horizon. A blank round sign on a slim pole, a clear plastic umbrella hooked on the bench end, a small paper-wrapped parcel tied with twine on the seat, tall wet grass and fireflies in the paddies. Photoreal wide shot at eye level.",
+    "aspect": "3:2",
+    "signals": [
+     "Studio Ghibli",
+     "Traditional Japanese",
+     "Studio Ghibli",
+     "The Tale of The Princess Kaguya",
+     "Nujabes",
+     "Fishmans",
+     "Mary Oliver",
+     "The Wind Rises",
+     "Muji",
+     "Homey",
+     "Comfortable",
+     "Muji",
+     "Niko And...",
+     "Quiet"
+    ]
+   },
+   "taste": {
+    "decor": [
+     {
+      "id": "urn:tag:decor:qloo:japanese",
+      "name": "Japanese",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.8544568245125348,
+      "popularity": 0.9987493643931012
+     },
+     {
+      "id": "urn:tag:decor:qloo:traditional_japanese",
+      "name": "Traditional Japanese",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.8330035615354174,
+      "popularity": 0.9970738912557299
+     },
+     {
+      "id": "urn:tag:decor:qloo:industrial_chic",
+      "name": "Industrial Chic",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.7541653054557335,
+      "popularity": 0.999742694074722
+     },
+     {
+      "id": "urn:tag:decor:qloo:dark_wood",
+      "name": "Dark Wood",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.739247311827957,
+      "popularity": 0.9877258161883756
+     },
+     {
+      "id": "urn:tag:decor:qloo:polished",
+      "name": "Polished",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.6785505552308592,
+      "popularity": 0.9986103437924474
+     },
+     {
+      "id": "urn:tag:decor:qloo:comfortable",
+      "name": "Comfortable",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.6616766467065869,
+      "popularity": 0.9984920584678233
+     },
+     {
+      "id": "urn:tag:decor:qloo:sleek",
+      "name": "Sleek",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.6524136241117373,
+      "popularity": 0.9990610218752449
+     },
+     {
+      "id": "urn:tag:decor:qloo:colonial",
+      "name": "Colonial",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.6303690260133091,
+      "popularity": 0.9993850105632094
+     },
+     {
+      "id": "urn:tag:decor:qloo:antique",
+      "name": "Antique",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.6204407294832827,
+      "popularity": 0.9991920311192509
+     },
+     {
+      "id": "urn:tag:decor:qloo:classy",
+      "name": "Classy",
+      "type": "urn:tag:decor:qloo",
+      "affinity": 0.6038485412787089,
+      "popularity": 0.9974513675307255
+     }
+    ],
+    "ambience": [
+     {
+      "id": "urn:tag:ambience:qloo:homey",
+      "name": "Homey",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.8157166574432761,
+      "popularity": 0.9999056702026072
+     },
+     {
+      "id": "urn:tag:ambience:qloo:quiet",
+      "name": "Quiet",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.8084857008907642,
+      "popularity": 0.9999668549754374
+     },
+     {
+      "id": "urn:tag:ambience:qloo:stylish",
+      "name": "Stylish",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.7670053383847081,
+      "popularity": 0.99995499502589
+     },
+     {
+      "id": "urn:tag:ambience:qloo:luxury",
+      "name": "Luxury",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.7486248624862486,
+      "popularity": 0.9857026344639452
+     },
+     {
+      "id": "urn:tag:ambience:qloo:authentic",
+      "name": "Authentic",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.6979782011814627,
+      "popularity": 0.9998694620122675
+     },
+     {
+      "id": "urn:tag:ambience:qloo:adventurous",
+      "name": "Adventurous",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.6929723502304147,
+      "popularity": 0.9993088241323426
+     },
+     {
+      "id": "urn:tag:ambience:qloo:boutique",
+      "name": "Boutique",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.6753040719196193,
+      "popularity": 0.9991089329297076
+     },
+     {
+      "id": "urn:tag:ambience:qloo:modern",
+      "name": "Modern",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.6650315687226809,
+      "popularity": 0.9999499682923071
+     },
+     {
+      "id": "urn:tag:ambience:qloo:eco_friendly",
+      "name": "Eco Friendly",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.6628352490421456,
+      "popularity": 0.9978555483278806
+     },
+     {
+      "id": "urn:tag:ambience:qloo:peaceful",
+      "name": "Peaceful",
+      "type": "urn:tag:ambience:qloo",
+      "affinity": 0.6592505854800936,
+      "popularity": 0.9998307404551362
+     }
+    ],
+    "interests": [],
+    "artist": [
+     {
+      "name": "MASS OF THE FERMENTING DREGS",
+      "id": "F0738293-6F4F-4E14-8D04-C7FC2DEA983A",
+      "type": "artist",
+      "popularity": 0.974,
+      "affinity": 0.939,
+      "tags": [
+       "Shoegaze",
+       "Existentialism",
+       "Alternative Rock",
+       "Post Rock",
+       "Passionate",
+       "Indie"
+      ],
+      "image": "https://images.qloo.com/i/F0738293-6F4F-4E14-8D04-C7FC2DEA983A-420x-auto.jpg",
+      "detail": "MASS OF THE FERMENTING DREGS"
+     },
+     {
+      "name": "The Pillows",
+      "id": "8F67D310-FCE8-40BB-9D21-03A1201CB926",
+      "type": "artist",
+      "popularity": 0.993,
+      "affinity": 0.938,
+      "tags": [
+       "Guitar",
+       "Bass",
+       "Indie Rock",
+       "Energetic",
+       "Engaging",
+       "Innovative"
+      ],
+      "image": "https://images.qloo.com/i/8F67D310-FCE8-40BB-9D21-03A1201CB926-420x-auto.jpg",
+      "detail": "The Pillows"
+     },
+     {
+      "name": "Fishmans",
+      "id": "56275C80-C269-4BA9-A117-54FFE5D605B4",
+      "type": "artist",
+      "popularity": 0.983,
+      "affinity": 0.927,
+      "tags": [
+       "Nature",
+       "Dream Pop",
+       "Emotional",
+       "Reggae Influenced",
+       "Bass",
+       "Dub"
+      ],
+      "image": "https://images.qloo.com/i/56275C80-C269-4BA9-A117-54FFE5D605B4-420x-auto.jpg",
+      "detail": "Fishmans"
+     },
+     {
+      "name": "COALTAR OF THE DEEPERS",
+      "id": "20EF9209-6323-4FF9-9CB9-745DD85FE225",
+      "type": "artist",
+      "popularity": 0.958,
+      "affinity": 0.926,
+      "tags": [
+       "Ethereal",
+       "Shoegaze",
+       "Alternative Rock",
+       "Guitar",
+       "Shoegaze",
+       "The Jesus And Mary Chain"
+      ],
+      "image": "https://images.qloo.com/i/20EF9209-6323-4FF9-9CB9-745DD85FE225-420x-auto.jpg",
+      "detail": "COALTAR OF THE DEEPERS"
+     },
+     {
+      "name": "RADWIMPS",
+      "id": "AD658D03-2068-4FDE-8A79-651F95A5FC84",
+      "type": "artist",
+      "popularity": 0.99,
+      "affinity": 0.924,
+      "tags": [
+       "Post Rock",
+       "Oasis",
+       "Expressive",
+       "The Beatles",
+       "Existentialism",
+       "Loyal"
+      ],
+      "image": "https://images.qloo.com/i/AD658D03-2068-4FDE-8A79-651F95A5FC84-420x-auto.jpg",
+      "detail": "RADWIMPS"
+     },
+     {
+      "name": "ASIAN KUNG-FU GENERATION",
+      "id": "10CF20BD-61A4-4BDA-94E5-24F5C777B714",
+      "type": "artist",
+      "popularity": 0.996,
+      "affinity": 0.924,
+      "tags": [
+       "Engaging",
+       "Post-Punk",
+       "Bass Guitar",
+       "Youth",
+       "Drums",
+       "Dynamic"
+      ],
+      "image": "https://images.qloo.com/i/10CF20BD-61A4-4BDA-94E5-24F5C777B714-420x-auto.jpg",
+      "detail": "ASIAN KUNG-FU GENERATION"
+     },
+     {
+      "name": "椎名林檎",
+      "id": "3112D9D8-9928-4597-B10F-3233B90A7F37",
+      "type": "artist",
+      "popularity": 0.991,
+      "affinity": 0.922,
+      "tags": [
+       "Love",
+       "Avant-Garde Pop",
+       "Versatile",
+       "Eclectic",
+       "Artistic",
+       "Queen"
+      ],
+      "image": "https://images.qloo.com/i/3112D9D8-9928-4597-B10F-3233B90A7F37-420x-auto.jpg",
+      "detail": "椎名林檎"
+     },
+     {
+      "name": "NUMBER GIRL",
+      "id": "3E17C88B-6404-460B-8ABB-356070ED1704",
+      "type": "artist",
+      "popularity": 0.978,
+      "affinity": 0.918,
+      "tags": [
+       "Noise Rock",
+       "Emo",
+       "Energetic",
+       "Emotional",
+       "The Jesus Lizard",
+       "J Rock"
+      ],
+      "image": "https://images.qloo.com/i/3E17C88B-6404-460B-8ABB-356070ED1704-420x-auto.jpg",
+      "detail": "NUMBER GIRL"
+     }
+    ],
+    "brand": [
+     {
+      "name": "Uniqlo",
+      "id": "46C9F889-EC89-4715-A767-DEABACF52C41",
+      "type": "brand",
+      "popularity": 0.995,
+      "affinity": 0.934,
+      "tags": [
+       "Fashion",
+       "Clothing companies of Japan",
+       "Clothing retailers of Japan",
+       "Manufacturing companies based in Tokyo",
+       "Fast Retailing",
+       "Japanese companies established in 1949"
+      ],
+      "image": "https://images.qloo.com/i/46C9F889-EC89-4715-A767-DEABACF52C41-420x-auto.jpg",
+      "detail": "Uniqlo is a Japanese casual wear designer and retailer offering high-quality, comfortable clothing and accessories for women, men, and children."
+     },
+     {
+      "name": "Niko And...",
+      "id": "66D21282-64CA-4429-855C-757B94554EBE",
+      "type": "brand",
+      "popularity": 0.919,
+      "affinity": 0.906,
+      "tags": [
+       "Fashion",
+       "Casual",
+       "Minimalist Utility",
+       "Earthy Tones",
+       "Playful Accents",
+       "Clean Design"
+      ],
+      "image": "https://images.qloo.com/i/66D21282-64CA-4429-855C-757B94554EBE-420x-auto.jpg",
+      "detail": "A Japanese lifestyle brand offering fashion, coffee, kitchen goods, and local culture content."
+     },
+     {
+      "name": "GU",
+      "id": "6A38D922-C481-491A-A27E-FA6FF76E238F",
+      "type": "brand",
+      "popularity": 0.98,
+      "affinity": 0.904,
+      "tags": [
+       "Other",
+       "1973 establishments in Japan",
+       "Fashion stubs",
+       "Fashion",
+       "Japanese company stubs",
+       "Casual"
+      ],
+      "image": "https://images.qloo.com/i/6A38D922-C481-491A-A27E-FA6FF76E238F-420x-auto.jpg",
+      "detail": "GU is a Japanese fashion brand offering affordable, trendy clothing for women, men, and kids, known for casual and seasonal collections."
+     },
+     {
+      "name": "Urban Research",
+      "id": "033C82D1-8EE8-4731-B293-FFC120F8BA17",
+      "type": "brand",
+      "popularity": 0.867,
+      "affinity": 0.892,
+      "tags": [
+       "Fashion",
+       "Formalwear",
+       "Minimalist",
+       "Clean Lines",
+       "Natural Tones",
+       "Functional Design"
+      ],
+      "image": "https://images.qloo.com/i/033C82D1-8EE8-4731-B293-FFC120F8BA17-420x-auto.jpg",
+      "detail": "Urban Research refers to various academic and institutional centers focused on studying urban issues, policies, and sustainable development."
+     },
+     {
+      "name": "Global Work",
+      "id": "FF8A8543-549D-42CB-96A8-2B2C9374B092",
+      "type": "brand",
+      "popularity": 0.846,
+      "affinity": 0.891,
+      "tags": [
+       "Casual",
+       "Fashion",
+       "Clean Silhouettes",
+       "Neutral Color Palettes",
+       "Functional Details",
+       "Minimalist Design"
+      ],
+      "image": "https://images.qloo.com/i/FF8A8543-549D-42CB-96A8-2B2C9374B092-420x-auto.jpg",
+      "detail": "GLOBAL WORK is a fashion brand offering casual and versatile clothing for everyday wear, focusing on comfort and style."
+     },
+     {
+      "name": "Beams",
+      "id": "322EE262-531E-4F7B-932E-CBFEBB6E1901",
+      "type": "brand",
+      "popularity": 0.941,
+      "affinity": 0.891,
+      "tags": [
+       "Fashion",
+       "Casual",
+       "Eclectic",
+       "Minimalist",
+       "Functional",
+       "Contemporary"
+      ],
+      "image": "https://images.qloo.com/i/322EE262-531E-4F7B-932E-CBFEBB6E1901-420x-auto.jpg",
+      "detail": "BEAMS is a Japanese brand known for its unique fashion collaborations and diverse clothing collections."
+     }
+    ],
+    "movie": [
+     {
+      "name": "The Wind Rises",
+      "id": "6C16B701-F7D0-4AFD-81F7-1261BE17F50D",
+      "type": "movie",
+      "popularity": 0.991,
+      "affinity": 0.931,
+      "tags": [
+       "Illness",
+       "Wedding",
+       "Historical drama",
+       "Technology",
+       "Goodbye letter",
+       "Slow burn"
+      ],
+      "image": "https://images.qloo.com/i/6C16B701-F7D0-4AFD-81F7-1261BE17F50D-420x-auto.jpg",
+      "detail": "2013, Hayao Miyazaki"
+     },
+     {
+      "name": "Millennium Actress",
+      "id": "ADC9C8E7-E2D4-48AF-9EF6-3932BD038DD9",
+      "type": "movie",
+      "popularity": 0.979,
+      "affinity": 0.926,
+      "tags": [
+       "Candy store",
+       "Reference to mae west",
+       "Curse",
+       "Nostalgic",
+       "1940s",
+       "Surreal art"
+      ],
+      "image": "https://images.qloo.com/i/ADC9C8E7-E2D4-48AF-9EF6-3932BD038DD9-420x-auto.jpg",
+      "detail": "2001, Satoshi Kon"
+     },
+     {
+      "name": "The Kingdom of Dreams and Madness",
+      "id": "6E21AE7E-87A7-4CC9-A632-135C6C7EBF6D",
+      "type": "movie",
+      "popularity": 0.919,
+      "affinity": 0.926,
+      "tags": [
+       "Studio portrait",
+       "Animation filmmaking",
+       "Manga",
+       "Airplane",
+       "Tsunami",
+       "Pencil"
+      ],
+      "image": "https://images.qloo.com/i/6E21AE7E-87A7-4CC9-A632-135C6C7EBF6D-420x-auto.jpg",
+      "detail": "2013, Mami Sunada"
+     },
+     {
+      "name": "The Tale of The Princess Kaguya",
+      "id": "682B45BC-39AF-4006-A474-22842FCF664D",
+      "type": "movie",
+      "popularity": 0.987,
+      "affinity": 0.926,
+      "tags": [
+       "Childhood",
+       "Iyashikei anime animation",
+       "Cherry blossom",
+       "Art house animation",
+       "Animation techniques",
+       "Falling from height"
+      ],
+      "image": "https://images.qloo.com/i/682B45BC-39AF-4006-A474-22842FCF664D-420x-auto.jpg",
+      "detail": "2013, Isao Takahata"
+     }
+    ],
+    "book": [
+     {
+      "name": "House of Leaves",
+      "id": "AE75F60E-6E62-423D-845A-A35888057DF3",
+      "type": "book",
+      "popularity": 0.997,
+      "affinity": 0.857,
+      "tags": [
+       "Horror",
+       "Paranormal",
+       "Fiction",
+       "Thriller",
+       "Mystery Thriller",
+       "Contemporary"
+      ],
+      "image": "https://images.qloo.com/i/AE75F60E-6E62-423D-845A-A35888057DF3-420x-auto.jpg",
+      "detail": "2000, Mark Z. Danielewski"
+     },
+     {
+      "name": "Let the Right One In",
+      "id": "9F2348ED-308D-4FF7-846B-EA0166E8CA3C",
+      "type": "book",
+      "popularity": 0.991,
+      "affinity": 0.855,
+      "tags": [
+       "Thriller",
+       "Swedish Literature",
+       "Supernatural",
+       "Horror",
+       "Mystery",
+       "Sweden"
+      ],
+      "image": "https://images.qloo.com/i/9F2348ED-308D-4FF7-846B-EA0166E8CA3C-420x-auto.jpg",
+      "detail": "2004, John Ajvide Lindqvist"
+     },
+     {
+      "name": "The Collected Essex County",
+      "id": "40124F5C-F1A9-45C6-B974-99777867242C",
+      "type": "book",
+      "popularity": 0.262,
+      "affinity": 0.841,
+      "tags": [],
+      "image": "https://images.qloo.com/i/40124F5C-F1A9-45C6-B974-99777867242C-420x-auto.jpg",
+      "detail": "2009, Jeff Lemire"
+     },
+     {
+      "name": "Watchmen",
+      "id": "8D5DB26A-21DA-4391-A17F-7AAB888A8272",
+      "type": "book",
+      "popularity": 0.998,
+      "affinity": 0.838,
+      "tags": [
+       "Fiction",
+       "Graphic Novels Comics",
+       "Dystopia",
+       "Fantasy",
+       "Superheroes",
+       "Science Fiction"
+      ],
+      "image": "https://images.qloo.com/i/8D5DB26A-21DA-4391-A17F-7AAB888A8272-420x-auto.jpg",
+      "detail": "1987, Alan             Moore"
+     }
+    ],
+    "demographics": {
+     "age": {
+      "24_and_younger": -0.14,
+      "25_to_29": -0.14,
+      "30_to_34": -0.25,
+      "35_to_44": 0.19,
+      "45_to_54": -0.09,
+      "55_and_older": -0.36
+     }
+    },
+    "seeds": [
+     {
+      "phrase": "Studio Ghibli",
+      "name": "Studio Ghibli",
+      "id": "D1222FA1-A6FD-45DE-8993-D89E2BB4777A",
+      "type": "artist",
+      "popularity": 0.797,
+      "tags": [],
+      "image": "https://images.qloo.com/i/D1222FA1-A6FD-45DE-8993-D89E2BB4777A-420x-auto.jpg",
+      "detail": "Studio Ghibli",
+      "types": [
+       "urn:entity:artist"
+      ]
+     },
+     {
+      "phrase": "Nujabes",
+      "name": "Nujabes",
+      "id": "E11125AF-936B-4935-B607-F2DA2E6A6B92",
+      "type": "artist",
+      "popularity": 0.996,
+      "tags": [
+       "Chillout",
+       "Japanese",
+       "Hip - Hop",
+       "Trip - Hop",
+       "Jazz Hop",
+       "Dedicated"
+      ],
+      "image": "https://images.qloo.com/i/E11125AF-936B-4935-B607-F2DA2E6A6B92-420x-auto.jpg",
+      "detail": "Nujabes",
+      "types": [
+       "urn:entity:artist"
+      ]
+     },
+     {
+      "phrase": "Mary Oliver",
+      "name": "Mary Oliver",
+      "id": "BAA36D97-9D60-44BE-B7AC-6CA8528168DB",
+      "type": "author",
+      "popularity": 0.991,
+      "tags": [
+       "Inspirational",
+       "Novels",
+       "Literature:american",
+       "Nonfiction",
+       "Reference",
+       "Anthologies:collections"
+      ],
+      "detail": "Mary Oliver",
+      "types": [
+       "urn:entity:author"
+      ]
+     },
+     {
+      "phrase": "Muji",
+      "name": "Muji",
+      "id": "E12201A5-CC50-40AF-97AE-C54A2CA303F7",
+      "type": "brand",
+      "popularity": 0.984,
+      "tags": [
+       "Retail companies established in 1980",
+       "Retail",
+       "All accuracy disputes",
+       "Japanese companies established in 1980",
+       "Companies listed on the Tokyo Stock Exchange",
+       "Clothing brands of Japan"
+      ],
+      "image": "https://images.qloo.com/i/E12201A5-CC50-40AF-97AE-C54A2CA303F7-420x-auto.jpg",
+      "detail": "Muji is a Japanese retail brand offering minimalist, quality household goods, clothing, stationery, and furniture.",
+      "types": [
+       "urn:entity:brand"
+      ]
+     }
+    ]
+   },
+   "signals": [
+    {
+     "name": "Studio Ghibli",
+     "kind": "artist",
+     "id": "D1222FA1-A6FD-45DE-8993-D89E2BB4777A",
+     "seed": true
+    },
+    {
+     "name": "Nujabes",
+     "kind": "artist",
+     "id": "E11125AF-936B-4935-B607-F2DA2E6A6B92",
+     "seed": true
+    },
+    {
+     "name": "Mary Oliver",
+     "kind": "author",
+     "id": "BAA36D97-9D60-44BE-B7AC-6CA8528168DB",
+     "seed": true
+    },
+    {
+     "name": "Muji",
+     "kind": "brand",
+     "id": "E12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "seed": true
+    },
+    {
+     "name": "Japanese",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:japanese",
+     "affinity": 0.8544568245125348
+    },
+    {
+     "name": "Traditional Japanese",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:traditional_japanese",
+     "affinity": 0.8330035615354174
+    },
+    {
+     "name": "Industrial Chic",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:industrial_chic",
+     "affinity": 0.7541653054557335
+    },
+    {
+     "name": "Dark Wood",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:dark_wood",
+     "affinity": 0.739247311827957
+    },
+    {
+     "name": "Polished",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:polished",
+     "affinity": 0.6785505552308592
+    },
+    {
+     "name": "Comfortable",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:comfortable",
+     "affinity": 0.6616766467065869
+    },
+    {
+     "name": "Sleek",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:sleek",
+     "affinity": 0.6524136241117373
+    },
+    {
+     "name": "Colonial",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:colonial",
+     "affinity": 0.6303690260133091
+    },
+    {
+     "name": "Antique",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:antique",
+     "affinity": 0.6204407294832827
+    },
+    {
+     "name": "Classy",
+     "kind": "tag",
+     "id": "urn:tag:decor:qloo:classy",
+     "affinity": 0.6038485412787089
+    },
+    {
+     "name": "Homey",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:homey",
+     "affinity": 0.8157166574432761
+    },
+    {
+     "name": "Quiet",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:quiet",
+     "affinity": 0.8084857008907642
+    },
+    {
+     "name": "Stylish",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:stylish",
+     "affinity": 0.7670053383847081
+    },
+    {
+     "name": "Luxury",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:luxury",
+     "affinity": 0.7486248624862486
+    },
+    {
+     "name": "Authentic",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:authentic",
+     "affinity": 0.6979782011814627
+    },
+    {
+     "name": "Adventurous",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:adventurous",
+     "affinity": 0.6929723502304147
+    },
+    {
+     "name": "Boutique",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:boutique",
+     "affinity": 0.6753040719196193
+    },
+    {
+     "name": "Modern",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:modern",
+     "affinity": 0.6650315687226809
+    },
+    {
+     "name": "Eco Friendly",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:eco_friendly",
+     "affinity": 0.6628352490421456
+    },
+    {
+     "name": "Peaceful",
+     "kind": "tag",
+     "id": "urn:tag:ambience:qloo:peaceful",
+     "affinity": 0.6592505854800936
+    },
+    {
+     "name": "MASS OF THE FERMENTING DREGS",
+     "kind": "artist",
+     "id": "F0738293-6F4F-4E14-8D04-C7FC2DEA983A",
+     "affinity": 0.939
+    },
+    {
+     "name": "The Pillows",
+     "kind": "artist",
+     "id": "8F67D310-FCE8-40BB-9D21-03A1201CB926",
+     "affinity": 0.938
+    },
+    {
+     "name": "Fishmans",
+     "kind": "artist",
+     "id": "56275C80-C269-4BA9-A117-54FFE5D605B4",
+     "affinity": 0.927
+    },
+    {
+     "name": "COALTAR OF THE DEEPERS",
+     "kind": "artist",
+     "id": "20EF9209-6323-4FF9-9CB9-745DD85FE225",
+     "affinity": 0.926
+    },
+    {
+     "name": "RADWIMPS",
+     "kind": "artist",
+     "id": "AD658D03-2068-4FDE-8A79-651F95A5FC84",
+     "affinity": 0.924
+    },
+    {
+     "name": "ASIAN KUNG-FU GENERATION",
+     "kind": "artist",
+     "id": "10CF20BD-61A4-4BDA-94E5-24F5C777B714",
+     "affinity": 0.924
+    },
+    {
+     "name": "椎名林檎",
+     "kind": "artist",
+     "id": "3112D9D8-9928-4597-B10F-3233B90A7F37",
+     "affinity": 0.922
+    },
+    {
+     "name": "NUMBER GIRL",
+     "kind": "artist",
+     "id": "3E17C88B-6404-460B-8ABB-356070ED1704",
+     "affinity": 0.918
+    },
+    {
+     "name": "Uniqlo",
+     "kind": "brand",
+     "id": "46C9F889-EC89-4715-A767-DEABACF52C41",
+     "affinity": 0.934
+    },
+    {
+     "name": "Niko And...",
+     "kind": "brand",
+     "id": "66D21282-64CA-4429-855C-757B94554EBE",
+     "affinity": 0.906
+    },
+    {
+     "name": "GU",
+     "kind": "brand",
+     "id": "6A38D922-C481-491A-A27E-FA6FF76E238F",
+     "affinity": 0.904
+    },
+    {
+     "name": "Urban Research",
+     "kind": "brand",
+     "id": "033C82D1-8EE8-4731-B293-FFC120F8BA17",
+     "affinity": 0.892
+    },
+    {
+     "name": "Global Work",
+     "kind": "brand",
+     "id": "FF8A8543-549D-42CB-96A8-2B2C9374B092",
+     "affinity": 0.891
+    },
+    {
+     "name": "Beams",
+     "kind": "brand",
+     "id": "322EE262-531E-4F7B-932E-CBFEBB6E1901",
+     "affinity": 0.891
+    },
+    {
+     "name": "The Wind Rises",
+     "kind": "movie",
+     "id": "6C16B701-F7D0-4AFD-81F7-1261BE17F50D",
+     "affinity": 0.931
+    },
+    {
+     "name": "Millennium Actress",
+     "kind": "movie",
+     "id": "ADC9C8E7-E2D4-48AF-9EF6-3932BD038DD9",
+     "affinity": 0.926
+    },
+    {
+     "name": "The Kingdom of Dreams and Madness",
+     "kind": "movie",
+     "id": "6E21AE7E-87A7-4CC9-A632-135C6C7EBF6D",
+     "affinity": 0.926
+    },
+    {
+     "name": "The Tale of The Princess Kaguya",
+     "kind": "movie",
+     "id": "682B45BC-39AF-4006-A474-22842FCF664D",
+     "affinity": 0.926
+    },
+    {
+     "name": "House of Leaves",
+     "kind": "book",
+     "id": "AE75F60E-6E62-423D-845A-A35888057DF3",
+     "affinity": 0.857
+    },
+    {
+     "name": "Let the Right One In",
+     "kind": "book",
+     "id": "9F2348ED-308D-4FF7-846B-EA0166E8CA3C",
+     "affinity": 0.855
+    },
+    {
+     "name": "The Collected Essex County",
+     "kind": "book",
+     "id": "40124F5C-F1A9-45C6-B974-99777867242C",
+     "affinity": 0.841
+    },
+    {
+     "name": "Watchmen",
+     "kind": "book",
+     "id": "8D5DB26A-21DA-4391-A17F-7AAB888A8272",
+     "affinity": 0.838
+    }
+   ],
+   "baseline": {
+    "model": "anthropic/claude-haiku-5.5",
+    "picks": [
+     {
+      "kind": "decor",
+      "name": "Warm Wabi-Sabi",
+      "verdict": "known",
+      "match": "Wabi Sabi"
+     },
+     {
+      "kind": "decor",
+      "name": "Soft Natural Light",
+      "verdict": "known",
+      "match": "Natural Light"
+     },
+     {
+      "kind": "decor",
+      "name": "Cozy Reading Nook",
+      "verdict": "unknown",
+      "match": null
+     },
+     {
+      "kind": "artist",
+      "name": "Nujabes",
+      "verdict": "ranked",
+      "match": "Nujabes"
+     },
+     {
+      "kind": "artist",
+      "name": "Joe Hisaishi",
+      "verdict": "known",
+      "match": "Joe Hisaishi"
+     },
+     {
+      "kind": "artist",
+      "name": "Cornelius",
+      "verdict": "known",
+      "match": "Cornelius"
+     },
+     {
+      "kind": "brand",
+      "name": "Muji Wall Shelf",
+      "verdict": "known",
+      "match": "Muji"
+     },
+     {
+      "kind": "brand",
+      "name": "Hay Floor Cushion",
+      "verdict": "known",
+      "match": "HAY"
+     }
+    ],
+    "counts": {
+     "ranked": 1,
+     "known": 6,
+     "unknown": 1
+    },
+    "total": 8
+   }
+  },
+  {
+   "type": "done",
+   "qlooCalls": [
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Studio+Ghibli&take=3",
+     "ms": 414,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Nujabes&take=3",
+     "ms": 125,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Mary+Oliver&take=3",
+     "ms": 572,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Muji&take=3",
+     "ms": 345,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Atag&filter.parents.types=urn%3Aentity%3Aplace&filter.tag.types=urn%3Atag%3Aambience%3Aqloo&signal.interests.entities=D1222FA1-A6FD-45DE-8993-D89E2BB4777A%2CE11125AF-936B-4935-B607-F2DA2E6A6B92%2CBAA36D97-9D60-44BE-B7AC-6CA8528168DB%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7&take=10",
+     "ms": 784,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Atag&filter.parents.types=urn%3Aentity%3Aplace&filter.tag.types=urn%3Atag%3Adecor%3Aqloo&signal.interests.entities=D1222FA1-A6FD-45DE-8993-D89E2BB4777A%2CE11125AF-936B-4935-B607-F2DA2E6A6B92%2CBAA36D97-9D60-44BE-B7AC-6CA8528168DB%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7&take=10",
+     "ms": 789,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Atag&filter.parents.types=urn%3Aentity%3Aplace&filter.tag.types=urn%3Atag%3Ainterests%3Aqloo&signal.interests.entities=D1222FA1-A6FD-45DE-8993-D89E2BB4777A%2CE11125AF-936B-4935-B607-F2DA2E6A6B92%2CBAA36D97-9D60-44BE-B7AC-6CA8528168DB%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7&take=8",
+     "ms": 1075,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Aartist&take=8&signal.interests.entities=D1222FA1-A6FD-45DE-8993-D89E2BB4777A%2CE11125AF-936B-4935-B607-F2DA2E6A6B92%2CBAA36D97-9D60-44BE-B7AC-6CA8528168DB%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "ms": 90,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Abook&take=4&signal.interests.entities=D1222FA1-A6FD-45DE-8993-D89E2BB4777A%2CE11125AF-936B-4935-B607-F2DA2E6A6B92%2CBAA36D97-9D60-44BE-B7AC-6CA8528168DB%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "ms": 91,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Amovie&take=4&signal.interests.entities=D1222FA1-A6FD-45DE-8993-D89E2BB4777A%2CE11125AF-936B-4935-B607-F2DA2E6A6B92%2CBAA36D97-9D60-44BE-B7AC-6CA8528168DB%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "ms": 106,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Aentity%3Abrand&take=6&signal.interests.entities=D1222FA1-A6FD-45DE-8993-D89E2BB4777A%2CE11125AF-936B-4935-B607-F2DA2E6A6B92%2CBAA36D97-9D60-44BE-B7AC-6CA8528168DB%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "ms": 159,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/insights?filter.type=urn%3Ademographics&signal.interests.entities=D1222FA1-A6FD-45DE-8993-D89E2BB4777A%2CE11125AF-936B-4935-B607-F2DA2E6A6B92%2CBAA36D97-9D60-44BE-B7AC-6CA8528168DB%2CE12201A5-CC50-40AF-97AE-C54A2CA303F7",
+     "ms": 32,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/tags?filter.query=Warm+Wabi-Sabi&take=8",
+     "ms": 126,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/tags?filter.query=Soft+Natural+Light&take=8",
+     "ms": 181,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Cornelius&types=urn%3Aentity%3Aartist&take=3",
+     "ms": 513,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Muji+Wall+Shelf&types=urn%3Aentity%3Abrand&take=3",
+     "ms": 552,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Joe+Hisaishi&types=urn%3Aentity%3Aartist&take=3",
+     "ms": 604,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/search?query=Hay+Floor+Cushion&types=urn%3Aentity%3Abrand&take=3",
+     "ms": 609,
+     "ok": true
+    },
+    {
+     "url": "https://hackathon.api.qloo.com/v2/tags?filter.query=Cozy+Reading+Nook&take=8",
+     "ms": 812,
+     "ok": true
+    }
+   ]
+  }
+ ],
+ "renders": [
+  {
+   "id": "a1a3d8e4-be09-4415-8bcd-5ed8fdf3a38f",
+   "url": "/img/demo-room-ghibli-1.jpg",
+   "model": "gpt-image-2.6/flare",
+   "prompt": "A small weathered wooden bus shelter with a tin roof and a plain ash-wood bench, standing alone on a gravel road beside flooded rice paddies at dusk in gentle summer rain. A huge camphor tree rises behind it, its leaves dripping. Puddles reflect lavender-grey clouds and a thin gold line near the horizon. A blank round sign on a slim pole, a clear plastic umbrella hooked on the bench end, a small paper-wrapped parcel tied with twine on the seat, tall wet grass and fireflies in the paddies. Photoreal wide shot at eye level.",
+   "aspect": "3:2",
+   "signals": [
+    "Studio Ghibli",
+    "Traditional Japanese",
+    "Studio Ghibli",
+    "The Tale of The Princess Kaguya",
+    "Nujabes",
+    "Fishmans",
+    "Mary Oliver",
+    "The Wind Rises",
+    "Muji",
+    "Homey",
+    "Comfortable",
+    "Muji",
+    "Niko And...",
+    "Quiet"
+   ],
+   "remoteUrl": "https://v3b.fal.media/files/b/0ab14a98/ygHT6KpSEGGMRteTdWlaq_MKsqs76n.jpg"
+  }
+ ],
+ "baseline": {
+  "model": "anthropic/claude-haiku-5.5",
+  "picks": [
+   {
+    "kind": "decor",
+    "name": "Warm Wabi-Sabi",
+    "verdict": "known",
+    "match": "Wabi Sabi"
+   },
+   {
+    "kind": "decor",
+    "name": "Soft Natural Light",
+    "verdict": "known",
+    "match": "Natural Light"
+   },
+   {
+    "kind": "decor",
+    "name": "Cozy Reading Nook",
+    "verdict": "unknown",
+    "match": null
+   },
+   {
+    "kind": "artist",
+    "name": "Nujabes",
+    "verdict": "ranked",
+    "match": "Nujabes"
+   },
+   {
+    "kind": "artist",
+    "name": "Joe Hisaishi",
+    "verdict": "known",
+    "match": "Joe Hisaishi"
+   },
+   {
+    "kind": "artist",
+    "name": "Cornelius",
+    "verdict": "known",
+    "match": "Cornelius"
+   },
+   {
+    "kind": "brand",
+    "name": "Muji Wall Shelf",
+    "verdict": "known",
+    "match": "Muji"
+   },
+   {
+    "kind": "brand",
+    "name": "Hay Floor Cushion",
+    "verdict": "known",
+    "match": "HAY"
+   }
+  ],
+  "counts": {
+   "ranked": 1,
+   "known": 6,
+   "unknown": 1
+  },
+  "total": 8
+ },
+ "recorded": "2026-11-05T20:41:30.607Z"
+}
