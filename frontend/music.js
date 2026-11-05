@@ -40,7 +40,7 @@ export function startMusic() {
   };
   showMute();
 
-  let token = 0;
+  let token = 0, failed = 0;
   async function load() {
     const mine = ++token;
     name.textContent = artists[at];
@@ -62,6 +62,12 @@ export function startMusic() {
   addEventListener('message', e => {
     if (e.origin !== YT || e.source !== frame.contentWindow) return;
     let data; try { data = JSON.parse(e.data); } catch { return; }
+    // A song that won't play here (blocked embed, removed video) is skipped, once round the list at most.
+    if (data.event === 'onError') {
+      if (++failed < artists.length) { at = (at + 1) % artists.length; load(); } else label.textContent = 'Couldn’t play';
+      return;
+    }
+    if (data.event === 'onStateChange' && data.info === 1) failed = 0;
     if (data.event === 'onStateChange' ? data.info === 0 : data.info?.playerState === 0) { at = (at + 1) % artists.length; load(); }
   });
   next.addEventListener('click', () => { at = (at + 1) % artists.length; load(); });

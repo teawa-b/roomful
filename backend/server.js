@@ -92,7 +92,9 @@ export function createApp({ env = process.env, fetcher = fetch } = {}) {
   return async function handle(req, res) {
     const send = (status, value, headers = {}) => { res.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...headers }); res.end(JSON.stringify(value)); };
     res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('Referrer-Policy', 'no-referrer');
+    // Other sites see only the origin, never a page's path or query. Not no-referrer: YouTube embeds refuse to play
+    // (Error 153) without a Referer, and WebKit applies the page's policy to them over the iframe's own.
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
     // Who is asking, for the limits. Behind a proxy (Railway) the real address is the one the proxy adds: X-Real-IP,
     // or the last X-Forwarded-For entry. The first entry is whatever the visitor sent, so it can't be trusted.
     const ip = String(req.headers['x-real-ip'] || String(req.headers['x-forwarded-for'] || '').split(',').pop() || req.socket.remoteAddress || '').trim();
